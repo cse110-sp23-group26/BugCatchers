@@ -1,8 +1,12 @@
 Spring 2023
+
 Created 4/20/23
+
 Group Number 26
+
 Instructor: Thomas Powell
-Team Name: TBD
+
+Team Name: BugCatchers
 
 Communication Conduct:
 - Communication will be done through Slack.
