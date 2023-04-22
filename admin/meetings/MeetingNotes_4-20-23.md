@@ -22,7 +22,7 @@
   - Name, something animal crossing themed.
   - Use gpt for name suggestions.
   - Voting potential names in slack, will decide later today.
-  - 
+  - Result: BugCatchers
 - Group brand, poster design discussion
 
 - Github for group: https://github.com/cse110-sp23-group26
