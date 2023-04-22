@@ -12,3 +12,4 @@ Hi! We're the BugCatchers, an Animal Crossing themed development group!
 - [Rui Li](https://ruili4ucsd.github.io/CSE110_SP2023/) - Developer. Third year transfer CS major Student.
 - [Timothy Chu](https://tea-mochi.github.io/aboutme/) - Developer. Currently a second-year Math-CS major at UCSD.
 - [Ryan McCrystal](https://github.com/rmccrystal) - Developer. Second year Math-CS major at UCSD
+- [Shishir Iyer](https://shishir03.github.io/cse110-lab1/) - Developer. Currently a second year CS major at UCSD.
