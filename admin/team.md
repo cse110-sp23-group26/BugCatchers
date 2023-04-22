@@ -9,3 +9,4 @@ Hi! We're the BugCatchers, an Animal Crossing themed development group!
 - [Nick Petrone](https://nick-ls.github.io/110-init/) - A team lead with multiple years of website development experience. Currently a second-year Computer Science major at UCSD.
 - [Quanling Zhao](https://quanlingzhao.github.io/CSE110SP23-Lab1/) - Team secretary, manage team meeting notes and tracking tasks. Currently a 4th year CS major at UCSD interested in apply computer science in real world applications.
 - [Yuning Wen](https://solitar7.github.io/CSE110-Lab1-GeneralReview/) - Team planner (at least it it what listed in the group). Currently a second-year Math-CS major at UCSD.
+- [Timothy Chu](https://tea-mochi.github.io/aboutme/) - Developer. Currently a second-year Math-CS major at UCSD.
