@@ -1,6 +1,6 @@
 # Meeting Minutes on 4/20/2023
 
-##Attendance
+## Attendance
 - Rui
 - Yuning
 - Eic
@@ -8,7 +8,7 @@
 - Jianming
 - Quanling
 
-##Agenda
+## Agenda
 - Come up a team name
 - Attendance / github repo sign up
 - Group contract
