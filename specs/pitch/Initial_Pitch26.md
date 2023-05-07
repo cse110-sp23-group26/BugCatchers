@@ -46,6 +46,8 @@ Characters:
 - Risks
   - Potentially some repetition of fortunes (especially if staying local); mitigated somewhat by having a limited rate of fortunes
   - Fortune's replies may be too random to be smart
+  - Since we need to make it local, it may be hard to keep all the accounts in safety.
+  - May need to consider to connect with local or global time online to do some auto daily updates.
 - Rabbit hole
   - Might go overboard with the whole messaging system
   - Best to keep it simple and focus more on the fortune telling aspect
