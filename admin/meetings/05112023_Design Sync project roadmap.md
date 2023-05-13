@@ -30,7 +30,7 @@
   - Quanling: 5-7 hours a week.
 
 Roadmap to final projects
-  - Project name: FutureCross (potentially)
+  - Project name: FortuneCross (potentially)
   - Main frame and structure to the website done on figma.
   - Userflow diagram
   - Figure out local file management (user profiles, json file)
@@ -45,10 +45,13 @@ Roadmap to final projects
 - User document, User persona: Add more or more detail (Sunday) (Quanling, Yuning, Shishir)
 - Arichitecture design document, AI discussion (Sunday) (Rui, Jiaming) 
 - Create project road map. (Sunday) (Quanling) (Sunday, whole team)
-- Re-organize meeting notes, file names (Sunday)
+- Re-organize meeting notes, file names (Sunday) (Quanling)
 
 ## Action Items
 - Figma education video. (Send link in slack)
 - All call in on Sunday for final pass and assignment submission. (Time: 5PM)
+- Proper task management tool
+    - Detailed task list / deadlines / test cases / attach additional informations (github issues, jira)
+- Central repo for storing project documents.
 
 
