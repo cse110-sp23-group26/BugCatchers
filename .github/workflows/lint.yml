@@ -1,4 +1,4 @@
-name: Lint Javascript
+name: CI Script
 
 on:
   # Trigger the workflow on push or pull request,
@@ -29,7 +29,17 @@ jobs:
       # Install your linters here
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
+        uses: wearerequired/lint-action@v2.3.0
         with:
           eslint: true
           prettier: true
+          
+  run-unit-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: npm i
+    - name: Run tests
+      run: npm run-script test
