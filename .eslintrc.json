@@ -1,0 +1,10 @@
+{
+	"root": true,
+	"extends": ["eslint:recommended"],
+	"parserOptions": {
+		"ecmaVersion": "latest"
+	},
+	"ignorePatterns":[
+		"*.test.js"
+	]
+}
