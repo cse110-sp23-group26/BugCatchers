@@ -6,5 +6,8 @@
 	},
 	"ignorePatterns":[
 		"*.test.js"
-	]
+	],
+	"env": {
+		"browser": true
+	}
 }
