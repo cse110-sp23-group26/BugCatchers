@@ -18,28 +18,16 @@ permissions:
   contents: write
 
 jobs:
-  run-linters:
-    name: Run linters
+  ci:
+    name: CI
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
-
-      # Install your linters here
-
-      - name: Run linters
-        uses: wearerequired/lint-action@v2.3.0
-        with:
-          eslint: true
-          prettier: true
-          
-  run-unit-tests:
-    name: Run Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm i
-    - name: Run tests
-      run: npm run-script test
+      - name: Install Node Modules
+        run: npm i
+      - name: Run Linter
+        run: npm run lint
+      - name: Run Tests
+        run: npm run test
