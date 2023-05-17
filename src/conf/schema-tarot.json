@@ -1,0 +1,124 @@
+{
+	// The name that is referenced in code
+	"id": "my-tarot-spread-name",
+	// The name of the question that will be shown to users
+	// EX: Past, Present, Future
+	"displayName": "My Tarot Spread",
+	// The list of meanings that cards have
+	"cards": [{
+		// The name of the card (Shouldn't change)
+		"displayName": "The Fool",
+
+		// The card's id (Shouldn't change)
+		"id": "fool",
+		// The card's meaning for the question
+		"meaning": "",
+		// The card's reversed meaning for the question
+		"reversed": ""
+	},{
+		"displayName":"The Lovers",
+		"id": "lovers",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Hanged Man",
+		"id": "hanged",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Magician",
+		"id": "magician",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Chariot",
+		"id": "chariot",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"Death",
+		"id": "death",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Moon",
+		"id": "moon",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The High Priestess",
+		"id": "priestess",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"Strength",
+		"id": "strength",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"Temperance",
+		"id": "temperance",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Sun",
+		"id": "sun",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Empress",
+		"id": "empress",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Hermit",
+		"id": "hermit",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Devil",
+		"id": "devil",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"Judgement",
+		"id": "judgement",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Emperor",
+		"id": "emperor",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"Wheel of Fortune",
+		"id": "wheel",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Tower",
+		"id": "tower",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Hierophant",
+		"id": "hierophant",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"Justice",
+		"id": "justice",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The Star",
+		"id": "star",
+		"meaning": "",
+		"reversed": ""
+	},{
+		"displayName":"The World",
+		"id": "world",
+		"meaning": "",
+		"reversed": ""
+	}]
+}
