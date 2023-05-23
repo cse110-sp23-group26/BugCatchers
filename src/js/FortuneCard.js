@@ -4,8 +4,13 @@ class FortuneCard extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
         const div = document.createElement("div");
         const style = document.createElement("style");
-        style.innerHTML = "";
-        shadow.append(style, div);
+        style.innerHTML = `
+        * {
+            font-size: 36px;
+        }
+        `;
+        shadow.appendChild(style);
+        shadow.appendChild(div);
     }
         
     /**
@@ -18,16 +23,19 @@ class FortuneCard extends HTMLElement {
      * }
      */
     set data(data) {
-        if(!data) return;
+        if(!data) {
+            console.log("how did we get here");
+            return;
+        }
 
         const div = this.shadowRoot.querySelector("div");
         div.innerHTML = `
-        <<div class="fc-name">${data.name}</div>
-        <div class="fc-id">${data.id}</div>
-        <div class="fc-text">${data.text}</div>
-        <button class="fc-delete">
-          <img src="<insert trash can icon.svg>"></img>
-        </button>
+            <p class="fc-name">${data.name}</div>
+            <p class="fc-id">${data.id}</div>
+            <p class="fc-text">${data.text}</div><br><br>
+            <button class="fc-delete">
+            DELETE
+            </button>
         `;
     }
 }
