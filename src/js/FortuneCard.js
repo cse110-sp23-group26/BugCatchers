@@ -5,8 +5,14 @@ class FortuneCard extends HTMLElement {
         const div = document.createElement("div");
         const style = document.createElement("style");
         style.innerHTML = `
-        * {
-            font-size: 36px;
+        div {
+            font-size: 25px;
+            font-family: 'Nunito', sans-serif;
+            background-color: #348AA7;
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            width: 30%;
         }
         `;
         shadow.appendChild(style);
@@ -23,16 +29,12 @@ class FortuneCard extends HTMLElement {
      * }
      */
     set data(data) {
-        if(!data) {
-            console.log("how did we get here");
-            return;
-        }
+        if(!data) return;
 
         const div = this.shadowRoot.querySelector("div");
         div.innerHTML = `
-            <p class="fc-name">${data.name}</div>
-            <p class="fc-id">${data.id}</div>
-            <p class="fc-text">${data.text}</div><br><br>
+            <h2 class="fc-name">${data.name}</h2>
+            <p class="fc-text">${data.text}</p><br><br>
             <button class="fc-delete">
             DELETE
             </button>
