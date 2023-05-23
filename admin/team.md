@@ -10,7 +10,11 @@
 ![the man himself](https://github.com/cse110-sp23-group26/BugCatchers/raw/main/admin/branding/tom-nook.png)
 
 ## Members
+<<<<<<< HEAD
 - [Nick Petrone](https://nick-ls.github.io/110-init/) - A team lead with multiple years of website development experience. Currently a second-year Computer Science major at UCSD.
+=======
+- [Nick P](https://nick-ls.github.io/110-init/) - A team lead with multiple years of website development experience. Currently a second-year Computer Science major at UCSD.
+>>>>>>> 3c59b8e5148058e2e3ba9d695959e3d46020e0e2
 - [Quanling Zhao](https://quanlingzhao.github.io/CSE110SP23-Lab1/) - Team secretary, manage team meeting notes and tracking tasks. Currently a 4th year CS major at UCSD interested in apply computer science in real world applications.
 - [Yuning Wen](https://solitar7.github.io/CSE110-Lab1-GeneralReview/) - Team planner (at least it it what listed in the group). Currently a second-year Math-CS major at UCSD.
 - [Rui Li](https://ruili4ucsd.github.io/CSE110_SP2023/) - Developer. Third year transfer CS major Student.
