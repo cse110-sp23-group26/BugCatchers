@@ -2,7 +2,7 @@
 // Output: String of the corrspond constellation. If date format nor right, return error Message string.
 
 
-export function getConstellation(dateString) {
+function getConstellation(dateString) {
 		// remove the space, and store month and day to 'month' and 'day'
 		const trimmedString = dateString.replace(/\s+/g, "");
 		const regex = /([a-zA-Z]+)(\d+)/;
@@ -117,4 +117,4 @@ export function getConstellation(dateString) {
 		return "Error: wrong day format.";
 }
 
-module.exports = getConstellation;
+export {getConstellation};
