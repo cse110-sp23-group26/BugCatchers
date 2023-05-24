@@ -151,4 +151,4 @@ describe('Test getConstellation funtion', () => {
 //     return "Error: wrong day format.";
 //   }
 
-// });
+});
