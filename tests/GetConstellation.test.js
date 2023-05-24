@@ -1,8 +1,8 @@
 // constellation.test.js - unit test
 
 // import the test file
-import { getConstellation } from '../src/js/util/GetConstellation.js';
-
+// import { getConstellation } from '../src/js/util/GetConstellation.js';
+const getConstellation = require('../src/js/util/GetConstellation.js');
 describe('Test getConstellation funtion', () => {
   it('should return the corresponding constellation for a valid date string', () => {
     // Test valid input Month and Day
