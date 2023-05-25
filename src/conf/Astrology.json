@@ -1,5 +1,5 @@
 {
-  {
+  "Aries":{
     "name":"Aries",
     "features": [
       "Assertive and confident in expressing their opinions",
@@ -70,9 +70,9 @@
       "They enjoy being at the forefront of innovation and progress.",
       "Aries individuals have a strong sense of justice and fairness.",
       "They can be fiercely competitive and strive for excellence."]
-  }
+  },
 
-  {
+  "Taurus":{
     "name":"Taurus",
     "features": [
       "Patient and reliable, known for their steadfastness",
@@ -115,10 +115,51 @@
       "Showing a deep appreciation for music, art, and sensory experiences",
       "Valuing honesty, integrity, and practicality in their interactions",
       "Being dependable and steadfast, keeping their promises"],
-    "info": []
-  }
+    "info": [
+      "Taurus is the second astrological sign in the zodiac.",
+      "The dates typically associated with Taurus are April 20 to May 20.",
+      "Taurus is symbolized by the Bull and associated with the element of Earth.",
+      "Taurus is ruled by the planet Venus.",
+      "Taurus is considered a fixed sign.",
+      "Taurus individuals are known for their practicality, reliability, and stability.",
+      "They have a strong sense of determination and are often patient and persistent.",
+      "Taurus is associated with sensuality, pleasure, and material comforts.",
+      "They have a deep appreciation for beauty and aesthetics.",
+      "Taurus individuals value security and stability in all areas of life.",
+      "They are known for their loyalty and dedication to their relationships.",
+      "Taurus has a grounded and down-to-earth nature.",
+      "They are often practical decision-makers and consider the long-term implications.",
+      "Taurus individuals have a strong work ethic and value hard work and perseverance.",
+      "They can be quite possessive and protective of their loved ones.",
+      "Taurus is associated with a love for nature and a connection to the physical world.",
+      "They have a tendency to be stubborn and resistant to change.",
+      "Taurus individuals often have a strong appreciation for food, comfort, and luxury.",
+      "They have a practical approach to money and are usually good at managing finances.",
+      "Taurus is compatible with other earth signs like Virgo and Capricorn, as well as water signs like Cancer and Pisces.",
+      "Challenges in relationships can arise with signs such as Leo and Aquarius.",
+      "Taurus individuals are known for their strong determination and resilience.",
+      "They have a practical and pragmatic approach to life.",
+      "Taurus is associated with stability, reliability, and a grounded nature.",
+      "They have a strong sense of loyalty and commitment in their relationships.",
+      "Taurus individuals value honesty and integrity.",
+      "They have a deep appreciation for art, music, and all forms of beauty.",
+      "Taurus is known for their love of nature and the outdoors.",
+      "They have a strong connection to the physical senses and enjoy indulging in sensual pleasures.",
+      "Taurus individuals have a strong work ethic and are diligent and reliable in their professional endeavors.",
+      "They are often skilled at managing resources and handling financial matters.",
+      "Taurus is associated with a love for good food, comfort, and luxurious experiences.",
+      "They enjoy creating a cozy and harmonious home environment.",
+      "Taurus individuals are patient and steady in their pursuits, willing to put in the necessary effort for long-term success.",
+      "They are resistant to change and prefer stability and routine.",
+      "Taurus is dependable and trustworthy, making them reliable friends and partners.",
+      "They have a practical approach to problem-solving and tend to think through decisions carefully.",
+      "Taurus individuals can be quite possessive of their belongings and relationships.",
+      "They have a strong sense of values and are guided by principles in their actions.",
+      "Taurus is compatible with other earth signs like Virgo and Capricorn, as well as water signs like Cancer and Pisces.",
+      "Challenges in relationships can arise with signs such as Leo and Aquarius."]
+  },
 
-  {
+  "Gimini":{
     "name":"Gimini",
     "features": [
       "Curious and inquisitive, always seeking new knowledge and experiences",
@@ -161,10 +202,44 @@
       "Quick thinkers, often processing information rapidly and making fast decisions",
       "Have a natural gift for persuasion and negotiation",
       "Possess a sharp intellect and a thirst for intellectual challenges"],
-    "info": []
-  }
+    "info": [
+      "Gemini is the third astrological sign in the zodiac.",
+      "Dates: May 21 to June 20.",
+      "Gemini is represented by the symbol of the Twins.",
+      "It is an air sign, along with Libra and Aquarius.",
+      "Gemini is ruled by the planet Mercury.",
+      "People born under Gemini are known for their adaptability and versatility.",
+      "Gemini is associated with communication, curiosity, and intellectual pursuits.",
+      "Geminis are often sociable, witty, and have a love for learning.",
+      "They are skilled at conversation and can easily adapt to different social situations.",
+      "Geminis have a dual nature and are known for their ability to see different perspectives.",
+      "They are intellectually curious and enjoy exploring various subjects.",
+      "Gemini is considered a mutable sign, which means they are adaptable and flexible.",
+      "Geminis can excel in fields such as journalism, teaching, writing, and sales.",
+      "In relationships, Geminis value mental stimulation and need a partner who can keep up with their lively nature.",
+      "Gemini is associated with the third house of the zodiac, which represents communication, learning, and community.",
+      "Famous Geminis include Marilyn Monroe, Johnny Depp, Angelina Jolie, and Kendrick Lamar.",
+      "Gemini is known as the sign of the Twins, representing duality and versatility.",
+      "Gemini is an extroverted sign and thrives on social interactions and intellectual stimulation.",
+      "Gemini is ruled by Mercury, the planet of communication, intellect, and adaptability.",
+      "People born under Gemini are often quick-witted, curious, and expressive.",
+      "Gemini individuals are known for their excellent communication skills and love for engaging conversations.",
+      "Geminis have a natural ability to see both sides of a situation and can be skilled negotiators.",
+      "Gemini is an air sign, emphasizing mental energy, ideas, and intellectual pursuits.",
+      "Geminis are often multi-talented and enjoy exploring various interests and hobbies.",
+      "Due to their restless nature, Geminis can sometimes have a hard time making decisions.",
+      "Gemini is associated with the arms, hands, and nervous system in the body.",
+      "Gemini's ruling element of air reflects their need for mental stimulation and freedom.",
+      "Gemini is compatible with other air signs like Libra and Aquarius, as well as fire signs like Aries and Leo.",
+      "Gemini's opposite sign is Sagittarius, and together they form a polarity of knowledge and exploration.",
+      "Geminis can excel in careers that involve communication, writing, journalism, teaching, sales, and public speaking.",
+      "Gemini is associated with the color yellow, symbolizing intellect, curiosity, and optimism.",
+      "Gemini-born individuals are known for their youthful energy and forever-young spirit.",
+      "Gemini is represented by the constellation of the Twins in the night sky.",
+      "Famous Geminis include Donald Trump, Kanye West, Naomi Campbell, and Nicole Kidman."]
+  },
 
-  {
+  "Cancer":{
     "name":"Cancer",
     "features": [
       "Nurturing and caring, always looking out for the well-being of others",
@@ -207,11 +282,45 @@
       "Value privacy and personal space, needing time for introspection",
       "Sincere and sincere in their emotions and interactions",
       "Trust their instincts and intuition when making choices"],
-    "info": []
+    "info": [
+      "Cancer is the fourth astrological sign in the zodiac.",
+      "Dates: June 21 to July 22.",
+      "Cancer is represented by the symbol of the Crab.",
+      "It is a water sign, along with Scorpio and Pisces.",
+      "Cancer is ruled by the Moon.",
+      "People born under Cancer are known for their emotional depth and nurturing nature.",
+      "Cancer is associated with home, family, and domestic life.",
+      "Cancerians are often empathetic, intuitive, and highly sensitive.",
+      "They have a strong connection to their emotions and are deeply caring towards others.",
+      "Cancerians possess a protective instinct and value security and stability.",
+      "They are often intuitive and can easily pick up on the emotions of others.",
+      "Cancer is considered a cardinal sign, which means they are natural leaders and initiators.",
+      "Cancerians can excel in fields such as caregiving, counseling, teaching, and psychology.",
+      "In relationships, Cancerians are loyal and devoted partners who seek emotional intimacy.",
+      "Cancer is associated with the fourth house of the zodiac, which represents home, roots, and emotional foundations.",
+      "Famous Cancerians include Princess Diana, Tom Hanks, Selena Gomez, and Meryl Streep.",
+      "Cancer is known as the nurturing and compassionate sign of the zodiac.",
+      "Cancer is characterized by its strong emotional nature and deep empathy for others.",
+      "Cancer is ruled by the Moon, which influences their ever-changing moods.",
+      "People born under Cancer are often deeply connected to their family and home life.",
+      "Cancerians have a natural instinct for creating a warm and welcoming environment.",
+      "They are highly intuitive and can pick up on the feelings and needs of those around them.",
+      "Cancer is a water sign, representing emotions, intuition, and sensitivity.",
+      "Cancerians are known for their loyalty, devotion, and protective nature.",
+      "They value security and create a sense of emotional stability for themselves and others.",
+      "Cancerians can be deeply sentimental and cherish their memories and traditions.",
+      "Cancer is associated with the stomach and digestive system in the body.",
+      "Cancer's ruling element of water reflects their emotional depth and nurturing qualities.",
+      "Cancer is compatible with other water signs like Scorpio and Pisces, as well as earth signs like Taurus and Virgo.",
+      "Cancer's opposite sign is Capricorn, and together they represent the axis of family and career.",
+      "Cancerians can excel in careers that involve caregiving, nursing, social work, counseling, and hospitality.",
+      "Cancer is associated with the color silver, symbolizing intuition, protection, and emotional insight.",
+      "Cancer-born individuals are known for their gentle and compassionate nature.",
+      "Cancer is represented by the constellation of the Crab in the night sky.",
+      "Famous Cancerians include Nelson Mandela, Princess Diana, Frida Kahlo, and Tom Cruise."]
+  },
 
-  }
-
-  {
+  "Leo":{
     "name":"Leo",
     "features": [
       "Confident and charismatic, natural leaders who command attention",
@@ -254,10 +363,43 @@
       "Passionate and romantic, seeking intense emotional connections",
       "Enjoy luxury and indulgence, embracing the finer things in life",
       "Inspire others to believe in themselves and their abilities"],
-    "info": []
-  }
+    "info": [
+      "Leo is the fifth astrological sign in the zodiac.",
+      "Dates: July 23 to August 22.",
+      "Leo is represented by the symbol of the Lion.",
+      "It is a fire sign, along with Aries and Sagittarius.",
+      "Leo is ruled by the Sun.",
+      "People born under Leo are known for their confidence and charismatic personality.",
+      "Leo is associated with creativity, passion, and self-expression.",
+      "Leos are often warm-hearted, generous, and natural-born leaders.",
+      "They have a strong desire for recognition and appreciate being in the spotlight.",
+      "Leos have a magnetic presence and can inspire and uplift those around them.",
+      "Leo is considered a fixed sign, which means they are determined and steadfast.",
+      "Leos can excel in fields such as acting, performing arts, leadership, and entrepreneurship.",
+      "In relationships, Leos are loyal and affectionate partners who enjoy showering their loved ones with attention.",
+      "Leo is associated with the fifth house of the zodiac, which represents creativity, romance, and self-expression.",
+      "Famous Leos include Barack Obama, Madonna, Jennifer Lopez, and Chris Hemsworth.",
+      "Leo is known as the sign of the Lion, representing courage and leadership.",
+      "Leo is characterized by its confident and radiant personality.",
+      "Leo is ruled by the Sun, the center of the solar system and the source of vitality and energy.",
+      "People born under Leo are often natural-born leaders and have a strong sense of self.",
+      "Leos are known for their creativity, passion, and dramatic flair.",
+      "They have a magnetic presence and can command attention in any room.",
+      "Leos have a generous spirit and enjoy sharing their success and achievements with others.",
+      "Leo is a fire sign, symbolizing passion, enthusiasm, and a zest for life.",
+      "Leos have a strong desire for recognition and thrive in roles where they can shine and express themselves.",
+      "Leo is associated with the heart and spine in the body.",
+      "Leo's ruling element of fire reflects their warm and vibrant nature.",
+      "Leo is compatible with other fire signs like Aries and Sagittarius, as well as air signs like Gemini and Libra.",
+      "Leo's opposite sign is Aquarius, and together they form a polarity of self-expression and collective ideals.",
+      "Leos can excel in careers that involve performing arts, entertainment, leadership, and entrepreneurship.",
+      "Leo is associated with the color gold, symbolizing abundance, success, and royalty.",
+      "Leo-born individuals are known for their confidence, generosity, and magnetic charisma.",
+      "Leo is represented by the constellation of the Lion in the night sky.",
+      "Famous Leos include Coco Chanel, Arnold Schwarzenegger, Amelia Earhart, and Sandra Bullock."]
+  },
 
-  {
+  "Virgo":{
     "name":"Virgo",
     "features": [
       "Analytical and detail-oriented, paying meticulous attention to every aspect",
@@ -300,10 +442,43 @@
       "Attentive listeners, providing thoughtful and insightful advice",
       "Have a deep sense of responsibility towards their loved ones",
       "Enjoy the satisfaction of completing tasks with precision"],
-    "info": []
-  }
+    "info": [
+      "Virgo is the sixth astrological sign in the zodiac.",
+      "Dates: August 23 to September 22.",
+      "Virgo is represented by the symbol of the Virgin.",
+      "It is an earth sign, along with Taurus and Capricorn.",
+      "Virgo is ruled by the planet Mercury.",
+      "People born under Virgo are known for their practicality, attention to detail, and analytical nature.",
+      "Virgo is associated with organization, precision, and efficiency.",
+      "Virgos are often hardworking, reliable, and diligent individuals.",
+      "They have a keen eye for perfection and strive for excellence in everything they do.",
+      "Virgos possess strong analytical and problem-solving skills.",
+      "Virgo is considered a mutable sign, which means they are adaptable and flexible.",
+      "Virgos can excel in fields such as healthcare, research, analysis, and administration.",
+      "In relationships, Virgos are loyal and supportive partners who value stability and practicality.",
+      "Virgo is associated with the sixth house of the zodiac, which represents health, work, and daily routines.",
+      "Famous Virgos include Beyoncé, Freddie Mercury, Mother Teresa, and Stephen King.",
+      "Virgo is known as the sign of the Virgin, representing purity and practicality.",
+      "Virgo is characterized by its meticulous attention to detail and methodical approach.",
+      "Virgo is ruled by Mercury, the planet of communication and intellect.",
+      "People born under Virgo are often highly intelligent and have a natural curiosity.",
+      "Virgos are known for their analytical thinking, problem-solving abilities, and sharp observation skills.",
+      "They have a strong sense of responsibility and are reliable and trustworthy.",
+      "Virgos possess a strong work ethic and strive for perfection in their endeavors.",
+      "Virgo is an earth sign, symbolizing grounding, stability, and a practical nature.",
+      "Virgos have a natural talent for organizing and managing tasks and projects.",
+      "Virgo is associated with the digestive system and overall well-being in the body.",
+      "Virgo's ruling element of earth reflects their grounded and down-to-earth nature.",
+      "Virgo is compatible with other earth signs like Taurus and Capricorn, as well as water signs like Cancer and Scorpio.",
+      "Virgo's opposite sign is Pisces, and together they represent the axis of service and spirituality.",
+      "Virgos can excel in careers that involve analysis, research, healthcare, writing, and organization.",
+      "Virgo is associated with the color navy blue, symbolizing trust, efficiency, and professionalism.",
+      "Virgo-born individuals are known for their practicality, reliability, and attention to detail.",
+      "Virgo is represented by the constellation of the Virgin in the night sky.",
+      "Famous Virgos include Sophia Loren, Sean Connery, Amy Winehouse, and Jada Pinkett Smith."]
+  },
 
-  {
+  "Libra":{
     "name":"Libra",
     "features": [
       "Harmony seekers, always striving for balance and fairness",
@@ -347,51 +522,42 @@
       "Strong sense of ethics and a desire for moral integrity",
       "Skilled at assessing the needs and desires of others"],
     "info": [
-      "Taurus is the second astrological sign in the zodiac.",
-      "The dates typically associated with Taurus are April 20 to May 20.",
-      "Taurus is symbolized by the Bull and associated with the element of Earth.",
-      "Taurus is ruled by the planet Venus.",
-      "Taurus is considered a fixed sign.",
-      "Taurus individuals are known for their practicality, reliability, and stability.",
-      "They have a strong sense of determination and are often patient and persistent.",
-      "Taurus is associated with sensuality, pleasure, and material comforts.",
-      "They have a deep appreciation for beauty and aesthetics.",
-      "Taurus individuals value security and stability in all areas of life.",
-      "They are known for their loyalty and dedication to their relationships.",
-      "Taurus has a grounded and down-to-earth nature.",
-      "They are often practical decision-makers and consider the long-term implications.",
-      "Taurus individuals have a strong work ethic and value hard work and perseverance.",
-      "They can be quite possessive and protective of their loved ones.",
-      "Taurus is associated with a love for nature and a connection to the physical world.",
-      "They have a tendency to be stubborn and resistant to change.",
-      "Taurus individuals often have a strong appreciation for food, comfort, and luxury.",
-      "They have a practical approach to money and are usually good at managing finances.",
-      "Taurus is compatible with other earth signs like Virgo and Capricorn, as well as water signs like Cancer and Pisces.",
-      "Challenges in relationships can arise with signs such as Leo and Aquarius.",
-      "Taurus individuals are known for their strong determination and resilience.",
-      "They have a practical and pragmatic approach to life.",
-      "Taurus is associated with stability, reliability, and a grounded nature.",
-      "They have a strong sense of loyalty and commitment in their relationships.",
-      "Taurus individuals value honesty and integrity.",
-      "They have a deep appreciation for art, music, and all forms of beauty.",
-      "Taurus is known for their love of nature and the outdoors.",
-      "They have a strong connection to the physical senses and enjoy indulging in sensual pleasures.",
-      "Taurus individuals have a strong work ethic and are diligent and reliable in their professional endeavors.",
-      "They are often skilled at managing resources and handling financial matters.",
-      "Taurus is associated with a love for good food, comfort, and luxurious experiences.",
-      "They enjoy creating a cozy and harmonious home environment.",
-      "Taurus individuals are patient and steady in their pursuits, willing to put in the necessary effort for long-term success.",
-      "They are resistant to change and prefer stability and routine.",
-      "Taurus is dependable and trustworthy, making them reliable friends and partners.",
-      "They have a practical approach to problem-solving and tend to think through decisions carefully.",
-      "Taurus individuals can be quite possessive of their belongings and relationships.",
-      "They have a strong sense of values and are guided by principles in their actions.",
-      "Taurus is compatible with other earth signs like Virgo and Capricorn, as well as water signs like Cancer and Pisces.",
-      "Challenges in relationships can arise with signs such as Leo and Aquarius."]
+      "Libra is the seventh astrological sign in the zodiac.",
+      "Dates: September 23 to October 22.",
+      "Libra is represented by the symbol of the Scales.",
+      "It is an air sign, along with Gemini and Aquarius.",
+      "Libra is ruled by the planet Venus.",
+      "People born under Libra are known for their diplomacy, charm, and sense of balance.",
+      "Libra is associated with harmony, relationships, and justice.",
+      "Libras are often social, cooperative, and have a strong sense of fairness.",
+      "They value peace and strive to maintain harmonious environments.",
+      "Libras have a natural talent for mediation and resolving conflicts.",
+      "Libra is considered a cardinal sign, which means they are initiators and leaders.",
+      "Libras can excel in fields such as law, diplomacy, counseling, and design.",
+      "In relationships, Libras are romantic and seek harmonious partnerships.",
+      "Libra is associated with the seventh house of the zodiac, which represents partnerships and collaborations.",
+      "Famous Libras include Mahatma Gandhi, Serena Williams, John Lennon, and Kim Kardashian.",
+      "Libra is known as the sign of the Scales, representing balance and harmony.",
+      "Libra is characterized by its diplomatic and cooperative nature.",
+      "Libra is ruled by Venus, the planet of love, beauty, and harmony.",
+      "People born under Libra are often known for their sense of fairness and justice.",
+      "Libras have a natural ability to see both sides of a situation and strive for compromise.",
+      "They value harmony in relationships and seek to create a peaceful and balanced environment.",
+      "Libras are often sociable, charming, and enjoy connecting with others.",
+      "Libra is an air sign, symbolizing intellect, communication, and a focus on mental activities.",
+      "Libras have a keen aesthetic sense and appreciate beauty in art, design, and their surroundings.",
+      "Libra is associated with the kidneys and lower back in the body.",
+      "Libra's ruling element of air reflects their intellectual and social nature.",
+      "Libra is compatible with other air signs like Gemini and Aquarius, as well as fire signs like Leo and Sagittarius.",
+      "Libra's opposite sign is Aries, and together they form a polarity of self and others.",
+      "Libras can excel in careers that involve negotiation, diplomacy, law, fashion, and the arts.",
+      "Libra is associated with the color pastel blue, symbolizing peace, harmony, and serenity.",
+      "Libra-born individuals are known for their grace, tact, and ability to create harmony in their surroundings.",
+      "Libra is represented by the constellation of the Scales in the night sky.",
+      "Famous Libras include Will Smith, Catherine Zeta-Jones, Oscar Wilde, and Serena Williams."]
+  },
 
-  }
-
-  {
+  "Scorpio":{
     "name":"Scorpio",
     "features": [
       "Intense and passionate, with deep emotions running through them",
@@ -480,10 +646,9 @@
       "They possess a strong sense of purpose and are driven to succeed.",
       "Scorpio is compatible with other water signs like Cancer and Pisces, as well as earth signs like Taurus and Virgo.",
       "Challenges in relationships can arise with signs such as Leo and Aquarius."]
+  },
 
-  }
-
-  {
+  "Sagittarius":{
     "name":"Sagittarius",
     "features": [
       "Adventurous and free-spirited, always seeking new experiences",
@@ -572,9 +737,9 @@
       "They have a positive and uplifting influence on those around them.",
       "Sagittarius is compatible with other fire signs like Aries and Leo, as well as air signs like Gemini and Libra.",
       "Challenges in relationships can arise with signs such as Taurus and Scorpio."]
-  }
+  },
 
-  {
+  "Capricorn":{
     "name":"Capricorn",
     "features": [
       "Ambitious and driven, with a strong desire for success",
@@ -661,9 +826,9 @@
       "They appreciate stability and may be cautious when it comes to taking risks.",
       "Capricorn is compatible with other earth signs like Taurus and Virgo, as well as water signs like Cancer and Pisces.",
       "Challenges in relationships can arise with signs such as Aries and Libra."]
-  }
+  },
 
-  {
+  "Aquarius":{
     "name":"Aquarius",
     "features": [
       "Independent and individualistic, valuing personal freedom",
@@ -750,9 +915,9 @@
       "They appreciate diversity and believe in the power of collaboration.",
       "Aquarius is compatible with other air signs like Gemini and Libra, as well as fire signs like Aries and Sagittarius.",
       "Challenges in relationships can arise with signs such as Taurus and Scorpio."]
-  }
+  },
 
-  {
+  "Pisces":{
     "name":"Pisces",
     "features": [
       "Empathetic and compassionate, caring deeply for others",
