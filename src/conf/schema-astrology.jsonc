@@ -1,0 +1,27 @@
+/**
+ * Fortunes are built by picking a random starting string from the first array
+ * for a sign, a random other string from the second array, one from the third,
+ * and so on until the last array is chosen from. This means that every line of
+ * text should make approximate sense when placed next to any sentence in the
+ * next array below it.
+ */
+{
+	"Aries": [
+		["First line of dialogue for an aries fortune", "another choice for the first line"],
+		["second lines of dialogue to choose from for the fortune"],
+		["third lines to choose from"],
+		// ... any more arrays of strings can go here
+		["last lines of dialogue to choose from"]
+	],
+	"Taurus": [],
+	"Gemini": [],
+	"Cancer": [],
+	"Leo": [],
+	"Virgo": [],
+	"Libra": [],
+	"Scorpio": [],
+	"Sagittarius": [],
+	"Capricorn": [],
+	"Aquarius": [],
+	"Pisces": []
+}
