@@ -1,4 +1,4 @@
-const { JSDOM } = require("jsdom");
+const JSDOM = require('jsdom');
 const getConstellation = require('../src/js/util/GetConstellation.js');
 const addDeleteListener = require('../src/js/util/DeleteFortuneCard.js');
 
