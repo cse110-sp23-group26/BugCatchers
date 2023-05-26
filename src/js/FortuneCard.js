@@ -6,14 +6,23 @@ class FortuneCard extends HTMLElement {
         const style = document.createElement("style");
         style.innerHTML = `
         div {
+            position: relative;
             font-size: 25px;
             font-family: 'Nunito', sans-serif;
             background-color: #348AA7;
             color: white;
             padding: 25px;
+            margin: 15px;
             border-radius: 20px;
             width: 30%;
         }
+
+        .fc-name {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+            font-size: 18px;
+          }
         `;
         shadow.appendChild(style);
         shadow.appendChild(div);
@@ -26,6 +35,7 @@ class FortuneCard extends HTMLElement {
      *      "name": ...
      *      "id": ...
      *      "text": ...
+     *      "modal-text": ... (only displayed when fortune is clicked)
      * }
      */
     set data(data) {
@@ -33,8 +43,8 @@ class FortuneCard extends HTMLElement {
 
         const div = this.shadowRoot.querySelector("div");
         div.innerHTML = `
-            <h2 class="fc-name">${data.name}</h2>
             <p class="fc-text">${data.text}</p><br><br>
+            <p class="fc-name">${data.name}</p>
             <button class="fc-delete">
             DELETE
             </button>
