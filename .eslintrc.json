@@ -7,7 +7,7 @@
 	"ignorePatterns":[
 		"*.test.js",
 		"node_modules/"
-],
+	],
 	"env": {
 		"browser": true
 	}
