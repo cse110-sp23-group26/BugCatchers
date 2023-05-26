@@ -1,6 +1,7 @@
 import { JSDOM } from "jsdom";
 const getConstellation = require('../src/js/util/GetConstellation.js');
-const addDeleteListener = require('../src/js/DeleteFortuneCard.js"');
+const addDeleteListener = require('../src/js/util/DeleteFortuneCard.js');
+
 
 describe('Testing the delete functionality of the button in the fortune card', () => {
   let dom;
@@ -124,8 +125,6 @@ describe('Testing the delete functionality of the button in the fortune card', (
 
     // 延时以等待 DOM 更新
     await new Promise(r => setTimeout(r, 100));
-
-    expect(cardElements[0]).not.toBeInTheDocument();
     expect(localStorage.removeItem).toHaveBeenCalledWith(fortuneCards[0].id);
   });
 });

@@ -39,7 +39,7 @@ addDeleteListener(buttonElement);
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-export function addDeleteListener(button) {
+function addDeleteListener(button) {
     button.addEventListener('click', function(event) {
         // get the ancestor element fortune-card where the click happened
         // and record the id
