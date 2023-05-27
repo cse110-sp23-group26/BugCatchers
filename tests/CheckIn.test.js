@@ -1,3 +1,4 @@
+require('jest-localstorage-mock');
 const checkIn = require('../src/js/util/CheckIn.js');
 
 describe('Test checkIn function', () => {
@@ -18,5 +19,7 @@ describe('Test checkIn function', () => {
         expect(new Date(localStorage.getItem('LastCheckInTime')).toLocaleDateString()).toBe(new Date().toLocaleDateString());
     });
   
-    // Add more test cases if you want, such as testing what happens if the user has already checked in today, or what happens if the user last checked in yesterday, etc.
+    // Add more test cases if you want
+    // such as testing what happens if the user has already checked in today
+    // or what happens if the user last checked in yesterday, etc.
   });
