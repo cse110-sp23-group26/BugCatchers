@@ -3,11 +3,13 @@
 <head>
 	<title>Bug Catchers</title>
 	<link rel="stylesheet" type="text/css" href="css/global-styles.css">
+	<link rel="stylesheet" type="text/css" href="css//text-box.css">
 	<script src="js/main-app.js"></script>
 	<script src="js/FortuneCard.js" type="module"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="bg">
@@ -16,11 +18,29 @@
 	<div class="greenMenu">
 		<img id="menu" src='./assets/bg-leaf.png' alt="Celeste Character">
 	</div>
-	<section id="text-box">
-		<div class="speaker"></div>
-		<div class="words"></div>
-		<div class="interactive"></div>
-		<div class="next-arrow"></div> 
+	<section id="text-box" class="dialogue">  
+		<div class="dialogue-blobs">
+			<div class="blob-container">
+				<div class="dialogue-blob-top"></div>
+				<div class="dialogue-blob-bottom"></div>
+			</div>
+			<div class="dialogue-text">
+				<!-- This is where character dialogue goes -->
+			</div>
+			<div class="interactive">
+				<!-- This is where interactive buttons and inputs go -->
+			</div>
+		</div>
+		<div class="dialogue-character-wrap">
+			<div class="dialogue-character">
+				<span class="speaker">
+					<!-- This is where the name of the speaker goes -->
+				</span>
+			</div>
+		</div>
+		<svg class="arrow" width="45" height="25" viewBox="0 0 45 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
+		</svg>
 	</section>
 </body>
 </html>
