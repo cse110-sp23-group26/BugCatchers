@@ -3,7 +3,8 @@
 <head>
     <title>Bug Catchers</title>
     <link rel="stylesheet" type="text/css" href="css/global-styles.css">
-    <script src="js/main-app.js"></script>
+    <script src="js/main-app.js" defer></script>
+    <script src="js/util/CheckIn.js"></script>
     <script src="js/FortuneCard.js" type="module"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +19,12 @@
     </div>
     <div class = "fortuneCardList">
     
+    </div>
+    <!-- Add check-in block here -->
+    <div class="check-in-block">
+        <p id="last-check-in-date">Last Check-In: None</p>
+        <p id="check-in-count">Count: 0</p>
+        <button id="check-in-button">Check In!</button>
     </div>
 </body>
 </html>
