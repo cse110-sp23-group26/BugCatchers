@@ -1,39 +1,37 @@
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    overflow-y: hidden;
-    overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 div.bg {
-    position: relative;
-    background-image: url('../assets/bg-celeste.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+	position: relative;
+	background-image: url('../assets/bg-celeste.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 }
 
 div.bg #char {
-    width: 60%;
-    height: auto;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+	height: 80%;
+	width: auto;
 }
 
 div.greenMenu #menu {
-    width: 5%;
-    height: auto;
-    position: absolute;
-    top: 2%;
-    left: 2%;
+	width: 5%;
+	height: auto;
+	position: absolute;
+	top: 2%;
+	left: 2%;
 }
-
 
 div.greenMenu #CardList {
     width: 20%;
@@ -42,18 +40,3 @@ div.greenMenu #CardList {
     top: 14%;
     left: 0.5%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
