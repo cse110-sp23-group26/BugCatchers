@@ -1,53 +1,40 @@
-# 280523-Bug Catcher-Retrospective
+# Sprint 1 Retrospective
 
 ## Attendence
 
-## Everyone's notes
+- Nick
+- Quanling
+- Yuning
+- Shishir
+- Eric
+- Rui
+- Sindhu
+- Jianming
 
-[template]Name: 
+# [Retrium summary](./assets/Retrospective%20-%20May%2028%2C%202023.md)
 
-- what are you happy about in the team
+## What went well
+- Clarified the design of our final project
+- Communication and teamwork
+- Got started on project, so building off of it is easier
 
-- what are you mad about in the team
+## What didn't go well
+- File structure is confusing without documentation to people who aren't already familiar with it. This made contributing hard.
+- Task assignment is not even. Some people took a lot more tasks, some people took a lot less.
+- Group organization was loose, and not many people knew what was going on at any one point
+- Code style and readability can be improved.
 
-- what did you do right
+## Things to improve
+- More clear file structure, so that people can contribute more easily.
+- Add a more comprehensive README file that details different files and tasks.
+- Code format and style is not uniform, should improve.
+- Not everyone is on the same page, so improve syncing.
+- Try to put comments on the code.
+- Uneven task distribution.
 
-- what did you do wrong
-
-- what did you learn
-
-- What would you like to see in the team in the future
-
-- What do you think the team should pay attention to and what actions should be taken in the future?
-
-[template]Name: 
-
-- what are you happy about in the team
-
-- what are you mad about in the team
-
-- what did you do right
-
-- what did you do wrong
-
-- what did you learn
-
-- What would you like to see in the team in the future
-
-- What do you think the team should pay attention to and what actions should be taken in the future?
-
-...
-
-## Discuss
-
-[Disscuss what are we need to notice]
-
-## Actions need to take in the future
-
-[template]
-
-- Action content
-- Expected outcome
-- Expected finish date
-
+## Action items by next sprint
+- Integrate code prettification into the CI/CD pipeline
+- Create many more GitHub issues of high quality
+- Assign more tasks to people who don't have tasks if they do not pick one themselves
+- Edit the README to clarify the project structure, how to contribute to it, and describe the purpose and function of each directory.
 

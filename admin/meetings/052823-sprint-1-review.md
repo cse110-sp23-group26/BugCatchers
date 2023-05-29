@@ -33,13 +33,13 @@
   - Fortune card deletion
   - Check-in system
 
-![TextBox](./052823-TextBox.PNG)
+![TextBox](./assets/052823-TextBox.PNG)
 
 - What we expect to done next week:
   - The completed astrology fortune flow
   - MVP done by Tuesday
 
-![Issues](./052823-Issues.PNG)
+![Issues](./assets/052823-Issues.PNG)
 
 
 
