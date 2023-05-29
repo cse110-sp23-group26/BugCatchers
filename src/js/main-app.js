@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
     // Default variables to set (i.e Celeste's name, default welcoming message etc.)
     speakerName = 'Celeste';
-    welcomeMsg = 'Hello user! What can I do for you? Hello user! What can I do for you?'
+    welcomeMsg = 'Hello user! What can I do for you?'
 
     // set those two data to local storage
     const fortunes = [
@@ -62,6 +62,30 @@ function init() {
 
         // switch the DOWN arrow with a yes button
         
+    });
+
+
+    // FortuneCardList listeners
+    const menu = document.getElementById("menu");
+    const CardList = document.getElementById("CardList");
+    // Add a click event listener to toggle the visibility of the content
+    menu.addEventListener('click', () => {
+        if (CardList.content.style.display === 'none') {
+            // Read from localstorage
+            let fortunes = JSON.parse(localStorage.getItem('FortunesCard')) || [];
+            let i = 0;
+            while (i < fortunes.length) {
+                const fortuneCard = document.createElement("fortune-card");
+                fortuneCard.data = fortunes[i];
+                // Add to HTML
+                CardList.content.appendChild(fortuneCard);
+                i++;
+            }
+            CardList.content.style.display = 'block';
+        } else {
+            CardList.content.innerHTML = '';
+            CardList.content.style.display = 'none';
+        }
     });
     
 }
