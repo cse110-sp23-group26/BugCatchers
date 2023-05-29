@@ -106,4 +106,4 @@ function initializeCheckIn() {
     }
 }
 
-module.exports = checkIn;
+// module.exports = checkIn;
