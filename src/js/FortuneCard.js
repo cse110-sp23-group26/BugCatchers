@@ -19,14 +19,14 @@ class FortuneCard extends HTMLElement {
         style.innerHTML = `
         div {
             position: relative;
-            font-size: 25px;
+            font-size: 12px;
             font-family: 'Nunito', sans-serif;
             background-color: #348AA7;
             color: white;
             padding: 25px;
             margin: 15px;
             border-radius: 20px;
-            width: 30%;
+            width: 70%;
         }
 
         .fc-name {
