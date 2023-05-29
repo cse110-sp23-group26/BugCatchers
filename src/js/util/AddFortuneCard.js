@@ -14,11 +14,5 @@ function addFortuneCard(fortune) {
     if (!existingFortune) {
         fortunes.push(fortune);
         localStorage.setItem('FortunesCard', JSON.stringify(fortunes));
-
-        // Add to HTML
-        const fortuneCard = document.createElement("fortune-card");
-        fortuneCard.data = fortune;
-        const fortuneCardList = document.querySelector(".fortuneCardList");
-        fortuneCardList.appendChild(fortuneCard);
     }
 }

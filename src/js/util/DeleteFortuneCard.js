@@ -38,7 +38,7 @@ addDeleteListener(buttonElement);
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
- 
+/*
 function addDeleteListener(button) {
     button.addEventListener('click', function(event) {
         // get the ancestor element fortune-card where the click happened
@@ -56,3 +56,4 @@ function addDeleteListener(button) {
         fortuneCard.remove();
     });
 }
+*/
