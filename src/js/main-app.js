@@ -7,8 +7,6 @@
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -25,24 +23,10 @@ function init() {
             "text": "you will literally explode"
         }
     ]
-    localStorage.setItem('FortunesCard', JSON.stringify(fortunes));
-
-    // create fortune card and append it to 
-    const fortuneCard = document.createElement("fortune-card");
-    fortuneCard.data = {
-        "name": "Celeste",
-        "id": "fortune1",
-        "text": "you will not die soon probably"
+    // Add fortune cards to local storage and HTML
+    for (let fortune of fortunes) {
+        addFortuneCard(fortune);
     }
-    const fortuneCard2 = document.createElement("fortune-card");
-    fortuneCard2.data = {
-        "name": "Celeste",
-        "id": "fortune2",
-        "text": "you will literally explode"
-    }
-    const fortuneCardList = document.querySelector(".fortuneCardList");
-    fortuneCardList.appendChild(fortuneCard);
-    fortuneCardList.appendChild(fortuneCard2);
 
     // init check-in system
     // this fcuntion in js/util/CheckIn.js
@@ -56,3 +40,5 @@ function init() {
         document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
     });
 }
+
+
