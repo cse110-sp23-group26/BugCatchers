@@ -46,7 +46,7 @@ function init() {
     // TODO: get username
     // insert default text to the character and dialogue blobs
     let curName = 'Celeste';
-    welcomeResponse(curName, WELCOME_MSG);
+    dialogueGo(curName, WELCOME_MSG);
 
 
     // FortuneCardList listeners
