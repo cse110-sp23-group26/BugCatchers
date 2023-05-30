@@ -142,7 +142,9 @@ function addButtonToTextBox(buttonText) {
         // add to local storage with random id.
         let new_fortunes = {"name": "Celeste","id": Math.floor(Math.random() * (1000 - 0 + 1)) + 0, "text": reponse};
         addFortuneCard(new_fortunes);
-
+        const menu = document.getElementById("menu");
+        menu.click();
+        menu.click();
     });
 
 }
