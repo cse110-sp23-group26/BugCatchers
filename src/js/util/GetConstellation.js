@@ -115,3 +115,5 @@ function getConstellation(dateString) {
 	// the string format not correct
 	return "Error: wrong day format.";
 }
+
+module.exports = getConstellation;
