@@ -68,7 +68,6 @@ function init() {
         // switch the DOWN arrow with a yes button
         addButtonToTextBox("Yes!");
 
-        
     });
 
 
@@ -77,17 +76,37 @@ function init() {
     const CardList = document.getElementById("CardList");
     // Add a click event listener to toggle the visibility of the content
     menu.addEventListener('click', () => {
+        // check if the List is opening right now
         if (CardList.content.style.display === 'none') {
+            // create List title
+            const ListTitle = document.createElement('h3');
+            ListTitle.textContent = 'Saved Fortune!';
+            CardList.content.appendChild(ListTitle);
+            
             // Read from localstorage
             let fortunes = JSON.parse(localStorage.getItem('FortunesCard')) || [];
-            let i = 0;
-            while (i < fortunes.length) {
+            // issue #41, if no data in fortunes, add a fortune card said no recording
+            if (fortunes.length == 0){
+                const emptyFortuneCardList = document.createElement('p');
+                emptyFortuneCardList.textContent = 'no content';
+                CardList.content.appendChild(emptyFortuneCardList);
+            }
+            for (let fortune of fortunes) {
                 const fortuneCard = document.createElement("fortune-card");
-                fortuneCard.data = fortunes[i];
+                fortuneCard.data = fortune;
                 // Add to HTML
                 CardList.content.appendChild(fortuneCard);
-                i++;
             }
+
+            // add close button on right buttom
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            closeButton.addEventListener('click', () => {
+                const menu = document.getElementById("menu");
+                menu.click();
+            });
+            CardList.content.appendChild(closeButton);
+            
             CardList.content.style.display = 'block';
         } else {
             CardList.content.innerHTML = '';
@@ -118,7 +137,6 @@ function addButtonToTextBox(buttonText) {
     button.style.border = 'none'; // Remove border
     button.style.cursor = 'pointer'; // Set cursor style
 
-
     // Append the button to a parent element
     const parentElement = document.querySelector(".interactive");
     parentElement.innerHTML = '';
@@ -142,20 +160,14 @@ function addButtonToTextBox(buttonText) {
         // add to local storage with random id.
         let new_fortunes = {"name": "Celeste","id": Math.floor(Math.random() * (1000 - 0 + 1)) + 0, "text": reponse};
         addFortuneCard(new_fortunes);
-        const menu = document.getElementById("menu");
-        menu.click();
-        menu.click();
+        updateFortuneCardList();
     });
 
 }
 
-
-
 function get_birthday(){
     return "Jan 11";
 }
-
-
 
 async function split_and_display(string){
     let maxLength = 100;
@@ -180,7 +192,12 @@ async function split_and_display(string){
 }
 
 
-
+// update the fortune card list by simply click the menu button twice
+function updateFortuneCardList(){
+    const menu = document.getElementById("menu");
+    menu.click();
+    menu.click();
+}
 
 
 
