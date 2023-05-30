@@ -1,13 +1,16 @@
 
 
+async function templete1(sign) {
+    let astro = await fetch('conf/Astrology.json');
+    astro = await astro.json();
 
-const fs = require('fs');
+    let suggestion = await fetch('conf/Suggestions.json');
+    suggestion = await suggestion.json();
 
-function templete1(sign) {
-    var astro = JSON.parse(fs.readFileSync('Astrology.json'));
-    var suggestion = JSON.parse(fs.readFileSync('Suggestions.json'));
-    var fortune = JSON.parse(fs.readFileSync('Fortunes.json'));
-    var transitional = JSON.parse(fs.readFileSync('Transitional.json'));
+    let fortune = await fetch('conf/Fortunes.json');
+    fortune = await fortune.json();
+    let transitional = await fetch('conf/Transitional.json');
+    transitional = await transitional.json();
 
     var asteo_info_text = astro[sign]["info"][Math.floor(Math.random()*astro[sign]["info"].length)];
     var asteo_feature_text = astro[sign]["features"][Math.floor(Math.random()*astro[sign]["features"].length)];
@@ -25,15 +28,21 @@ function templete1(sign) {
 
     var responses = "Stars has spoken. " + fortune_money_text + sign + " are " + asteo_feature_text + suggestion_text;
 
-    return responses
+    return responses;
 }
 
 
-function templete2(sign) {
-    var astro = JSON.parse(fs.readFileSync('Astrology.json'));
-    var suggestion = JSON.parse(fs.readFileSync('Suggestions.json'));
-    var fortune = JSON.parse(fs.readFileSync('Fortunes.json'));
-    var transitional = JSON.parse(fs.readFileSync('Transitional.json'));
+async function templete2(sign) {
+    let astro = await fetch('conf/Astrology.json');
+    astro = await astro.json();
+
+    let suggestion = await fetch('conf/Suggestions.json');
+    suggestion = await suggestion.json();
+
+    let fortune = await fetch('conf/Fortunes.json');
+    fortune = await fortune.json();
+    let transitional = await fetch('conf/Transitional.json');
+    transitional = await transitional.json();
 
     var asteo_info_text = astro[sign]["info"][Math.floor(Math.random()*astro[sign]["info"].length)];
     var asteo_feature_text = astro[sign]["features"][Math.floor(Math.random()*astro[sign]["features"].length)];
@@ -51,14 +60,20 @@ function templete2(sign) {
 
     var responses = "Stars is telling me your future. " + fortune_work_text + sign + " are " + asteo_feature_text + suggestion_text;
 
-    return responses
+    return responses;
 }
 
-function templete3(sign) {
-    var astro = JSON.parse(fs.readFileSync('Astrology.json'));
-    var suggestion = JSON.parse(fs.readFileSync('Suggestions.json'));
-    var fortune = JSON.parse(fs.readFileSync('Fortunes.json'));
-    var transitional = JSON.parse(fs.readFileSync('Transitional.json'));
+async function templete3(sign) {
+    let astro = await fetch('conf/Astrology.json');
+    astro = await astro.json();
+
+    let suggestion = await fetch('conf/Suggestions.json');
+    suggestion = await suggestion.json();
+
+    let fortune = await fetch('conf/Fortunes.json');
+    fortune = await fortune.json();
+    let transitional = await fetch('conf/Transitional.json');
+    transitional = await transitional.json();
 
     var asteo_info_text = astro[sign]["info"][Math.floor(Math.random()*astro[sign]["info"].length)];
     var asteo_feature_text = astro[sign]["features"][Math.floor(Math.random()*astro[sign]["features"].length)];
@@ -79,14 +94,20 @@ function templete3(sign) {
 
     var responses = "Stars is telling me your future. " + random_text + sign + " are " + asteo_feature_text + suggestion_text;
 
-    return responses
+    return responses;
 }
 
-function templete4(sign) {
-    var astro = JSON.parse(fs.readFileSync('Astrology.json'));
-    var suggestion = JSON.parse(fs.readFileSync('Suggestions.json'));
-    var fortune = JSON.parse(fs.readFileSync('Fortunes.json'));
-    var transitional = JSON.parse(fs.readFileSync('Transitional.json'));
+async function templete4(sign) {
+    let astro = await fetch('conf/Astrology.json');
+    astro = await astro.json();
+
+    let suggestion = await fetch('conf/Suggestions.json');
+    suggestion = await suggestion.json();
+
+    let fortune = await fetch('conf/Fortunes.json');
+    fortune = await fortune.json();
+    let transitional = await fetch('conf/Transitional.json');
+    transitional = await transitional.json();
 
     var asteo_info_text = astro[sign]["info"][Math.floor(Math.random()*astro[sign]["info"].length)];
     var asteo_feature_text = astro[sign]["features"][Math.floor(Math.random()*astro[sign]["features"].length)];
@@ -107,14 +128,20 @@ function templete4(sign) {
 
     var responses = transitional_1 + random_text + sign + " are " + asteo_feature_text + suggestion_text;
 
-    return responses
+    return responses;
 }
 
-function templete5(sign) {
-    var astro = JSON.parse(fs.readFileSync('Astrology.json'));
-    var suggestion = JSON.parse(fs.readFileSync('Suggestions.json'));
-    var fortune = JSON.parse(fs.readFileSync('Fortunes.json'));
-    var transitional = JSON.parse(fs.readFileSync('Transitional.json'));
+async function templete5(sign) {
+    let astro = await fetch('conf/Astrology.json');
+    astro = await astro.json();
+
+    let suggestion = await fetch('conf/Suggestions.json');
+    suggestion = await suggestion.json();
+
+    let fortune = await fetch('conf/Fortunes.json');
+    fortune = await fortune.json();
+    let transitional = await fetch('conf/Transitional.json');
+    transitional = await transitional.json();
 
     var asteo_info_text = astro[sign]["info"][Math.floor(Math.random()*astro[sign]["info"].length)];
     var asteo_feature_text = astro[sign]["features"][Math.floor(Math.random()*astro[sign]["features"].length)];
@@ -135,7 +162,7 @@ function templete5(sign) {
 
     var responses = transitional_2 + random_text + sign + " are " + asteo_feature_text + suggestion_text;
 
-    return responses
+    return responses;
 }
 
 
