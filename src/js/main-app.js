@@ -33,6 +33,17 @@ function init() {
     }
     */
 
+    // --------------------------START OF DIALOGUE SEQUENCE-----------------------
+    // TODO: store username somewhere
+    /**
+     * This block of code is from "./util/GetUserInput.js" that operates 
+     * on the user input. Currently the work flow is fine but need to call
+     * on some prediction function, based on user input, from "GetUserInput.js"
+     */
+    let curName = 'Celeste';
+    dialogueGo(curName, WELCOME_MSG);
+    // ---------------------------END OF DIALOGUE SEQUENCE------------------------
+
     // init check-in system
     // this fcuntion in js/util/CheckIn.js
     initializeCheckIn();
@@ -44,13 +55,6 @@ function init() {
         document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + result.date;
         document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
     });
-
-    // TODO: get username
-    // insert default text to the character and dialogue blobs
-    let curName = 'Celeste';
-    dialogueGo(curName, WELCOME_MSG);
-
-
 
     // FortuneCardList listeners
     const menu = document.getElementById("menu");
@@ -146,11 +150,11 @@ function addButtonToTextBox(buttonText) {
 
 }
 
-function get_birthday(){
+function get_birthday() {
     return "Jan 11";
 }
 
-async function split_and_display(string){
+async function split_and_display(string) {
     let maxLength = 100;
     const strings = [];
     let index = 0;
@@ -169,22 +173,14 @@ async function split_and_display(string){
         }, index * 5000);
       });
 
-
 }
 
 
-// update the fortune card list by simply click the menu button twice
-function updateFortuneCardList(){
-    const menu = document.getElementById("menu");
-    menu.click();
-    menu.click();
-}
-
-
-
-
-
-
+// // update the fortune card list by simply click the menu button twice
+// function updateFortuneCardList(){
+//     const menu = document.getElementById("menu");
+//     menu.click();
+//     menu.click();
 
 
 
