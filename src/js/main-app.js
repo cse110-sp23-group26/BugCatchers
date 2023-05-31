@@ -86,9 +86,10 @@ function init() {
             // add close button on right buttom
             const closeButton = document.createElement('button');
             closeButton.textContent = 'Close';
-            closeButton.addEventListener('click', () => {
+            closeButton.addEventListener('click', e => {
                 const menu = document.getElementById("menu");
                 menu.click();
+				e.stopPropagation();
             });
             CardList.content.appendChild(closeButton);
             
@@ -182,5 +183,3 @@ function updateFortuneCardList(){
     menu.click();
     menu.click();
 }
-
-
