@@ -84,6 +84,18 @@ class FortuneCard extends HTMLElement {
             // delete the fortune card from html
             fortuneCard.remove();
         });
+
+        fortuneCardContent.addEventListener("click", (event) => {
+            const fortuneModal = document.createElement("fortune-modal");
+            const modalText = (data['modal-text']) ? data['modal-text'] : data.text;
+            fortuneModal.data = {
+                "name": data.name,
+                "id": data.id,
+                "text": modalText
+            }
+
+            document.querySelector("body").appendChild(fortuneModal);
+        });
     }
 }
 
