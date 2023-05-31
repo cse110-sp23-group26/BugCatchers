@@ -269,8 +269,7 @@ function showPred() {
     // generate response
     let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
     let UserConstellation = getConstellation(userBirthMonthDay);
-    let response = GetJsonResponse(UserConstellation, UserBirthDay, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
-
+    let response = GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
     // add the fortune card to local storage
     let new_fortunes = {"name": UserConstellation,"id": Math.floor(Math.random() * (1000 - 0 + 1)) + 0, "text": response};
     addFortuneCard(new_fortunes);
