@@ -169,6 +169,17 @@ function get_birthday(){
     return "Jan 11";
 }
 
+//Function to print char by char for typing animation
+function typeAnswer(answerElem, answerText) {
+	if (answerText.length <= 0) {
+		return;
+	}
+	let char = answerText.split("");
+	answerElem.textContent = answerElem.textContent + char.splice(0,1)[0];
+	setTimeout(typeAnswer, 50, answerElem, char.join(""));
+}
+
+//Function to split the string and display it with text animation
 async function split_and_display(string){
     let maxLength = 100;
     const strings = [];
@@ -180,16 +191,28 @@ async function split_and_display(string){
       index += maxLength;
     }
 
-
+    //Loop through each string and display it with typing animation
+    //Can fix when Split is correct above^^
+    let answerElement = document.querySelector('.dialogue-text');
+    answerElement.textContent = '';
+    typeAnswer(answerElement, strings[0]);
+    
+    
+    /* Display the bubble text string block one by one
     strings.forEach((text, index) => {
-        setTimeout(() => {
-            curDialogue.textContent = text;
-          // Alternatively, you can display the text in the DOM or perform other actions
-        }, index * 5000);
-      });
-
+        //for each string, display it with typing animation
+            answerElement = document.querySelector('.dialogue-text');
+            answerElement.textContent = '';
+            setTimeout(() => {
+                //typeAnswer(answerElement, text);
+                curDialogue.textContent = text;
+            }, index * 30); //This delay is used for each dialouge box
+            
+    });
+    */
 
 }
+
 
 
 // update the fortune card list by simply click the menu button twice
