@@ -261,6 +261,9 @@ function handleKeyDownMood(event) {
     }
 } 
 
+/**
+ * Get prediction and back to the main page
+ */
 function showPred() {
     const arrowElement = document.querySelector('.arrow');
     let curDialogue = document.querySelector('.dialogue-text');
