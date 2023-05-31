@@ -176,11 +176,11 @@ async function split_and_display(string) {
 }
 
 
-// // update the fortune card list by simply click the menu button twice
-// function updateFortuneCardList(){
-//     const menu = document.getElementById("menu");
-//     menu.click();
-//     menu.click();
-
+// update the fortune card list by simply click the menu button twice
+function updateFortuneCardList(){
+    const menu = document.getElementById("menu");
+    menu.click();
+    menu.click();
+}
 
 
