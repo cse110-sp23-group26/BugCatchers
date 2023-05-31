@@ -83,6 +83,7 @@ class FortuneCard extends HTMLElement {
 
             // delete the fortune card from html
             fortuneCard.remove();
+			event.stopPropagation();
         });
 
         fortuneCardContent.addEventListener("click", (event) => {
