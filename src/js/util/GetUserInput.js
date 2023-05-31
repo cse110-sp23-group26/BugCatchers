@@ -7,54 +7,75 @@ function dialogueGo(speakerName, welcomeMsg) {
     // get input if user click the DOWN arrow
     const arrowElement = document.querySelector('.arrow');
     // Add click event listener to the arrow element
-    arrowElement.addEventListener('click', () => {
-        // proceed dialogue text
-        let curDialogue = document.querySelector('.dialogue-text');
-        curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
-
-        // change arrow avg into yes text box
-        const rect = `
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" rx="10" ry="10" fill="#1e3799"/>
-                <!-- this is for the extra style of the rectangular box
-                    <rect width="100%" height="100%" rx="10" ry="10" fill="url(#pattern)"/>
-                -->
-                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">Yes!</text>
-                </svg>
-        `;
-        arrowElement.innerHTML = rect;
-
-        // CONVERTION: move the rectangle upward and increase its size
-        arrowElement.style.bottom = '10%'; // originally 0
-        arrowElement.style.width = '80'; // originally 45
-        arrowElement.style.height = '50'; // originally 25        
-
-        // TODO: tell the user to press enter in order to proceed
-            // want to do a mouse hovering event but will fix it later
-
-        boxInit();
-        const boxInput = document.querySelector('#dataInput');
-        boxInput.addEventListener('input', dayCheck);
-    });
+    arrowElement.addEventListener('click', boxInit);
+        
 }
 
+/**
+ * Check whether the input of the user is valid
+ * @param {*} pattern 
+ */
+function inputCheck(pattern) {
+    const boxInput = document.querySelector('#dataInput');
+    const inputValue = boxInput.value;
+    const valid = pattern.test(inputValue);
+
+    // console.log(pattern);
+
+    // check validity
+    if (valid) {
+        boxInput.style.color = 'black'; 
+    } else {
+        boxInput.style.color = 'red';
+    }
+}
+
+/**
+ * Remove the arrow and add the input box
+ */
 function boxInit() {
+    // proceed dialogue text
     const arrowElement = document.querySelector('.arrow');
-    arrowElement.addEventListener('click', () => {
-        // want to hide the svg event & disable pointer event
-        arrowElement.style.display = 'none';
-        arrowElement.style.pointerEvents = 'none';
+    let curDialogue = document.querySelector('.dialogue-text');
+    curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
 
-        const boxInput = document.querySelector('#dataInput');
-        boxInput.removeAttribute('hidden');
+    // change arrow avg into yes text box
+    const rect = `
+        <rect width="100%" height="100%" rx="10" ry="10" fill="#1e3799"/>
+        <!-- this is for the extra style of the rectangular box
+            <rect width="100%" height="100%" rx="10" ry="10" fill="url(#pattern)"/>
+        -->
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">Yes!</text>
+    `;
+    arrowElement.innerHTML = rect;
+    arrowElement.style.bottom = '10%'; // originally 0
+    arrowElement.style.width = '80'; // originally 45
+    arrowElement.style.height = '50'; // originally 25 
 
-        let curDialogue = document.querySelector('.dialogue-text');
-        curDialogue.textContent = 'Now tell me, what day were you born? (enter to proceed)';
-        boxInput.style.letterSpacing = '12px';
-        boxInput.placeholder = 'dd';
+    arrowElement.removeEventListener('click', boxInit);
+    arrowElement.addEventListener('click', showBox);
+}
 
-        // boxInput.addEventListener('input', dayCheck);
-    });
+/**
+ * Hide the arrow and show the input box
+ */
+function showBox() {
+    // select the arrow and hide it
+    const arrowElement = document.querySelector('.arrow');
+    arrowElement.style.display = 'none';
+    arrowElement.style.pointerEvents = 'none';
+
+    // show the input box
+    const boxInput = document.querySelector('#dataInput');
+    boxInput.removeAttribute('hidden');
+
+    let curDialogue = document.querySelector('.dialogue-text');
+    curDialogue.textContent = 'Now tell me, what day were you born? (enter to proceed)';
+    boxInput.style.letterSpacing = '12px';
+    boxInput.placeholder = 'dd';
+
+    arrowElement.removeEventListener('click', showBox);
+    boxInput.addEventListener('input', dayCheck);
 }
 
 /**
@@ -194,57 +215,42 @@ function checkMood() {
  */
 function handleKeyDownMood(event) {
     const boxInput = document.querySelector('#dataInput');
-    const computedStyle = window.getComputedStyle(boxInput);
 
     // if validity check passes
     if (event.key==='Enter') {
+        // remove the input box
         console.log(boxInput.value);
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'The stars have given their answer!';
         boxInput.removeEventListener('input', checkMood);
         boxInput.removeEventListener('keydown', handleKeyDownMood);
+        boxInput.removeEventListener('input', inputCheck(/.*/));
 
         // change arrow back
         const svg = document.querySelector('.arrow');
-        const textElement = svg.querySelector('text');
         svg.style.display = "block";
-        textElement.textContent = 'View Results!';
-        console.log(svg);
-        // const origArr = `
-        //     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        //     <path d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
-        //     </svg>
-        // `;
-        // arrowElement.innerHTML = origArr;
-        // arrowElement.style.bottom = '0'; 
-        // arrowElement.style.width = '45'; 
-        // arrowElement.style.height = '25';
+        svg.style.pointerEvents = 'auto';
+        svg.style.cursor = 'pointer';
+
+        const origArr = `
+            <path d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
+        `;
+        svg.innerHTML = origArr;
+        svg.style.bottom = '0'; 
+        svg.style.width = '45'; 
+        svg.style.height = '25';
+
+        // click to view result
+        svg.addEventListener('click', showPred);
     }
 } 
 
-function inputCheck(pattern) {
-    const boxInput = document.querySelector('#dataInput');
-    const inputValue = boxInput.value;
-    const valid = pattern.test(inputValue);
-
-    // console.log(pattern);
-
-    // check validity
-    if (valid) {
-        boxInput.style.color = 'black'; 
-    } else {
-        boxInput.style.color = 'red';
-    }
-}
-
-function arrowBack() {
+function showPred() {
     const arrowElement = document.querySelector('.arrow');
-    arrowElement.addEventListener('click', () => {
-        let curDialogue = document.querySelector('.dialogue-text');
-        curDialogue.textContent = 'SHOULD INVOKE SOME FUNCTION TO GET PREDICTIONS HERE';
-        arrowElement.addEventListener('click', () => {
-
-        });
-    });
+    let curDialogue = document.querySelector('.dialogue-text');
+    curDialogue.textContent = 'SHOULD INVOKE SOME FUNCTION TO GET PREDICTIONS HERE';
+    
+    arrowElement.removeEventListener('click', showPred);
+    arrowElement.addEventListener('click', boxInit);
 }
