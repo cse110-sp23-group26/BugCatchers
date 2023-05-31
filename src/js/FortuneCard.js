@@ -83,6 +83,7 @@ class FortuneCard extends HTMLElement {
 
             // delete the fortune card from html
             fortuneCard.remove();
+            updateFortuneCardList();
 			event.stopPropagation();
         });
 
