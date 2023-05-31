@@ -11,8 +11,7 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
     // Default variables to set (i.e Celeste's name, default welcoming message etc.)
-    speakerName = 'Celeste';
-    welcomeMsg = 'Hello user! What can I do for you?'
+    const WELCOME_MSG = 'Hello user! What can I do for you?'
 
     /*
     // set those two data to local storage
@@ -48,27 +47,9 @@ function init() {
 
     // TODO: get username
     // insert default text to the character and dialogue blobs
-    let speakerContainer = document.querySelector('.speaker');
-    let dialogueContainer = document.querySelector('.dialogue-text');
-    speakerContainer.textContent = speakerName;
-    dialogueContainer.textContent = welcomeMsg;
+    let curName = 'Celeste';
+    dialogueGo(curName, WELCOME_MSG);
 
-    // get input if user click the DOWN arrow
-    const arrowElement = document.querySelector('.arrow');
-    // Add click event listener to the arrow element
-    arrowElement.addEventListener('click', () => {
-        // Event handler code here
-        console.log('Arrow clicked!');
-        let curDialogue = document.querySelector('.dialogue-text');
-        curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
-
-        // disable arrow
-        arrowElement.style.display = 'none';
-
-        // switch the DOWN arrow with a yes button
-        addButtonToTextBox("Yes!");
-
-    });
 
 
     // FortuneCardList listeners
