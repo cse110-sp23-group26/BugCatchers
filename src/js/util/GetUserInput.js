@@ -220,6 +220,7 @@ function handleKeyDownMood(event) {
     if (event.key==='Enter') {
         // remove the input box
         console.log(boxInput.value);
+        boxInput.value = '';
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'The stars have given their answer!';
