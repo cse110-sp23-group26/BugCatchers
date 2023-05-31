@@ -1,3 +1,9 @@
+let UserBirthDay;
+let UserBirthMonth;
+let UserBirthYear;
+let UserMood;
+
+
 function dialogueGo(speakerName, welcomeMsg) {
     let speakerContainer = document.querySelector('.speaker');
     let dialogueContainer = document.querySelector('.dialogue-text');
@@ -104,6 +110,8 @@ function handleKeyDownDay(event) {
     // if validity check passes
     if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
         console.log(boxInput.value);
+        // store birthday
+        UserBirthDay = boxInput.value;
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'Curious! Now, what month were you born? (enter to proceed)';
         boxInput.removeEventListener('input', dayCheck);
@@ -142,6 +150,8 @@ function handleKeyDownMonth(event) {
     // if validity check passes
     if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
         console.log(boxInput.value);
+        // store birth month
+        UserBirthMonth = boxInput.value;
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'Oh! Do tell me the year you were born (enter to proceed)';
         boxInput.removeEventListener('input', monthCheck);
@@ -180,6 +190,8 @@ function handleKeyDownYear(event) {
     // if validity check passes
     if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
         console.log(boxInput.value);
+        // store birth year
+        UserBirthYear = boxInput.value;
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'Finally, tell me what your current mood is';
         boxInput.removeEventListener('input', yearCheck);
@@ -220,6 +232,8 @@ function handleKeyDownMood(event) {
     if (event.key==='Enter') {
         // remove the input box
         console.log(boxInput.value);
+        // store mood
+        UserMood = boxInput.value;
         boxInput.value = '';
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
@@ -250,8 +264,35 @@ function handleKeyDownMood(event) {
 function showPred() {
     const arrowElement = document.querySelector('.arrow');
     let curDialogue = document.querySelector('.dialogue-text');
-    curDialogue.textContent = 'SHOULD INVOKE SOME FUNCTION TO GET PREDICTIONS HERE';
+
+    // based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
+    // generate response
+    let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
+    let UserConstellation = getConstellation(userBirthMonthDay);
+    let response = GetJsonResponse(UserConstellation, UserBirthDay, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
+
+    // add the fortune card to local storage
+    let new_fortunes = {"name": UserConstellation,"id": Math.floor(Math.random() * (1000 - 0 + 1)) + 0, "text": response};
+    addFortuneCard(new_fortunes);
+    // update the dortune card list
+    updateFortuneCardList();
+
+    curDialogue.textContent = response;
     
     arrowElement.removeEventListener('click', showPred);
     arrowElement.addEventListener('click', boxInit);
+}
+
+
+function getMonthString(monthNumber) {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+  
+    if (monthNumber >= 1 && monthNumber <= 12) {
+      return months[monthNumber - 1];
+    } else {
+      return 'None';
+    }
 }
