@@ -274,7 +274,7 @@ function showPred() {
     let UserConstellation = getConstellation(userBirthMonthDay);
     let response = GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
     // add the fortune card to local storage
-    let new_fortunes = {"name": UserConstellation,"id": Math.floor(Math.random() * (1000 - 0 + 1)) + 0, "text": response};
+    let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response};
     addFortuneCard(new_fortunes);
     // update the dortune card list
     updateFortuneCardList();

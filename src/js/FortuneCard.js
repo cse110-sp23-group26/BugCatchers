@@ -65,8 +65,8 @@ class FortuneCard extends HTMLElement {
 
         const deleteButton = document.createElement("button");
         deleteButton.classList.add("fc-delete");
-        deleteButton.textContent = "DELETE";
-
+        // deleteButton.textContent = "DELETE";
+        Object.assign(deleteButton.style, closeButtonStyles);
         fortuneCardContent.append(textParagraph, nameParagraph, deleteButton);
 
         deleteButton.addEventListener('click', (event) => {
@@ -102,3 +102,13 @@ class FortuneCard extends HTMLElement {
 }
 
 customElements.define("fortune-card", FortuneCard);
+
+
+const closeButtonStyles = {
+    background: `url('assets/trash_bin.png') no-repeat`,
+    backgroundSize: 'contain', 
+    border: 'none', 
+    width: '45px', 
+    height: '45px', 
+    cursor: 'pointer'
+};
