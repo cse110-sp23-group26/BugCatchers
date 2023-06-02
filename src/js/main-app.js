@@ -43,9 +43,10 @@ function init() {
     // FortuneCardList listeners
     const menu = document.getElementById("menu");
     const CardList = document.getElementById("CardList");
-
-
-
+    const OverLay = createOverLay();
+    OverLay.addEventListener('click', () => {
+        menu.click();
+    });
 
     // Add a click event listener to toggle the visibility of the content
     menu.addEventListener('click', () => {
@@ -80,7 +81,7 @@ function init() {
             // add close button on right buttom
             const closeButton = document.createElement('button');
             closeButton.classList.add("fc-list-close-btn");
-            closeButton.textContent = 'Close';
+            // closeButton.textContent = 'Close';
             Object.assign(closeButton.style, closeButtonStyles);
             closeButton.addEventListener('click', e => {
                 const menu = document.getElementById("menu");
@@ -88,15 +89,20 @@ function init() {
 				e.stopPropagation();
             });
             CardList.content.appendChild(closeButton);
-            
             CardList.content.style.display = 'block';
+            CardList.style.zIndex = '11'; 
+            // add the OverLay
+            OverLay.style.display = 'block';
         } else {
             CardList.content.innerHTML = '';
+            OverLay.style.display = 'none';
             CardList.content.style.display = 'none';
         }
     });
     // --------------------------END OF FORTUNE CARD LIST MENU-----------------------
 }
+
+
 
 // update the fortune card list by simply click the menu button twice
 function updateFortuneCardList(){
@@ -178,31 +184,20 @@ function updateFortuneCardList(){
 // }
 
 const ListTitleStyles = {
-    // position: "absolute",
-    // marginTop: "20px",
-    // marginLeft: "20px",
-    // color: "black",
     position: "relative",
-    // fontSize: "12px",
     fontFamily: 'Nunito, sans-serif',
-    // backgroundColor: "#348AA7",
-    // color: "white",
-    // padding: "25px",
     margin: "15px",
-    // borderRadius: "20px",
-    // width: "70%"
     fontWeight: "bold",
 };
 const closeButtonStyles = {
     position: "relative",
-    fontFamily: 'Nunito, sans-serif',
-    color: "red",
-    border: "2px solid red",
-    backgroundColor: "transparent",
-    borderRadius: "5px",
-    cursor: "pointer",
-    margin: "15px",
-    fontWeight: "bold",
+    left: "70%", 
+    background: `url('assets/close_button.png') no-repeat`,
+    backgroundSize: 'contain', 
+    border: 'none', 
+    width: '100px', 
+    height: '35px', 
+    cursor: 'pointer'
 };
 const emptyFortuneCardListStyles = {
     color: "grey",
@@ -211,3 +206,20 @@ const emptyFortuneCardListStyles = {
     margin: "15px",
     fontWeight: "bold",
 };
+// create the OverLay when we open the fortune card list
+function createOverLay(){
+    const OverLay = document.createElement('div');
+    OverLay.id = 'OverLay';
+    document.body.appendChild(OverLay);
+
+    // set over lay style
+    OverLay.style.position = 'fixed';
+    OverLay.style.top = '0';
+    OverLay.style.left = '0';
+    OverLay.style.width = '100%';
+    OverLay.style.height = '100%';
+    OverLay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    OverLay.style.display = 'none';
+    OverLay.style.zIndex = '10';
+    return OverLay;
+}
