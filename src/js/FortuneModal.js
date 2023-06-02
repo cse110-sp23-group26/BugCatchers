@@ -25,6 +25,7 @@ class FortuneModal extends HTMLElement {
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 12;
         }
 
         #content {
@@ -38,6 +39,7 @@ class FortuneModal extends HTMLElement {
             border-radius: 20px;
             width: 40%;
             height: 60%;
+            z-index: 13;
         }
         `;
 
