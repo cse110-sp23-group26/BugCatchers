@@ -7,9 +7,8 @@
 function showConstellationImage(constellation) {
     
     // add the image
-    const imageSrc = `assets/constellation/big/white/${constellation}.png`;
-    const image = new Image();
-    image.src = imageSrc;
+    const image = document.createElement("img");
+    image.src = `assets/constellation/big/white/${constellation}.png`;
     image.style.position = "fixed";
     image.style.top = "40%";
     image.style.left = "50%";
