@@ -44,9 +44,12 @@ class FortuneCard extends HTMLElement {
      * Passed in as JSON format as follows:
      * 
      * {
-     *      "name": ...
-     *      "id": ...
-     *      "text": ...
+     *      "name": ...string
+     *      "id": ...num
+     *      "text": ...string
+     *      "birthday": ...string
+     *      "mood": ...string
+     *      "time": ...string
      *      "modal-text": ... (only displayed when fortune is clicked)
      * }
      */

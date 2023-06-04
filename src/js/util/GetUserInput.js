@@ -274,7 +274,13 @@ function showPred() {
     let UserConstellation = getConstellation(userBirthMonthDay);
     let response = GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
     // add the fortune card to local storage
-    let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response};
+    // current response date
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate();
+    const dateString = `${currentYear}-${currentMonth}-${currentDay}`;
+    let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": UserMood, "time": dateString, };
     addFortuneCard(new_fortunes);
     // update the dortune card list
     updateFortuneCardList();
