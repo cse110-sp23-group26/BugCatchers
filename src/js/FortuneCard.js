@@ -36,9 +36,17 @@ class FortuneCard extends HTMLElement {
             max-height: 100%;
             object-fit: contain;
         }
-        .fc-mood-time {
+        .fc-mood {
             position: absolute;
-            bottom: 30px;
+            bottom: 35px;
+            right: 16px;
+            font-size: 12px;
+            color: white;
+            font-style: italic;
+        }
+        .fc-time {
+            position: absolute;
+            bottom: 20px;
             right: 16px;
             font-size: 12px;
             color: white;
@@ -76,9 +84,12 @@ class FortuneCard extends HTMLElement {
         image.src = `assets/constellation/big/white/${data.name}.png`;
         
         // mood and time
-        const moodTimeParagraph = document.createElement("p");
-        moodTimeParagraph.classList.add("fc-mood-time");
-        moodTimeParagraph.textContent = `${data.mood}\n${data.time}`;
+        const moodParagraph = document.createElement("p");
+        moodParagraph.classList.add("fc-mood");
+        moodParagraph.textContent = `${data.mood}`;
+        const timeParagraph = document.createElement("p");
+        timeParagraph.classList.add("fc-time");
+        timeParagraph.textContent = `${data.time}`;
 
         // delete button
         const deleteButton = document.createElement("button");
@@ -88,7 +99,8 @@ class FortuneCard extends HTMLElement {
         // append content to fortune card
         fortuneCardContent.innerHTML = '';
         fortuneCardContent.appendChild(image);
-        fortuneCardContent.appendChild(moodTimeParagraph);
+        fortuneCardContent.appendChild(moodParagraph);
+        fortuneCardContent.appendChild(timeParagraph);
         fortuneCardContent.appendChild(deleteButton);
         fortuneCardContent.style.backgroundColor = zodiacInfo[1];
 
@@ -133,7 +145,7 @@ customElements.define("fortune-card", FortuneCard);
 
 
 const closeButtonStyles = {
-    background: `url('assets/trash_bin.svg') no-repeat`,
+    background: `url('assets/trash_bin-modified.png') no-repeat`,
     backgroundSize: 'contain', 
     border: 'none', 
     width: '45px', 
