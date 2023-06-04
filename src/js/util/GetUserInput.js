@@ -281,12 +281,14 @@ function showPred() {
     const currentDay = currentDate.getDate();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
-    const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}`;
+    const currentSecond = currentDate.getSeconds();
+    const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}:${currentSecond}`;
     let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": UserMood, "time": dateString, };
     addFortuneCard(new_fortunes);
     // update the dortune card list
     updateFortuneCardList();
 
+    showConstellationImage(UserConstellation);
     curDialogue.textContent = response;
     
     arrowElement.removeEventListener('click', showPred);
