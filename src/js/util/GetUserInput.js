@@ -279,7 +279,9 @@ function showPred() {
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1;
     const currentDay = currentDate.getDate();
-    const dateString = `${currentYear}-${currentMonth}-${currentDay}`;
+    const currentHour = currentDate.getHours();
+    const currentMinute = currentDate.getMinutes();
+    const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}`;
     let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": UserMood, "time": dateString, };
     addFortuneCard(new_fortunes);
     // update the dortune card list
