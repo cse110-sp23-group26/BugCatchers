@@ -17,19 +17,19 @@ function getConstellationInfo(constellation) {
       ],
       "Taurus": [
         "Taurus, the second sign of the zodiac and the ruler of the earth sign, is all about reward. Unlike the Aries love of the game, Taurus loves the rewards of the game.",
-        "#e76f51"
+        "#8b1d08"
       ],
       "Gemini": [
         "Gemini is the third sign of the zodiac, and those born under this sign will be quick to tell you all about it. That’s because they love to talk!",
-        "#e9c46a"
+        "#7f6000"
       ],
       "Cancer": [
         "Cancer, the fourth sign of the zodiac, is all about home. Those born under this horoscope sign are ‘roots’ kinds of people, and take great pleasure in the comforts of home and family.",
-        "#f4a261"
+        "#274e13"
       ],
       "Leo": [
         "Roll out the red carpet, because Leo has arrived. Leo is represented by the lion, and these spirited fire signs are the kings and queens of the celestial jungle.",
-        "#e76f51"
+        "#903d2c"
       ],
       "Virgo": [
         "Virgo is an earth sign historically represented by the goddess of wheat and agriculture, an association that speaks to Virgo’s deep-rooted presence in the material world.",
@@ -41,15 +41,15 @@ function getConstellationInfo(constellation) {
       ],
       "Scorpio": [
         "Scorpio is one of the most misunderstood signs of the zodiac. Because of its incredible passion and power, Scorpio is often mistaken for a fire sign.",
-        "#e9c46a"
+        "#4f388b"
       ],
       "Sagittarius": [
         "Sagittarius, the ninth sign of the zodiac, is the home of the wanderers of the zodiac. It’s not a mindless ramble for these folks, either. Sagittarians are truth-seekers, and the best way for them to do this is to hit the road, talk to others and get some answers.",
-        "#f4a261"
+        "#0c343d"
       ],
       "Capricorn": [
         "Capricorn, the tenth sign of the zodiac, is all about hard work. Those born under this sign are more than happy to put in a full day at the office, realizing that it will likely take a lot of those days to get to the top.",
-        "#e76f51"
+        "#073763"
       ],
       "Aquarius": [
         "Aquarius is the eleventh sign of the zodiac, and Aquarians are the perfect representatives for the Age of Aquarius. Those born under this horoscope sign have the social conscience needed to carry us into the new millennium.",
