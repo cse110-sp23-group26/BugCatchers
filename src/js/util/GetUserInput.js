@@ -264,7 +264,7 @@ function handleKeyDownMood(event) {
 /**
  * Get prediction and back to the main page
  */
-function showPred() {
+async function showPred() {
     const arrowElement = document.querySelector('.arrow');
     let curDialogue = document.querySelector('.dialogue-text');
 
@@ -272,7 +272,7 @@ function showPred() {
     // generate response
     let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
     let UserConstellation = getConstellation(userBirthMonthDay);
-    let response = GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
+    let response = await GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
     // add the fortune card to local storage
     // current response date
     const currentDate = new Date();
@@ -285,15 +285,48 @@ function showPred() {
     const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}:${currentSecond}`;
     let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": UserMood, "time": dateString, };
     addFortuneCard(new_fortunes);
-    // update the dortune card list
+    // update the Fortune card list
     updateFortuneCardList();
 
     showConstellationImage(UserConstellation);
-    curDialogue.textContent = response;
+    //curDialogue.textContent = "114514";
+    split_and_display(response);
     
     arrowElement.removeEventListener('click', showPred);
     arrowElement.addEventListener('click', boxInit);
 }
+
+
+
+
+async function split_and_display(string){
+    const arrowElement = document.querySelector('.arrow');
+    arrowElement.style.display = 'none';
+
+    let curDialogue = document.querySelector('.dialogue-text');
+    let strings = await splitString(string);
+
+    strings.forEach((text, index) => {
+        setTimeout(() => {
+            curDialogue.textContent = text;
+            // Alternatively, you can display the text in the DOM or perform other actions
+        }, index * 10000);
+    });
+
+    
+    function arrow_delay() {
+        arrowElement.style.display = 'block';
+    }
+    setTimeout(arrow_delay, 25000);
+}
+
+
+async function splitString(str) {
+    let chunkSize = 100;
+    let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
+    return chunks;
+}
+
 
 
 function getMonthString(monthNumber) {
