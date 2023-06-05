@@ -234,13 +234,19 @@ function handleKeyDownMood(event) {
         console.log(boxInput.value);
         // store mood
         UserMood = boxInput.value;
+        let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
+        let UserConstellation = getConstellation(userBirthMonthDay);
+
         boxInput.value = '';
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
-        curDialogue.textContent = 'The stars have given their answer!';
+        curDialogue.textContent = `The holy ${UserConstellation} have given their answer!`;
         boxInput.removeEventListener('input', checkMood);
         boxInput.removeEventListener('keydown', handleKeyDownMood);
         boxInput.removeEventListener('input', inputCheck(/.*/));
+
+        // animation
+        showConstellationImage(UserConstellation);
 
         // change arrow back
         const svg = document.querySelector('.arrow');
@@ -288,7 +294,6 @@ async function showPred() {
     // update the Fortune card list
     updateFortuneCardList();
 
-    showConstellationImage(UserConstellation);
     //curDialogue.textContent = "114514";
     split_and_display(response);
     
@@ -310,14 +315,14 @@ async function split_and_display(string){
         setTimeout(() => {
             curDialogue.textContent = text;
             // Alternatively, you can display the text in the DOM or perform other actions
-        }, index * 10000);
+        }, index * 5000);
     });
 
     
     function arrow_delay() {
         arrowElement.style.display = 'block';
     }
-    setTimeout(arrow_delay, 25000);
+    setTimeout(arrow_delay, 7500);
 }
 
 

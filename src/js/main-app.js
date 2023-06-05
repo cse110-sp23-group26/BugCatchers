@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
     // Default variables to set (i.e Celeste's name, default welcoming message etc.)
-    const WELCOME_MSG = 'Hello user! What can I do for you?'
+    const WELCOME_MSG = 'Hello child! What can I do for you?'
 
     // --------------------------START OF DIALOGUE SEQUENCE-----------------------
     // TODO: store username somewhere
