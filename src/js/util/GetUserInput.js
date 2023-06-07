@@ -237,6 +237,11 @@ function handleKeyDownMood(event) {
         let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
         let UserConstellation = getConstellation(userBirthMonthDay);
 
+        // Powell!!!
+        if(UserMood == "Powell"){
+            UserConstellation = "Powell";
+        }
+
         boxInput.value = '';
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
@@ -279,6 +284,12 @@ async function showPred() {
     let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
     let UserConstellation = getConstellation(userBirthMonthDay);
     let response = await GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
+    
+    // Powell!!!
+    if (UserMood == "Powell"){
+        UserConstellation = "Powell";
+        response = "Hello, kids! \n Did you checked your MIDTERM grade? \n Do you like it? \n RELAX. Just ask. I won't change it even though you don't like it.";
+    }
     // add the fortune card to local storage
     // current response date
     const currentDate = new Date();
@@ -301,24 +312,21 @@ async function showPred() {
     arrowElement.addEventListener('click', boxInit);
 }
 
-
-
-
 async function split_and_display(string){
     const arrowElement = document.querySelector('.arrow');
     arrowElement.style.display = 'none';
 
     let curDialogue = document.querySelector('.dialogue-text');
+
     let strings = await splitString(string);
 
     strings.forEach((text, index) => {
         setTimeout(() => {
             curDialogue.textContent = text;
             // Alternatively, you can display the text in the DOM or perform other actions
-        }, index * 5000);
+        }, index * 4000);
     });
 
-    
     function arrow_delay() {
         arrowElement.style.display = 'block';
     }

@@ -54,6 +54,11 @@ function getConstellationInfo(constellation) {
       "Aquarius": [
         "Aquarius is the eleventh sign of the zodiac, and Aquarians are the perfect representatives for the Age of Aquarius. Those born under this horoscope sign have the social conscience needed to carry us into the new millennium.",
         "#264653"
+      ], 
+      // Powell!!!
+      "Powell": [
+        "A professor. Yea, YOUR CSE110 professor.",
+        "#264653"
       ]
     };
   
