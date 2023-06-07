@@ -3,7 +3,11 @@ let UserBirthMonth;
 let UserBirthYear;
 let UserMood;
 
-
+/**
+ * Sets up user interaction with the dialogue box.
+ * @param {string} speakerName - The character that is currently speaking
+ * @param {string} welcomeMsg - The welcome message to be initially displayed
+ */
 function dialogueGo(speakerName, welcomeMsg) {
     let speakerContainer = document.querySelector('.speaker');
     let dialogueContainer = document.querySelector('.dialogue-text');
@@ -14,7 +18,6 @@ function dialogueGo(speakerName, welcomeMsg) {
     const arrowElement = document.querySelector('.arrow');
     // Add click event listener to the arrow element
     arrowElement.addEventListener('click', boxInit);
-        
 }
 
 /**
@@ -101,7 +104,7 @@ function dayCheck() {
 /**
  * Helper function for dayCheck and to avoid the recursive call.
  * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
+ * @param {*} event - Detects the user pressing enter
  */
 function handleKeyDownDay(event) {
     const boxInput = document.querySelector('#dataInput');
@@ -141,7 +144,7 @@ function monthCheck() {
 /**
  * Helper function for monthCheck and to avoid the recursive call.
  * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
+ * @param {*} event - Detects the user pressing enter 
  */
 function handleKeyDownMonth(event) {
     const boxInput = document.querySelector('#dataInput');
@@ -181,7 +184,7 @@ function yearCheck() {
 /**
  * Helper function for yearCheck and to avoid the recursive call.
  * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
+ * @param {*} event - Detects the user pressing enter
  */
 function handleKeyDownYear(event) {
     const boxInput = document.querySelector('#dataInput');
@@ -223,7 +226,7 @@ function checkMood() {
 /**
  * Helper function for checkMood and to avoid the recursive call.
  * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
+ * @param {*} event - Detects the user pressing enter
  */
 function handleKeyDownMood(event) {
     const boxInput = document.querySelector('#dataInput');
@@ -312,7 +315,11 @@ async function showPred() {
     arrowElement.addEventListener('click', boxInit);
 }
 
-async function split_and_display(string){
+/**
+ * After splitting a string into pieces, displays each of the pieces every four seconds in the dialogue box.
+ * @param {string} string - The string to be split
+ */
+async function split_and_display(string) {
     const arrowElement = document.querySelector('.arrow');
     arrowElement.style.display = 'none';
 
@@ -333,15 +340,22 @@ async function split_and_display(string){
     setTimeout(arrow_delay, 7500);
 }
 
-
+/**
+ * Splits a string into chunks of maximum size 100 characters.
+ * @param {string} str - The string to be split
+ * @returns {array} - The pieces of the split string
+ */
 async function splitString(str) {
     let chunkSize = 100;
     let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
     return chunks;
 }
 
-
-
+/**
+ * Converts a number into its corresponding month (e.g. 1 gets converted to 'January')
+ * @param {number} monthNumber - The number corresponding to the month
+ * @returns {string} - A string containing the month
+ */
 function getMonthString(monthNumber) {
     const months = [
       'January', 'February', 'March', 'April', 'May', 'June',
@@ -349,8 +363,8 @@ function getMonthString(monthNumber) {
     ];
   
     if (monthNumber >= 1 && monthNumber <= 12) {
-      return months[monthNumber - 1];
+        return months[monthNumber - 1];
     } else {
-      return 'None';
+        return 'None';
     }
 }

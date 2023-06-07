@@ -48,8 +48,11 @@ Check if there are LastCheckInTime and CheckInCount in localstorage
 //     document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
 // });
 
-
-
+/**
+ * Updates the number of check ins in local storage.
+ * 
+ * @returns {object} An object containing the check in date and the total number of check ins
+ */
 function checkIn() {
     let currentDate = new Date();
     let currentYear = currentDate.getFullYear();
@@ -86,9 +89,10 @@ function checkIn() {
     }
 }
 
-// Get the last check-in time and check-in count from localStorage. 
-// If the data exists, it will update the corresponding display on the page; 
-//if not, the display on the page will keep the default value (i.e. "None" and "0").
+/**
+ * Get the last check-in time and check-in count from localStorage. If the data exists, it will update the corresponding display on the page; 
+ * if not, the display on the page will keep the default value (i.e. "None" and "0").
+ */
 function initializeCheckIn() {
     let lastCheckInDate = localStorage.getItem('LastCheckInTime');
     let checkInCount = localStorage.getItem('CheckInCount');

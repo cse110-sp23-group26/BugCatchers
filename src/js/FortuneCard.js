@@ -1,16 +1,11 @@
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// Rui's edit 28/05/23:
-// changed the variable name div to fortuneCardContent
-// changed the innerhtml staff to create element and append it to fortuneCardContent
-// add the delete button funtion:
-//     when delete clicked:
-//     delete the element in localstorage with same id
-//     remove fortune card from html
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+/**
+ * Class representing a fortune card element that appears in the left sidebar when clicking the green leaf icon.
+ * @extends HTMLElement
+ */
 class FortuneCard extends HTMLElement {
+    /**
+     * Creates a FortuneCard element.
+     */
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" });
@@ -58,8 +53,9 @@ class FortuneCard extends HTMLElement {
     }
 
     /**
-     * Passed in as JSON format as follows:
+     * Sets various values of the FortuneCard element.
      * 
+     * @param {object} data - Passed in as JSON format as follows:
      * {
      *      "name": ...string
      *      "id": ...num
@@ -125,8 +121,7 @@ class FortuneCard extends HTMLElement {
         fortuneCardContent.addEventListener("click", (event) => {
             const fortuneModal = document.createElement("fortune-modal");
             const modalText = (data['modal-text']) ? data['modal-text'] : data.text;
-            fortuneModal.data = 
-            {
+            fortuneModal.data = {
                   "name": data.name,
                   "id": data.id,
                   "text": data.text,
@@ -142,7 +137,6 @@ class FortuneCard extends HTMLElement {
 }
 
 customElements.define("fortune-card", FortuneCard);
-
 
 const closeButtonStyles = {
     background: `url('assets/trash_bin-modified.png') no-repeat`,

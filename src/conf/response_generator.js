@@ -1,4 +1,7 @@
-// New function that reads all JSON data to avoid repetitive code
+/**
+ * Reads each of the JSON files containing fortunes.
+ * @returns {object} - An object containing the JSON from each of the JSON files
+ */
 async function readJSON() {
     let astro = await fetch('conf/Astrology.json');
     astro = await astro.json();
@@ -19,6 +22,11 @@ async function readJSON() {
     }
 }
 
+/**
+ * Randomly selects fortunes from each of the JSON files.
+ * @param {string} sign - A string containing the zodiac sign to generate a fortune for
+ * @returns {object} - An object containing various fortune strings that can be used to generate a fortune
+ */
 async function randomSelectFortune(sign) {
     const fortuneData = await readJSON();
     const astro = fortuneData.astro;
@@ -44,18 +52,32 @@ function lowercaseStart(s) {
     return s.charAt(0).toLowerCase() + s.slice(1);
 }
 
+/**
+ * Template 1 for randomly generating a fortune.
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
 async function templete1(sign) {
     // Changed from concatenation to string templating to clean up code a bit
     const fortune = await randomSelectFortune(sign);
     return `The stars have spoken. ${fortune.fortune_money_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
 
-
+/**
+ * Template 2 for randomly generating a fortune.
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
 async function templete2(sign) {
     const fortune = await randomSelectFortune(sign);
     return `The stars are telling me your future. ${fortune.fortune_work_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
 
+/**
+ * Template 3 for randomly generating a fortune.
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
 async function templete3(sign) {
     const fortune = await randomSelectFortune(sign);
     let random_text = [
