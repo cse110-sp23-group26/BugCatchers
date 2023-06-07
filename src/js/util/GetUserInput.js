@@ -82,6 +82,15 @@ function showBox() {
 
     arrowElement.removeEventListener('click', showBox);
     boxInput.addEventListener('input', dayCheck);
+
+    // If the user has already input the birthday, show it as default
+    if(localStorage.getItem('UserBirthDay')){
+        boxInput.value = localStorage.getItem('UserBirthDay');
+
+        // Manually trigger input event to check validity
+        const event = new Event('input');
+        boxInput.dispatchEvent(event);
+    }
 }
 
 /**
@@ -112,13 +121,25 @@ function handleKeyDownDay(event) {
         console.log(boxInput.value);
         // store birthday
         UserBirthDay = boxInput.value;
+        // cache in local storage
+        localStorage.setItem('UserBirthDay', UserBirthDay);
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'Curious! Now, what month were you born? (enter to proceed)';
+
         boxInput.removeEventListener('input', dayCheck);
         boxInput.removeEventListener('keydown', handleKeyDownDay);
         boxInput.value = '';
         boxInput.placeholder = 'mm';
         boxInput.addEventListener('input', monthCheck);
+
+        // If the user has already input the birthday, show it as default
+        if(localStorage.getItem('UserBirthMonth')){
+            boxInput.value = localStorage.getItem('UserBirthMonth');
+
+            // Manually trigger input event to check validity
+            const event = new Event('input');
+            boxInput.dispatchEvent(event);
+        }
     }
 }
 
@@ -152,13 +173,25 @@ function handleKeyDownMonth(event) {
         console.log(boxInput.value);
         // store birth month
         UserBirthMonth = boxInput.value;
+        // cache in local storage
+        localStorage.setItem('UserBirthMonth', UserBirthMonth);
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'Oh! Do tell me the year you were born (enter to proceed)';
+
         boxInput.removeEventListener('input', monthCheck);
         boxInput.removeEventListener('keydown', handleKeyDownMonth);
         boxInput.value = '';
         boxInput.placeholder = 'yyyy';
         boxInput.addEventListener('input', yearCheck);
+
+        // If the user has already input the birthday, show it as default
+        if(localStorage.getItem('UserBirthYear')) {
+            boxInput.value = localStorage.getItem('UserBirthYear');
+
+            // Manually trigger input event to check validity
+            const event = new Event('input');
+            boxInput.dispatchEvent(event);
+        }
     }
 }
 
@@ -192,6 +225,8 @@ function handleKeyDownYear(event) {
         console.log(boxInput.value);
         // store birth year
         UserBirthYear = boxInput.value;
+        // cache in local storage
+        localStorage.setItem('UserBirthYear', UserBirthYear);
         let curDialogue = document.querySelector('.dialogue-text');
         curDialogue.textContent = 'Finally, tell me what your current mood is';
         boxInput.removeEventListener('input', yearCheck);
