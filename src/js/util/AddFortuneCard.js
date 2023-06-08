@@ -1,10 +1,8 @@
-// takes input:
-// fortune = 
-// {
-//     "name": "Celeste",
-//     "id": "fortune2",
-//     "text": "you will literally explode"
-// }
+/**
+ * Adds a fortune to local storage by storing it in JSON format.
+ * 
+ * @param fortune - The fortune to be added to local storage
+ */
 // Then add it to localStorage (only add when this fortune card does not exist in localstorage)
 // Then append it to HTMLAllCollection, under fortuneCardList 
 function addFortuneCard(fortune) {
