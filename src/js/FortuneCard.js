@@ -14,8 +14,9 @@ class FortuneCard extends HTMLElement {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" });
-        const fortuneCardContent = document.createElement("div");
+        this.fortuneCardContent = document.createElement("div");
         const style = document.createElement("style");
+
         style.innerHTML = `
         div {
             position: relative;
@@ -27,6 +28,7 @@ class FortuneCard extends HTMLElement {
             margin: 15px;
             border-radius: 20px;
             width: 70%;
+            transition: transform 0.2s;
         }
         .fc-image {
             display: block;
@@ -54,7 +56,17 @@ class FortuneCard extends HTMLElement {
         }
         `;
         shadow.appendChild(style);
-        shadow.appendChild(fortuneCardContent);
+        shadow.appendChild(this.fortuneCardContent);
+        this.fortuneCardContent.addEventListener("mouseenter", () => this.handleMouseEnter());
+        this.fortuneCardContent.addEventListener("mouseleave", () => this.handleMouseLeave());
+    }
+
+    handleMouseEnter() {
+        this.fortuneCardContent.style.transform = "scale(1.1)";
+    }
+
+    handleMouseLeave() {
+        this.fortuneCardContent.style.transform = "scale(1)";
     }
 
     /**

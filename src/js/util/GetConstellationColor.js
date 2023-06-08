@@ -57,7 +57,7 @@ function getConstellationInfo(constellation) {
       ], 
       // Powell!!!
       "Powell": [
-        "A professor. Yea, YOUR CSE110 professor.",
+        "A professor. Yes, your CSE110 professor.With all your respect, confess to him what you did in MIDTERM",
         "#264653"
       ]
     };

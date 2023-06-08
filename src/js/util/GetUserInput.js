@@ -280,7 +280,12 @@ function handleKeyDownMood(event) {
         boxInput.value = '';
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
-        curDialogue.textContent = `The holy ${UserConstellation} have given their answer!`;
+        let curText = `The holy ${UserConstellation} answered your call!`;
+        // Powell!!!
+        if (UserMood == "Powell"){
+            curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
+        }
+        curDialogue.textContent = curText;
         boxInput.removeEventListener('input', checkMood);
         boxInput.removeEventListener('keydown', handleKeyDownMood);
         boxInput.removeEventListener('input', inputCheck(/.*/));
@@ -323,7 +328,7 @@ async function showPred() {
     // Powell!!!
     if (UserMood == "Powell"){
         UserConstellation = "Powell";
-        response = "Hello, kids! \n Did you checked your MIDTERM grade? \n Do you like it? \n RELAX. Just ask. I won't change it even though you don't like it.";
+        response = "Professor Powell: Hello, kids! \n Did you checked your MIDTERM grade? \n Do you like it? \n RELAX! Just ask. I won't change it even though you don't like it.";
     }
     // add the fortune card to local storage
     // current response date
@@ -350,9 +355,7 @@ async function showPred() {
 async function split_and_display(string){
     const arrowElement = document.querySelector('.arrow');
     arrowElement.style.display = 'none';
-
     let curDialogue = document.querySelector('.dialogue-text');
-
     let strings = await splitString(string);
 
     strings.forEach((text, index) => {
