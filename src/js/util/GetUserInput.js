@@ -358,27 +358,55 @@ async function split_and_display(string){
     let curDialogue = document.querySelector('.dialogue-text');
     let strings = await splitString(string);
 
-    strings.forEach((text, index) => {
-        setTimeout(() => {
-            curDialogue.textContent = text;
-            // Alternatively, you can display the text in the DOM or perform other actions
-        }, index * 4000);
-    });
-
+   //Loop thorugh each string, clear the dialogue box, and type the string
+    for (let i = 0; i < strings.length; i++) {
+        //Clear the box for each string
+        curDialogue.textContent = '';
+        await typeWriter(strings[i]);
+        //If user click box, skip the typing animation
+        curDialogue.addEventListener('click', () =>{
+            curDialogue.textContent = strings[i];
+        })
+        //If user click box, and string is printed already, show next string
+        if (curDialogue.textContent == strings[i]) {
+            continue;
+        }
+        //If user doesn't click box, wait for 2 seconds before showing next string
+        await delay(5000) // Adjust the delay between texts here (in milliseconds)
+    }
+    //Function that delays the arrow appearing
     function arrow_delay() {
         arrowElement.style.display = 'block';
     }
     setTimeout(arrow_delay, 7500);
 }
 
+//Function that takes a string and makes a typing animation, output = dialogue-text
+async function typeWriter(string) {
+    let index = 0;
+    let curDialogue = document.querySelector('.dialogue-text');
+    function printNextChar() {
+        if (index < string.length) {
+        curDialogue.textContent += string[index];
+        index++;
+        return new Promise((resolve) => setTimeout(resolve, 100)); // Wait for 100ms before typing the next character
+        } 
+    }
+    while (printNextChar()) {
+        await printNextChar();
+    }
+}
 
+//Function that takes a string and splits it into chunks of 100 characters
 async function splitString(str) {
     let chunkSize = 100;
     let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
     return chunks;
 }
 
-
+function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function getMonthString(monthNumber) {
     const months = [
