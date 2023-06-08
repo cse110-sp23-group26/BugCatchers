@@ -1,11 +1,18 @@
 // Input:  String in format MediaMetadata, such as "Jan 11" or "Jan11" or "January11" or "january11" 
 // Output: String of the corrspond constellation. If date format nor right, return error Message string.
 
+/**
+ * Given a date, calculates which zodiac sign the date falls into.
+ * @param {string} dateString - A string representing the input date
+ * @returns {string} - The zodiac sign corresponding to the date
+ */
 function getConstellation(dateString) {
 	// remove the space, and store month and day to 'month' and 'day'
-	const trimmedString = dateString.replace(/\s+/g, "");
-	const regex = /([a-zA-Z]+)(\d+)/;
+	const trimmedString = dateString.replace(/\s+/g, " ");  // Now this replaces multiple spaces with a single space
+	const regex = /([a-zA-Z]+)\s*(\d+)/;  // This regular expression also considers a possible space after the month
 	const matches = trimmedString.match(regex);
+	// console.log(trimmedString);
+	// console.log(matches);
 
 	if (matches) {
 		const month = matches[1].toUpperCase();
@@ -108,12 +115,14 @@ function getConstellation(dateString) {
 				}
 				break;
 			default:
-				return "Error: wrong month format.";
+				console.log("please check your month input")
+				return false;
 		}
 	}
 
 	// the string format not correct
-	return "Error: wrong day format.";
+	console.log("please check your day input")
+	return false;
 }
 
 // module.exports = getConstellation;

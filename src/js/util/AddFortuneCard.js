@@ -1,16 +1,8 @@
 /**
-     * Passed in as JSON format as follows:
-     * 
-     * {
-     *      "name": ...string
-     *      "id": ...num
-     *      "text": ...string
-     *      "birthday": ...string
-     *      "mood": ...string
-     *      "time": ...string
-     *      "modal-text": ... (only displayed when fortune is clicked)
-     * }
-     */
+ * Adds a fortune to local storage by storing it in JSON format.
+ * 
+ * @param fortune - The fortune to be added to local storage
+ */
 // Then add it to localStorage (only add when this fortune card does not exist in localstorage)
 // Then append it to HTMLAllCollection, under fortuneCardList 
 function addFortuneCard(fortune) {

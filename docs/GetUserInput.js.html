@@ -1,4 +1,32 @@
-let UserBirthDay;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: GetUserInput.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: GetUserInput.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let UserBirthDay;
 let UserBirthMonth;
 let UserBirthYear;
 let UserMood;
@@ -17,7 +45,7 @@ function dialogueGo() {
     // get input if user click the DOWN arrow
     const arrowElement = document.querySelector('.arrow');
     // Add click event listener to the arrow element
-    arrowElement.addEventListener('click', boxInit);
+    arrowElement.addEventListener('click', boxInit); 
 }
 
 /**
@@ -47,7 +75,7 @@ function boxInit() {
     const arrowElement = document.querySelector('.arrow');
     const exitElement = document.querySelector('#exitButton');
     let curDialogue = document.querySelector('.dialogue-text');
-    curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
+    curDialogue.textContent = 'Would you like to know what the stars say about your futures?'; 
 
     // unhide the revert button
     exitElement.style.display = 'block';
@@ -124,7 +152,7 @@ function handleKeyDownDay(event) {
     const computedStyle = window.getComputedStyle(boxInput);
 
     // if validity check passes
-    if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
+    if ((event.key==='Enter')&amp;&amp;(computedStyle.color==='rgb(0, 0, 0)')) {
         console.log(boxInput.value);
         // store birthday
         UserBirthDay = boxInput.value;
@@ -171,14 +199,14 @@ function monthCheck() {
 /**
  * Helper function for monthCheck and to avoid the recursive call.
  * Recursive call would lead to fatal error of variable update.
- * @param {*} event - Detects the user pressing enter
+ * @param {*} event - Detects the user pressing enter 
  */
 function handleKeyDownMonth(event) {
     const boxInput = document.querySelector('#dataInput');
     const computedStyle = window.getComputedStyle(boxInput);
 
     // if validity check passes
-    if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
+    if ((event.key==='Enter')&amp;&amp;(computedStyle.color==='rgb(0, 0, 0)')) {
         console.log(boxInput.value);
         // store birth month
         UserBirthMonth = boxInput.value;
@@ -232,7 +260,7 @@ function handleKeyDownYear(event) {
     const computedStyle = window.getComputedStyle(boxInput);
 
     // if validity check passes
-    if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
+    if ((event.key==='Enter')&amp;&amp;(computedStyle.color==='rgb(0, 0, 0)')) {
         console.log(boxInput.value);
         // store birth year
         UserBirthYear = boxInput.value;
@@ -304,11 +332,11 @@ function handleKeyDownMood(event) {
 
 
         // ---------------------------------TODO----------------------------------
-        // TODO: need to get back to the previous phase if the user input
+        // TODO: need to get back to the previous phase if the user input 
         // does not pass sanity
         // ---------------------------------TODO----------------------------------
 
-
+        
         // animation
         showConstellationImage(UserConstellation);
 
@@ -373,43 +401,17 @@ async function split_and_display(string) {
     let curDialogue = document.querySelector('.dialogue-text');
     let strings = await splitString(string);
 
-   //Loop thorugh each string, clear the dialogue box, and type the string
-    for (let i = 0; i < strings.length; i++) {
-        //Clear the box for each string
-        curDialogue.textContent = '';
-        await typeWriter(strings[i]);
-        //If user click box, skip the typing animation
-        curDialogue.addEventListener('click', () =>{
-            curDialogue.textContent = strings[i];
-        })
-        //If user click box, and string is printed already, show next string
-        if (curDialogue.textContent == strings[i]) {
-            continue;
-        }
-        //If user doesn't click box, wait for 2 seconds before showing next string
-        await delay(5000) // Adjust the delay between texts here (in milliseconds)
-    }
-    //Function that delays the arrow appearing
+    strings.forEach((text, index) => {
+        setTimeout(() => {
+            curDialogue.textContent = text;
+            // Alternatively, you can display the text in the DOM or perform other actions
+        }, index * 4000);
+    });
+
     function arrow_delay() {
         arrowElement.style.display = 'block';
     }
     setTimeout(arrow_delay, 7500);
-}
-
-//Function that takes a string and makes a typing animation, output = dialogue-text
-async function typeWriter(string) {
-    let index = 0;
-    let curDialogue = document.querySelector('.dialogue-text');
-    function printNextChar() {
-        if (index < string.length) {
-        curDialogue.textContent += string[index];
-        index++;
-        return new Promise((resolve) => setTimeout(resolve, 100)); // Wait for 100ms before typing the next character
-        }
-    }
-    while (printNextChar()) {
-        await printNextChar();
-    }
 }
 
 /**
@@ -423,10 +425,6 @@ async function splitString(str) {
     return chunks;
 }
 
-function delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 /**
  * Converts a number into its corresponding month (e.g. 1 gets converted to 'January')
  * @param {number} monthNumber - The number corresponding to the month
@@ -438,9 +436,31 @@ function getMonthString(monthNumber) {
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
   
-    if (monthNumber >= 1 && monthNumber <= 12) {
+    if (monthNumber >= 1 &amp;&amp; monthNumber &lt;= 12) {
         return months[monthNumber - 1];
     } else {
         return 'None';
     }
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#GetJsonResponse">GetJsonResponse</a></li><li><a href="global.html#boxInit">boxInit</a></li><li><a href="global.html#checkIn">checkIn</a></li><li><a href="global.html#checkMood">checkMood</a></li><li><a href="global.html#dayCheck">dayCheck</a></li><li><a href="global.html#dialogueGo">dialogueGo</a></li><li><a href="global.html#getConstellation">getConstellation</a></li><li><a href="global.html#getConstellationInfo">getConstellationInfo</a></li><li><a href="global.html#getMonthString">getMonthString</a></li><li><a href="global.html#handleKeyDownDay">handleKeyDownDay</a></li><li><a href="global.html#handleKeyDownMonth">handleKeyDownMonth</a></li><li><a href="global.html#handleKeyDownMood">handleKeyDownMood</a></li><li><a href="global.html#handleKeyDownYear">handleKeyDownYear</a></li><li><a href="global.html#initializeCheckIn">initializeCheckIn</a></li><li><a href="global.html#inputCheck">inputCheck</a></li><li><a href="global.html#monthCheck">monthCheck</a></li><li><a href="global.html#showBox">showBox</a></li><li><a href="global.html#showConstellationImage">showConstellationImage</a></li><li><a href="global.html#showPred">showPred</a></li><li><a href="global.html#splitString">splitString</a></li><li><a href="global.html#split_and_display">split_and_display</a></li><li><a href="global.html#yearCheck">yearCheck</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 08 2023 11:44:45 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
