@@ -21,7 +21,7 @@ function init() {
      * on some prediction function, based on user input, from "GetUserInput.js"
      */
     let curName = 'Celeste';
-    dialogueGo(curName, WELCOME_MSG);
+    dialogueGo();
     // ---------------------------END OF DIALOGUE SEQUENCE------------------------
 
 
