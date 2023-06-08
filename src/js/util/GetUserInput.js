@@ -418,7 +418,7 @@ async function typeWriter(string) {
  * @returns {array} - The pieces of the split string
  */
 async function splitString(str) {
-    let chunkSize = 100;
+    let chunkSize = 120;
     let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
     return chunks;
 }
