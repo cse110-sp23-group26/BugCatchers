@@ -29,8 +29,9 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          mv src docs
-          find . -maxdepth 1 ! -name "docs" ! -name ".git" -exec rm -rf {} + || true
+          mv src build
+          find . -maxdepth 1 ! -name "build" ! -name ".git" -exec rm -rf {} + || true
+          mv build docs
           echo "# DO NOT MANUALLY PUSH TO THIS BRANCH, ANY WORK DONE ON IT WILL BE ERASED. ITS WORK COMES FROM MAIN AND IT WILL BE REWRITTEN THE NEXT TIME AN ACTION OCCURS ON THE MAIN BRANCH" > README.md
           git stash
           git checkout -b dev
