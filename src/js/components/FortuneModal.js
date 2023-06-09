@@ -119,6 +119,7 @@ class FortuneModal extends HTMLElement {
 		image.src = `assets/constellation/big/white/${data.name}.png`;
 		image.classList.add("fc-image");
 	
+		// eslint-disable-next-line no-undef
 		const zodiacInfo = getConstellationInfo(data.name);
 		// zodiacInfo[0]: zodiac info
 		// zodiacInfo[1]: zodiac color
