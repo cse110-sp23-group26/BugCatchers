@@ -84,6 +84,7 @@ class FortuneCard extends HTMLElement {
 		const fortuneCardContent = this.shadowRoot.querySelector("div");
 		// zodiacInfo[0]: zodiac info
 		// zodiacInfo[1]: zodiac color
+		// eslint-disable-next-line no-undef
 		const zodiacInfo = getConstellationInfo(data.name);
 		
 		//zodiac image
@@ -115,7 +116,6 @@ class FortuneCard extends HTMLElement {
 		deleteButton.addEventListener('click', (event) => {
 			// get the ancestor element fortune-card where the click happened
 			// and record the id
-			console.log(event.target);
 			const fortuneCard = event.target.getRootNode().host;
 			const id = data.id;
 
@@ -126,21 +126,22 @@ class FortuneCard extends HTMLElement {
 
 			// delete the fortune card from html
 			fortuneCard.remove();
+			// eslint-disable-next-line no-undef
 			updateFortuneCardList();
 			event.stopPropagation();
 		});
 
-		fortuneCardContent.addEventListener("click", (event) => {
+		fortuneCardContent.addEventListener("click", () => {
 			const fortuneModal = document.createElement("fortune-modal");
 			const modalText = (data['modal-text']) ? data['modal-text'] : data.text;
 			fortuneModal.data = {
-				  "name": data.name,
-				  "id": data.id,
-				  "text": data.text,
-				  "birthday": data.birthday,
-				  "mood": data.mood,
-				  "time": data.time,
-				  "modal-text": modalText,
+				"name": data.name,
+				"id": data.id,
+				"text": data.text,
+				"birthday": data.birthday,
+				"mood": data.mood,
+				"time": data.time,
+				"modal-text": modalText,
 			}
 
 			document.querySelector("body").appendChild(fortuneModal);
