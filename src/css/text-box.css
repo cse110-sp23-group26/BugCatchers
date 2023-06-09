@@ -149,68 +149,58 @@ input#dataInput {
 }
 
 .arrow {
-	position: fixed;
-	bottom: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	cursor: pointer;
-	fill: none;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    fill: none;
+	animation: pulse 1s infinite;
+    transform-origin: 50% 50%;
 }
 
-.arrow-circle {
-	stroke-width: 5;
-	transition: stroke-width 0.3s ease;
-	stroke: white;
+.arrow:hover {
+    animation: pulse 1s infinite;
 }
 
 .arrow-path {
-	stroke-linecap: round;
-	stroke-width: 10;
-	transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
-	stroke-dasharray: 90;
-	stroke-dashoffset: 90;
-	stroke: white;
-}
-
-.arrow:hover .arrow-circle {
-	stroke-width: 15;
+    stroke: white;
+    stroke-width: 1.5;
+    transition: all .5s ease-in-out;
 }
 
 .arrow:hover .arrow-path {
-	stroke-dashoffset: 0;
+    stroke: #4CAF50; 
+	stroke-width: 3;
 }
 
 .exit-btn {
-	position: fixed;
-	bottom: 24%;
-	right: 23%;
-	transform: translateX(-25%);
-	cursor: pointer;
-	width: 40px;
-	height: 40px;
-	fill: none;
-	stroke: #ee0606f3;
+    position: absolute;
+    bottom: 27%;
+    left: 1%;
+    transform: translateX(-1%);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: black;
+	animation: pulse 1s infinite;
+    transform-origin: 50% 50%;
 }
 
-.exit-btn-circle {
-	stroke-width: 10;
-	transition: stroke-width 0.3s ease;
+.exit-btn:hover {
+    animation: pulse 1s infinite;
 }
 
 .exit-btn-line {
-	stroke-linecap: round;
-	stroke-width: 15;
-	transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
-	stroke-dasharray: 90;
-	stroke-dashoffset: 90;
-}
-
-.exit-btn:hover .exit-btn-circle {
-	stroke-width: 12;
+	fill: red;
+    stroke-width: 1.5;
+    transition: all .5s ease-in-out;
 }
 
 .exit-btn:hover .exit-btn-line {
-	stroke-dashoffset: 0;
+    stroke: #000000; 
+	stroke-width: 3;
 }
 
 @-webkit-keyframes blob {
