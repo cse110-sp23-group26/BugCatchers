@@ -5,7 +5,8 @@
 		"ecmaVersion": "latest"
 	},
 	"ignorePatterns":[
-		"*.test.js"
+		"*.test.js",
+		"docs/*"
 	],
 	"env": {
 		"browser": true
