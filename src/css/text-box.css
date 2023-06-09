@@ -138,79 +138,73 @@ input#dataInput {
 	left : 50%;
 	transform : translate(-50%, -50%);
 	font-size : 2em;
-	border-radius : 50%; /* makes corners completely round */
+	border-radius : 40%; 
 	text-align : center;
-	border : 2px solid #1e3799;
+	border : 2px solid #722f12;
 	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-	background-color : #dec316; /* white background for contrast */
-	color: #1e3799; /* dark blue text color for contrast */
+	background-color : #fdfdfd;
+	color: #071b6c;
 	font-family : 'Courier New', Courier, monospace;
 	padding: 15px;
 }
 
-.arrow {
-	position: fixed;
-	bottom: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	cursor: pointer;
-	fill: none;
+input#dataInput:focus {
+    outline: none;
 }
 
-.arrow-circle {
-	stroke-width: 5;
-	transition: stroke-width 0.3s ease;
-	stroke: white;
+.arrow {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    fill: none;
+	animation: pulse 1s infinite;
+    transform-origin: 50% 50%;
+}
+
+.arrow:hover {
+    animation: pulse 1s infinite;
 }
 
 .arrow-path {
-	stroke-linecap: round;
-	stroke-width: 10;
-	transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
-	stroke-dasharray: 90;
-	stroke-dashoffset: 90;
-	stroke: white;
-}
-
-.arrow:hover .arrow-circle {
-	stroke-width: 15;
+    stroke: white;
+    stroke-width: 1.5;
+    transition: all .5s ease-in-out;
 }
 
 .arrow:hover .arrow-path {
-	stroke-dashoffset: 0;
+    stroke: #4CAF50; 
+	stroke-width: 3;
 }
 
 .exit-btn {
-	position: fixed;
-	bottom: 24%;
-	right: 23%;
-	transform: translateX(-25%);
-	cursor: pointer;
-	width: 40px;
-	height: 40px;
-	fill: none;
-	stroke: #ee0606f3;
+    position: absolute;
+    bottom: 27%;
+    left: 3%;
+    transform: translateX(-1%);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: black;
+	animation: pulse 1s infinite;
+    transform-origin: 50% 50%;
 }
 
-.exit-btn-circle {
-	stroke-width: 10;
-	transition: stroke-width 0.3s ease;
+.exit-btn:hover {
+    animation: pulse 1s infinite;
 }
 
 .exit-btn-line {
-	stroke-linecap: round;
-	stroke-width: 15;
-	transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
-	stroke-dasharray: 90;
-	stroke-dashoffset: 90;
-}
-
-.exit-btn:hover .exit-btn-circle {
-	stroke-width: 12;
+	fill: red;
+    stroke-width: 1.5;
+    transition: all .5s ease-in-out;
 }
 
 .exit-btn:hover .exit-btn-line {
-	stroke-dashoffset: 0;
+    stroke: #000000; 
+	stroke-width: 3;
 }
 
 @-webkit-keyframes blob {
@@ -323,4 +317,16 @@ input#dataInput {
 		transform: translateY(50%) translateX(-50%) scale(0.9);
 		opacity: 1;
 	}
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
 }
