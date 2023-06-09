@@ -1,4 +1,6 @@
 const puppeteer = require('puppeteer');
+require('jest-localstorage-mock');
+
 
 describe('Basic user flow for Website', () => {
   let browser;
@@ -9,17 +11,12 @@ describe('Basic user flow for Website', () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
     await page.goto('http://127.0.0.1:5500/src/index.html');
+    // localStorage.removeItem('LastCheckInTime');
+    // localStorage.removeItem('CheckInCount');
   });
 
   afterAll(async () => {
     await browser.close();
-  });
-
-  // Next, check the fortune card list to make sure there are no card there
-  it('should have 0 Fortune Cards initially', async () => {
-    await page.waitForSelector('.fortuneCardList');
-    const numCards = await page.$$eval('.fortuneCardList fortune-card', (cards) => cards.length);
-    expect(numCards).toBe(0);
   });
 
   // Check-in system initial
@@ -60,4 +57,65 @@ describe('Basic user flow for Website', () => {
     expect(afterCount.trim()).toBe('Count: 1');
   });
 
+  // Next, check the fortune card list to make sure there are no card there
+  it('should have 0 Fortune Cards initially', async () => {
+    // open the menu
+    let menuElement = await page.$('#menu');
+    await menuElement.click();
+    
+    const numCards = await page.$$eval('fortune-card', (prodItems) => {
+      return prodItems.length;
+    });
+    await menuElement.click();
+    expect(numCards).toBe(0);
+  });
+
+  // // test to get a user input and make a fortune card, then check the length of the card list
+  // it('should input user data and get response', async () => {
+  //   // 等待箭头元素加载完成
+  //   let arrowElement = await page.$('.arrow');
+  
+  //   // 模拟点击箭头
+  //   await arrowElement.click();
+  
+  //   // 等待输入框元素加载完成
+  //   await page.waitForSelector('#dataInput');
+  
+  //   // 输入 UserBirthDay
+  //   await page.type('#dataInput', '09');
+  //   await page.keyboard.press('Enter');
+  
+  //   // 输入 UserBirthMonth
+  //   await page.type('#dataInput', '09');
+  //   await page.keyboard.press('Enter');
+  
+  //   // 输入 UserBirthYear
+  //   await page.type('#dataInput', '2000');
+  //   await page.keyboard.press('Enter');
+  
+  //   // 输入 UserMood
+  //   await page.type('#dataInput', 'test');
+  //   await page.keyboard.press('Enter');
+  
+  //   // 等待箭头元素加载完成
+  //   await page.waitForSelector('.arrow');
+    
+  //   arrowElement = await page.$('.arrow');
+  //   // 模拟点击箭头
+  //   await arrowElement.click();
+  
+  //   // 等待一段时间，以确保结果显示在页面上
+  //   await page.waitForTimeout(2000);
+
+  //   // open the menu
+  //   let menuElement = await page.$('#menu');
+  //   await menuElement.click();
+
+  //   const numCards = await page.$$eval('fortune-card', (prodItems) => {
+  //     return prodItems.length;
+  //   });
+  //   expect(numCards).toBe(1);
+  // });
+
+  // add a test to delete the card and see the length of the fortune card list
 });
