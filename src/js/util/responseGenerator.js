@@ -3,7 +3,6 @@
  * that has a final version of a fortune that will be given to the user
  */
 
-
 //  ---------------------- BEGIN UTILITY FUNCTIONS ----------------------------
 /**
  * Reads each of the JSON files containing fortunes.
@@ -92,9 +91,11 @@ function responseRandom(sign) {
 		} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
 
-// 
+let FORTUNE_DATA = null;
+readJSON().then(e =>{
+	FORTUNE_DATA = e;
+})
 
-const FORTUNE_DATA = await readJSON();
 // A list of functions that can be used to generate a fortune
 const GENERATORS = [responseMoney, responseWork, responseRandom];
 

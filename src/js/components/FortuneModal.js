@@ -3,10 +3,10 @@
  * @extends HTMLElement
  */
 class FortuneModal extends HTMLElement {
-    /**
-     * Creates a FortuneModal element.
-     */
-    constructor() {
+	/**
+	 * Creates a FortuneModal element.
+	 */
+	constructor() {
 		super();
 		const shadow = this.attachShadow({ mode: "open" });
 	
@@ -136,7 +136,7 @@ class FortuneModal extends HTMLElement {
 		container.addEventListener("click", () => {
 			this.remove();
 		});
-    }
+	}
 }
   
 customElements.define("fortune-modal", FortuneModal);

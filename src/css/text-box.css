@@ -145,72 +145,72 @@ input#dataInput {
 	background-color : #dec316; /* white background for contrast */
 	color: #1e3799; /* dark blue text color for contrast */
 	font-family : 'Courier New', Courier, monospace;
-    padding: 15px;
+	padding: 15px;
 }
 
 .arrow {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    fill: none;
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	fill: none;
 }
 
 .arrow-circle {
-    stroke-width: 5;
-    transition: stroke-width 0.3s ease;
-    stroke: white;
+	stroke-width: 5;
+	transition: stroke-width 0.3s ease;
+	stroke: white;
 }
 
 .arrow-path {
-    stroke-linecap: round;
-    stroke-width: 10;
-    transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
-    stroke-dasharray: 90;
-    stroke-dashoffset: 90;
-    stroke: white;
+	stroke-linecap: round;
+	stroke-width: 10;
+	transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
+	stroke-dasharray: 90;
+	stroke-dashoffset: 90;
+	stroke: white;
 }
 
 .arrow:hover .arrow-circle {
-    stroke-width: 15;
+	stroke-width: 15;
 }
 
 .arrow:hover .arrow-path {
-    stroke-dashoffset: 0;
+	stroke-dashoffset: 0;
 }
 
 .exit-btn {
-    position: fixed;
-    bottom: 24%;
-    right: 23%;
-    transform: translateX(-25%);
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    fill: none;
-    stroke: #ee0606f3;
+	position: fixed;
+	bottom: 24%;
+	right: 23%;
+	transform: translateX(-25%);
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	fill: none;
+	stroke: #ee0606f3;
 }
 
 .exit-btn-circle {
-    stroke-width: 10;
-    transition: stroke-width 0.3s ease;
+	stroke-width: 10;
+	transition: stroke-width 0.3s ease;
 }
 
 .exit-btn-line {
-    stroke-linecap: round;
-    stroke-width: 15;
-    transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
-    stroke-dasharray: 90;
-    stroke-dashoffset: 90;
+	stroke-linecap: round;
+	stroke-width: 15;
+	transition: stroke-dasharray 0.3s ease, stroke-dashoffset 0.3s ease;
+	stroke-dasharray: 90;
+	stroke-dashoffset: 90;
 }
 
 .exit-btn:hover .exit-btn-circle {
-    stroke-width: 12;
+	stroke-width: 12;
 }
 
 .exit-btn:hover .exit-btn-line {
-    stroke-dashoffset: 0;
+	stroke-dashoffset: 0;
 }
 
 @-webkit-keyframes blob {
