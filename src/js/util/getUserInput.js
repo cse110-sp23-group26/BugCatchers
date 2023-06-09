@@ -334,8 +334,7 @@ async function showPred() {
 	// generate response
 	let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
 	let UserConstellation = getConstellation(userBirthMonthDay);
-	let response = await GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
-	
+	let response = await generateFinalFortune(UserConstellation);
 	// Powell!!!
 	if (UserMood == "Powell"){
 		UserConstellation = "Powell";
