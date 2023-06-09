@@ -338,7 +338,7 @@ async function showPred() {
 	// Powell!!!
 	if (UserMood == "Powell"){
 		UserConstellation = "Powell";
-		response = "Professor Powell: Hello, kids! \n Did you checked your MIDTERM grade? \n Do you like it? \n RELAX! Just ask. I won't change it even though you don't like it.";
+		response = "Professor Powell: Hello, kids! Did you checked your MIDTERM grade? Do you like it? RELAX! Just ask. I won't change it even though you don't like it.";
 	}
 	// add the fortune card to local storage
 	// current response date
