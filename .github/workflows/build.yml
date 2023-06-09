@@ -30,7 +30,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           npm i
-          jsdoc src/js
+          npm run-script gendocs
           mv src build
           mv docs build/docs
           find . -maxdepth 1 ! -name "build" ! -name ".git" -exec rm -rf {} + || true
