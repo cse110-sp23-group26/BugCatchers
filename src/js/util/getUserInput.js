@@ -32,10 +32,12 @@ function inputCheck(pattern) {
 	// console.log(pattern);
 
 	// check validity
-	if (valid) {
-		boxInput.style.color = 'black'; 
+	if (valid || (!inputValue)) {
+		boxInput.style.border = "2px solid #071b6c";
+        boxInput.style.boxShadow = "0px 8px 15px rgba(0, 0, 0, 0.1)";
 	} else {
-		boxInput.style.color = 'red';
+		boxInput.style.border = "2px solid red";
+        boxInput.style.boxShadow = "0px 0px 10px 3px red";
 	}
 }
 
@@ -124,14 +126,14 @@ function handleKeyDownDay(event) {
 	const computedStyle = window.getComputedStyle(boxInput);
 
 	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
-		console.log(boxInput.value);
+	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
+		// console.log(boxInput.value);
 		// store birthday
 		UserBirthDay = boxInput.value;
 		// cache in local storage
 		localStorage.setItem('UserBirthDay', UserBirthDay);
 		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Curious! Now, what month were you born? (enter to proceed)';
+		curDialogue.textContent = 'Curious! Now, what month were you born?';
 
 		boxInput.removeEventListener('input', dayCheck);
 		boxInput.removeEventListener('keydown', handleKeyDownDay);
@@ -178,14 +180,14 @@ function handleKeyDownMonth(event) {
 	const computedStyle = window.getComputedStyle(boxInput);
 
 	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
-		console.log(boxInput.value);
+	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
+		// console.log(boxInput.value);
 		// store birth month
 		UserBirthMonth = boxInput.value;
 		// cache in local storage
 		localStorage.setItem('UserBirthMonth', UserBirthMonth);
 		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Oh! Do tell me the year you were born (enter to proceed)';
+		curDialogue.textContent = 'Oh! Do tell me the year you were born!';
 
 		boxInput.removeEventListener('input', monthCheck);
 		boxInput.removeEventListener('keydown', handleKeyDownMonth);
@@ -232,8 +234,8 @@ function handleKeyDownYear(event) {
 	const computedStyle = window.getComputedStyle(boxInput);
 
 	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
-		console.log(boxInput.value);
+	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
+		// console.log(boxInput.value);
 		// store birth year
 		UserBirthYear = boxInput.value;
 		// cache in local storage
@@ -277,8 +279,7 @@ function handleKeyDownMood(event) {
 
     // if validity check passes
     if (event.key==='Enter') {
-        // remove the input box
-        console.log(boxInput.value);
+        // console.log(boxInput.value);
         // store mood
         UserMood = boxInput.value;
         let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
@@ -289,6 +290,7 @@ function handleKeyDownMood(event) {
             UserConstellation = "Powell";
         }
 
+        // remove the input box
         boxInput.value = '';
         boxInput.hidden = true;
         let curDialogue = document.querySelector('.dialogue-text');
@@ -328,7 +330,6 @@ function handleKeyDownMood(event) {
  */
 async function showPred() {
 	const arrowElement = document.querySelector('.arrow');
-	let curDialogue = document.querySelector('.dialogue-text');
 
 	// based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
 	// generate response
@@ -416,7 +417,7 @@ async function typeWriter(string) {
  * @returns {array} - The pieces of the split string
  */
 async function splitString(str) {
-    let chunkSize = 120;
+    let chunkSize = 100;
     let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
     return chunks;
 }
