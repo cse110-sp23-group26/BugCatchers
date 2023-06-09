@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint -c .eslintrc.json --ext .js,.jsx ./",
-    "gendocs": "jsdoc src/js"
+    "gendocs": "jsdoc src/**/*.js"
   },
   "author": "",
   "license": "ISC",
