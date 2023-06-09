@@ -177,7 +177,7 @@ input#dataInput {
 .exit-btn {
     position: absolute;
     bottom: 27%;
-    left: 1%;
+    left: 3%;
     transform: translateX(-1%);
     cursor: pointer;
     width: 30px;
@@ -313,4 +313,16 @@ input#dataInput {
 		transform: translateY(50%) translateX(-50%) scale(0.9);
 		opacity: 1;
 	}
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
 }
