@@ -9,15 +9,15 @@ let UserMood;
  * @param {string} welcomeMsg - The welcome message to be initially displayed
  */
 function dialogueGo() {
-	let speakerContainer = document.querySelector('.speaker');
-	let dialogueContainer = document.querySelector('.dialogue-text');
-	speakerContainer.textContent = 'Celeste';
-	dialogueContainer.textContent = 'Hello child! What can I do for you?';
+    let speakerContainer = document.querySelector('.speaker');
+    let dialogueContainer = document.querySelector('.dialogue-text');
+    speakerContainer.textContent = 'Celeste';
+    dialogueContainer.textContent = 'Hello child! What can I do for you?';
 
-	// get input if user click the DOWN arrow
-	const arrowElement = document.querySelector('.arrow');
-	// Add click event listener to the arrow element
-	arrowElement.addEventListener('click', boxInit); 
+    // get input if user click the DOWN arrow
+    const arrowElement = document.querySelector('.arrow');
+    // Add click event listener to the arrow element
+    arrowElement.addEventListener('click', boxInit);
 }
 
 /**
@@ -43,23 +43,23 @@ function inputCheck(pattern) {
  * Remove the arrow and add the input box
  */
 function boxInit() {
-	// proceed dialogue text
-	const arrowElement = document.querySelector('.arrow');
-	const exitElement = document.querySelector('#exitButton');
-	let curDialogue = document.querySelector('.dialogue-text');
-	curDialogue.textContent = 'Would you like to know what the stars say about your futures?'; 
+    // proceed dialogue text
+    const arrowElement = document.querySelector('.arrow');
+    const exitElement = document.querySelector('#exitButton');
+    let curDialogue = document.querySelector('.dialogue-text');
+    curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
 
-	// unhide the revert button
-	exitElement.style.display = 'block';
+    // unhide the revert button
+    exitElement.style.display = 'block';
 
-	arrowElement.removeEventListener('click', boxInit);
-	arrowElement.addEventListener('click', showBox);
-	exitElement.addEventListener('click', ()=>{
-		arrowElement.removeEventListener('click', showBox);
-		arrowElement.addEventListener('click', boxInit);
-		exitElement.style.display = 'none';
-		dialogueGo();
-	});
+    arrowElement.removeEventListener('click', boxInit);
+    arrowElement.addEventListener('click', showBox);
+    exitElement.addEventListener('click', ()=>{
+        arrowElement.removeEventListener('click', showBox);
+        arrowElement.addEventListener('click', boxInit);
+        exitElement.style.display = 'none';
+        dialogueGo();
+    });
 }
 
 
@@ -171,7 +171,7 @@ function monthCheck() {
 /**
  * Helper function for monthCheck and to avoid the recursive call.
  * Recursive call would lead to fatal error of variable update.
- * @param {*} event - Detects the user pressing enter 
+ * @param {*} event - Detects the user pressing enter
  */
 function handleKeyDownMonth(event) {
 	const boxInput = document.querySelector('#dataInput');
@@ -273,54 +273,54 @@ function checkMood() {
  * @param {*} event - Detects the user pressing enter
  */
 function handleKeyDownMood(event) {
-	const boxInput = document.querySelector('#dataInput');
+    const boxInput = document.querySelector('#dataInput');
 
-	// if validity check passes
-	if (event.key==='Enter') {
-		// remove the input box
-		console.log(boxInput.value);
-		// store mood
-		UserMood = boxInput.value;
-		let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
-		let UserConstellation = getConstellation(userBirthMonthDay);
+    // if validity check passes
+    if (event.key==='Enter') {
+        // remove the input box
+        console.log(boxInput.value);
+        // store mood
+        UserMood = boxInput.value;
+        let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
+        let UserConstellation = getConstellation(userBirthMonthDay);
 
-		// Powell!!!
-		if(UserMood == "Powell"){
-			UserConstellation = "Powell";
-		}
+        // Powell!!!
+        if(UserMood == "Powell"){
+            UserConstellation = "Powell";
+        }
 
-		boxInput.value = '';
-		boxInput.hidden = true;
-		let curDialogue = document.querySelector('.dialogue-text');
-		let curText = `The holy ${UserConstellation} answered your call!`;
-		// Powell!!!
-		if (UserMood == "Powell"){
-			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
-		}
-		curDialogue.textContent = curText;
-		boxInput.removeEventListener('input', checkMood);
-		boxInput.removeEventListener('keydown', handleKeyDownMood);
-		boxInput.removeEventListener('input', inputCheck(/.*/));
+        boxInput.value = '';
+        boxInput.hidden = true;
+        let curDialogue = document.querySelector('.dialogue-text');
+        let curText = `The holy ${UserConstellation} answered your call!`;
+        // Powell!!!
+        if (UserMood == "Powell"){
+            curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
+        }
+        curDialogue.textContent = curText;
+        boxInput.removeEventListener('input', checkMood);
+        boxInput.removeEventListener('keydown', handleKeyDownMood);
+        boxInput.removeEventListener('input', inputCheck(/.*/));
 
 
-		// ---------------------------------TODO----------------------------------
-		// TODO: need to get back to the previous phase if the user input 
-		// does not pass sanity
-		// ---------------------------------TODO----------------------------------
+        // ---------------------------------TODO----------------------------------
+        // TODO: need to get back to the previous phase if the user input
+        // does not pass sanity
+        // ---------------------------------TODO----------------------------------
 
-		
-		// animation
-		showConstellationImage(UserConstellation);
 
-		// change arrow back
-		const svg = document.querySelector('.arrow');
-		svg.style.display = "block";
-		svg.style.pointerEvents = 'auto';
-		svg.style.cursor = 'pointer';
+        // animation
+        showConstellationImage(UserConstellation);
 
-		// click to view result
-		svg.addEventListener('click', showPred);
-	}
+        // change arrow back
+        const svg = document.querySelector('.arrow');
+        svg.style.display = "block";
+        svg.style.pointerEvents = 'auto';
+        svg.style.cursor = 'pointer';
+
+        // click to view result
+        svg.addEventListener('click', showPred);
+    }
 } 
 
 /**
@@ -367,22 +367,48 @@ async function showPred() {
  * @param {string} string - The string to be split
  */
 async function split_and_display(string) {
-	const arrowElement = document.querySelector('.arrow');
-	arrowElement.style.display = 'none';
-	let curDialogue = document.querySelector('.dialogue-text');
-	let strings = await splitString(string);
+    const arrowElement = document.querySelector('.arrow');
+    arrowElement.style.display = 'none';
+    let curDialogue = document.querySelector('.dialogue-text');
+    let strings = await splitString(string);
 
-	strings.forEach((text, index) => {
-		setTimeout(() => {
-			curDialogue.textContent = text;
-			// Alternatively, you can display the text in the DOM or perform other actions
-		}, index * 4000);
-	});
+   //Loop thorugh each string, clear the dialogue box, and type the string
+    for (let i = 0; i < strings.length; i++) {
+        //Clear the box for each string
+        curDialogue.textContent = '';
+        await typeWriter(strings[i]);
+        //If user click box, skip the typing animation
+        curDialogue.addEventListener('click', () =>{
+            curDialogue.textContent = strings[i];
+        })
+        //If user click box, and string is printed already, show next string
+        if (curDialogue.textContent == strings[i]) {
+            continue;
+        }
+        //If user doesn't click box, wait for 2 seconds before showing next string
+        await delay(5000) // Adjust the delay between texts here (in milliseconds)
+    }
+    //Function that delays the arrow appearing
+    function arrow_delay() {
+        arrowElement.style.display = 'block';
+    }
+    setTimeout(arrow_delay, 7500);
+}
 
-	function arrow_delay() {
-		arrowElement.style.display = 'block';
-	}
-	setTimeout(arrow_delay, 7500);
+//Function that takes a string and makes a typing animation, output = dialogue-text
+async function typeWriter(string) {
+    let index = 0;
+    let curDialogue = document.querySelector('.dialogue-text');
+    function printNextChar() {
+        if (index < string.length) {
+        curDialogue.textContent += string[index];
+        index++;
+        return new Promise((resolve) => setTimeout(resolve, 100)); // Wait for 100ms before typing the next character
+        }
+    }
+    while (printNextChar()) {
+        await printNextChar();
+    }
 }
 
 /**
@@ -391,9 +417,13 @@ async function split_and_display(string) {
  * @returns {array} - The pieces of the split string
  */
 async function splitString(str) {
-	let chunkSize = 100;
-	let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
-	return chunks;
+    let chunkSize = 120;
+    let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
+    return chunks;
+}
+
+function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**
