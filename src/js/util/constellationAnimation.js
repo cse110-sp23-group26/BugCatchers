@@ -52,3 +52,4 @@ function showConstellationImage(constellation) {
 		image.remove();
 	}, totalDuration);
 }
+
