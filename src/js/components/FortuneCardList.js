@@ -4,8 +4,8 @@
  */
 class FortuneCardList extends HTMLElement {
 	/**
-     * Creates a FortuneCardList element.
-     */
+	 * Creates a FortuneCardList element.
+	 */
 	constructor() {
 		super();
 

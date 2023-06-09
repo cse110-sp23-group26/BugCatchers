@@ -34,9 +34,9 @@ div.greenMenu #menu {
 }
 
 div.greenMenu #CardList {
-    width: 20%;
-    height: auto;
-    position: absolute;
-    top: 2%;
-    left: 0.5%;
+	width: 20%;
+	height: auto;
+	position: absolute;
+	top: 2%;
+	left: 0.5%;
 }
