@@ -385,7 +385,7 @@ async function split_and_display(string) {
             continue;
         }
         //If user doesn't click box, wait for 2 seconds before showing next string
-        await delay(5000) // Adjust the delay between texts here (in milliseconds)
+        await delay(50000) // Adjust the delay between texts here (in milliseconds)
     }
     //Function that delays the arrow appearing
     function arrow_delay() {

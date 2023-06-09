@@ -71,14 +71,15 @@ function initializeCheckIn() {
 	}
 }
 
+// Handled in main-app.js
 // Event listener for the check-in button
-document.getElementById("check-in-button").addEventListener('click', function() {
-	let result = checkIn();
+// document.getElementById("check-in-button").addEventListener('click', function() {
+//	let result = checkIn();
 
 	// Update the display
-	document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + result.date;
-	document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
-});
+//	document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + result.date;
+//	document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
+//});
 
 // Initialize check-in data on page load
 document.addEventListener('DOMContentLoaded', initializeCheckIn);

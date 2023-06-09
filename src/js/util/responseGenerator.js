@@ -17,6 +17,7 @@ async function readJSON() {
 
 	let fortune = await fetch('conf/Fortunes.json');
 	fortune = await fortune.json();
+	
 	let transitional = await fetch('conf/Transitional.json');
 	transitional = await transitional.json();
 
@@ -55,7 +56,7 @@ function lowercaseStart(s) {
  */
 function responseMoney(sign) {
 	// Changed from concatenation to string templating to clean up code a bit
-	const fortune = randomSelectFortune(sign);
+	const fortune = generateFortuneObject(sign);
 	return `The stars have spoken. ${fortune.fortune_money_text} ${sign
 		} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
@@ -66,7 +67,7 @@ function responseMoney(sign) {
  * @returns {string} - The randomly generated fortune
  */
 function responseWork(sign) {
-	const fortune = randomSelectFortune(sign);
+	const fortune = generateFortuneObject(sign);
 	return `The stars are telling me your future. ${fortune.fortune_work_text} ${
 		sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
@@ -77,7 +78,7 @@ function responseWork(sign) {
  * @returns {string} - The randomly generated fortune
  */
 function responseRandom(sign) {
-	const fortune = randomSelectFortune(sign);
+	const fortune = generateFortuneObject(sign);
 	let random_text = [
 		fortune.fortune_money_text, 
 		fortune.fortune_school_text, 
