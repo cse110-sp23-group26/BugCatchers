@@ -5,16 +5,16 @@ let UserMood;
 
 
 function dialogueGo(speakerName, welcomeMsg) {
-    let speakerContainer = document.querySelector('.speaker');
-    let dialogueContainer = document.querySelector('.dialogue-text');
-    speakerContainer.textContent = speakerName;
-    dialogueContainer.textContent = welcomeMsg;
+	let speakerContainer = document.querySelector('.speaker');
+	let dialogueContainer = document.querySelector('.dialogue-text');
+	speakerContainer.textContent = speakerName;
+	dialogueContainer.textContent = welcomeMsg;
 
-    // get input if user click the DOWN arrow
-    const arrowElement = document.querySelector('.arrow');
-    // Add click event listener to the arrow element
-    arrowElement.addEventListener('click', boxInit);
-        
+	// get input if user click the DOWN arrow
+	const arrowElement = document.querySelector('.arrow');
+	// Add click event listener to the arrow element
+	arrowElement.addEventListener('click', boxInit);
+		
 }
 
 /**
@@ -40,71 +40,71 @@ function inputCheck(pattern) {
  * Remove the arrow and add the input box
  */
 function boxInit() {
-    // proceed dialogue text
-    const arrowElement = document.querySelector('.arrow');
-    let curDialogue = document.querySelector('.dialogue-text');
-    curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
+	// proceed dialogue text
+	const arrowElement = document.querySelector('.arrow');
+	let curDialogue = document.querySelector('.dialogue-text');
+	curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
 
-    // change arrow avg into yes text box
-    const rect = `
-        <rect width="100%" height="100%" rx="10" ry="10" fill="#1e3799"/>
-        <!-- this is for the extra style of the rectangular box
-            <rect width="100%" height="100%" rx="10" ry="10" fill="url(#pattern)"/>
-        -->
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">Yes!</text>
-    `;
-    arrowElement.innerHTML = rect;
-    arrowElement.style.bottom = '10%'; // originally 0
-    arrowElement.style.width = '80'; // originally 45
-    arrowElement.style.height = '50'; // originally 25 
+	// change arrow avg into yes text box
+	const rect = `
+		<rect width="100%" height="100%" rx="10" ry="10" fill="#1e3799"/>
+		<!-- this is for the extra style of the rectangular box
+			<rect width="100%" height="100%" rx="10" ry="10" fill="url(#pattern)"/>
+		-->
+		<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">Yes!</text>
+	`;
+	arrowElement.innerHTML = rect;
+	arrowElement.style.bottom = '10%'; // originally 0
+	arrowElement.style.width = '80'; // originally 45
+	arrowElement.style.height = '50'; // originally 25 
 
-    arrowElement.removeEventListener('click', boxInit);
-    arrowElement.addEventListener('click', showBox);
+	arrowElement.removeEventListener('click', boxInit);
+	arrowElement.addEventListener('click', showBox);
 }
 
 /**
  * Hide the arrow and show the input box
  */
 function showBox() {
-    // select the arrow and hide it
-    const arrowElement = document.querySelector('.arrow');
-    arrowElement.style.display = 'none';
-    arrowElement.style.pointerEvents = 'none';
+	// select the arrow and hide it
+	const arrowElement = document.querySelector('.arrow');
+	arrowElement.style.display = 'none';
+	arrowElement.style.pointerEvents = 'none';
 
-    // show the input box
-    const boxInput = document.querySelector('#dataInput');
-    boxInput.removeAttribute('hidden');
+	// show the input box
+	const boxInput = document.querySelector('#dataInput');
+	boxInput.removeAttribute('hidden');
 
-    let curDialogue = document.querySelector('.dialogue-text');
-    curDialogue.textContent = 'Now tell me, what day were you born? (enter to proceed)';
-    boxInput.style.letterSpacing = '12px';
-    boxInput.placeholder = 'dd';
+	let curDialogue = document.querySelector('.dialogue-text');
+	curDialogue.textContent = 'Now tell me, what day were you born? (enter to proceed)';
+	boxInput.style.letterSpacing = '12px';
+	boxInput.placeholder = 'dd';
 
-    arrowElement.removeEventListener('click', showBox);
-    boxInput.addEventListener('input', dayCheck);
+	arrowElement.removeEventListener('click', showBox);
+	boxInput.addEventListener('input', dayCheck);
 
-    // If the user has already input the birthday, show it as default
-    if(localStorage.getItem('UserBirthDay')){
-        boxInput.value = localStorage.getItem('UserBirthDay');
+	// If the user has already input the birthday, show it as default
+	if(localStorage.getItem('UserBirthDay')){
+		boxInput.value = localStorage.getItem('UserBirthDay');
 
-        // Manually trigger input event to check validity
-        const event = new Event('input');
-        boxInput.dispatchEvent(event);
-    }
+		// Manually trigger input event to check validity
+		const event = new Event('input');
+		boxInput.dispatchEvent(event);
+	}
 }
 
 /**
  * Check the input of day from user
  */
 function dayCheck() {
-    const boxInput = document.querySelector('#dataInput');
+	const boxInput = document.querySelector('#dataInput');
 
-    // check validity
-    const pattern = /^(0[1-9]|[1-2][0-9]|3[0-1])$/
-    boxInput.addEventListener('input', inputCheck(pattern));
+	// check validity
+	const pattern = /^(0[1-9]|[1-2][0-9]|3[0-1])$/
+	boxInput.addEventListener('input', inputCheck(pattern));
 
-    // record data
-    boxInput.addEventListener('keydown', handleKeyDownDay);
+	// record data
+	boxInput.addEventListener('keydown', handleKeyDownDay);
 }
 
 /**
@@ -118,7 +118,6 @@ function handleKeyDownDay(event) {
 
 	// if validity check passes
 	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
-		// console.log(boxInput.value);
 		// store birthday
 		UserBirthDay = boxInput.value;
 		// cache in local storage
@@ -149,16 +148,16 @@ function handleKeyDownDay(event) {
  * Check the input of month from user
  */
 function monthCheck() {
-    const boxInput = document.querySelector('#dataInput');
+	const boxInput = document.querySelector('#dataInput');
 
-    // remove previous input listener style checker
-    boxInput.removeEventListener('input', inputCheck(/^(0[1-9]|[1-2][0-9]|3[0-1])$/));
+	// remove previous input listener style checker
+	boxInput.removeEventListener('input', inputCheck(/^(0[1-9]|[1-2][0-9]|3[0-1])$/));
 
-    // check validity
-    boxInput.addEventListener('input', inputCheck(/^(0[1-9]|1[0-2])$/));
+	// check validity
+	boxInput.addEventListener('input', inputCheck(/^(0[1-9]|1[0-2])$/));
 
-    // record data
-    boxInput.addEventListener('keydown', handleKeyDownMonth);
+	// record data
+	boxInput.addEventListener('keydown', handleKeyDownMonth);
 }
 
 /**
@@ -203,16 +202,16 @@ function handleKeyDownMonth(event) {
  * Check the input of year from user
  */
 function yearCheck() {
-    const boxInput = document.querySelector('#dataInput');
+	const boxInput = document.querySelector('#dataInput');
 
-    // remove previous input listener style checker
-    boxInput.removeEventListener('input', inputCheck(/^(0[1-9]|1[0-2])$/));
+	// remove previous input listener style checker
+	boxInput.removeEventListener('input', inputCheck(/^(0[1-9]|1[0-2])$/));
 
-    // check validity
-    boxInput.addEventListener('input', inputCheck(/^(19[0-9]{2}|20[0-1][0-9]|202[0-3])$/));
+	// check validity
+	boxInput.addEventListener('input', inputCheck(/^(19[0-9]{2}|20[0-1][0-9]|202[0-3])$/));
 
-    // record data
-    boxInput.addEventListener('keydown', handleKeyDownYear);
+	// record data
+	boxInput.addEventListener('keydown', handleKeyDownYear);
 }
 
 /**
@@ -226,7 +225,6 @@ function handleKeyDownYear(event) {
 
 	// if validity check passes
 	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
-		// console.log(boxInput.value);
 		// store birth year
 		UserBirthYear = boxInput.value;
 		// cache in local storage
@@ -248,16 +246,16 @@ function handleKeyDownYear(event) {
  * Check the input of mood from user
  */
 function checkMood() {
-    const boxInput = document.querySelector('#dataInput');
+	const boxInput = document.querySelector('#dataInput');
 
-    // remove previous input listener style checker
-    boxInput.removeEventListener('input', inputCheck(/^(19[0-9]{2}|20[0-1][0-9]|202[0-3])$/));
+	// remove previous input listener style checker
+	boxInput.removeEventListener('input', inputCheck(/^(19[0-9]{2}|20[0-1][0-9]|202[0-3])$/));
 
-    // unrestrict
-    boxInput.addEventListener('input', inputCheck(/.*/));
+	// unrestrict
+	boxInput.addEventListener('input', inputCheck(/.*/));
 
-    // record data
-    boxInput.addEventListener('keydown', handleKeyDownMood);
+	// record data
+	boxInput.addEventListener('keydown', handleKeyDownMood);
 }
 
 /**
@@ -347,7 +345,7 @@ async function showPred() {
 	addFortuneCard(new_fortunes);
 	// update the Fortune card list
 	updateFortuneCardList();
-
+  
 	split_and_display(response);
 	
 	arrowElement.removeEventListener('click', showPred);
@@ -355,46 +353,44 @@ async function showPred() {
 }
 
 async function split_and_display(string){
-    const arrowElement = document.querySelector('.arrow');
-    arrowElement.style.display = 'none';
-    let curDialogue = document.querySelector('.dialogue-text');
-    let strings = splitString(string);
-
+	const arrowElement = document.querySelector('.arrow');
+	arrowElement.style.display = 'none';
+	let curDialogue = document.querySelector('.dialogue-text');
+	let strings = splitString(string);
 
    //Loop thorugh each string, clear the dialogue box, and type the string
-    for (let i = 0; i < strings.length; i++) {
-        let stringArr = strings[i].split("");
-        //Clear the box for each string
-        curDialogue.textContent = '';
-        //Type the string
-        let intervalId = typeWriter(stringArr, 100);
-        //If user click box, skip the typing animation
-        curDialogue.addEventListener('click', () =>{
-            clearInterval(intervalId);
-            curDialogue.textContent += stringArr.join("");
-        });
-        
-        //If user doesn't click box, wait for 2 seconds before showing next string
-        await delay(6000) // Adjust the delay between texts here (in milliseconds)
-    }
-    //Function that delays the arrow appearing
-    function arrow_delay() {
-        arrowElement.style.display = 'block';
-    }
-    setTimeout(arrow_delay, 7500);
+	function advanceDialogue(){
+		if (strings.length <= 0) return;
+		let stringArr = strings.splice(0, 1).split("");
+		//Clear the box for each string
+		curDialogue.textContent = '';
+		//Type the string
+		let intervalId = typeWriter(stringArr, 100);
+		//If user click box, skip the typing animation
+		curDialogue.addEventListener('click', function() {
+			clearInterval(intervalId);
+			if (stringArr.length > 0) {
+		   		curDialogue.textContent += stringArr.join("");
+			} else {
+				curDialogue.removeEventListener("click", this);
+				advanceDialogue();
+			}
+		});
+	}
+	advanceDialogue();
 }
 
 //Function that takes a string and makes a typing animation, output = dialogue-text
 function typeWriter(stringArr, delay) {
-    let curDialogue = document.querySelector('.dialogue-text');
-    let intervalId = setInterval(()=>{
-        if (stringArr.length > 0) {
-            curDialogue.textContent += string.splice(0, 1);
-        } else {
-            clearInterval(intervalId);
-        }
-    }, delay);
-    return intervalId;
+	let curDialogue = document.querySelector('.dialogue-text');
+	let intervalId = setInterval(()=>{
+		if (stringArr.length > 0) {
+			curDialogue.textContent += string.splice(0, 1);
+		} else {
+			clearInterval(intervalId);
+		}
+	}, delay);
+	return intervalId;
 }
 
 /**
@@ -409,18 +405,18 @@ async function splitString(str) {
 }
 
 function delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getMonthString(monthNumber) {
-    const months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
+	const months = [
+	  'January', 'February', 'March', 'April', 'May', 'June',
+	  'July', 'August', 'September', 'October', 'November', 'December'
+	];
   
-    if (monthNumber >= 1 && monthNumber <= 12) {
-      return months[monthNumber - 1];
-    } else {
-      return 'None';
-    }
+	if (monthNumber >= 1 && monthNumber <= 12) {
+	  return months[monthNumber - 1];
+	} else {
+	  return 'None';
+	}
 }
