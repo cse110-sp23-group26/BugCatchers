@@ -15,14 +15,27 @@ div.bg {
 	background-size: cover;
 	width: 100vw;
 	height: 100vh;
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
 }
 
 div.bg #char {
-	height: 60%;
+	position: absolute;
+	height: 100%;
 	width: auto;
+	offset-path: path("M 0 0 Q 9.9451 5.259 11.1115 -1.7599 Q 7.8333 -8.0748 0 0 Q -7.8333 8.0748 -11.1115 1.7599 Q -9.9451 -5.259 0 0");
+	offset-rotate: 0deg;
+	animation: movepath 10s infinite linear;
+	bottom: -51%;
+	left: 50%;
+}
+
+@keyframes movepath {
+	0% {
+		offset-distance: 0%;
+	}
+
+	100% {
+		offset-distance: 100%;
+	}
 }
 
 div.greenMenu #menu {
