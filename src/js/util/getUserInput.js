@@ -26,13 +26,13 @@ function inputCheck(pattern) {
 	const inputValue = boxInput.value;
 	const valid = pattern.test(inputValue);
 
-	// console.log(pattern);
-
 	// check validity
-	if (valid) {
-		boxInput.style.color = 'black'; 
+	if (valid || (!inputValue)) {
+		boxInput.style.border = "2px solid #071b6c";
+        boxInput.style.boxShadow = "0px 8px 15px rgba(0, 0, 0, 0.1)";
 	} else {
-		boxInput.style.color = 'red';
+		boxInput.style.border = "2px solid red";
+        boxInput.style.boxShadow = "0px 0px 10px 3px red";
 	}
 }
 
@@ -117,19 +117,20 @@ function handleKeyDownDay(event) {
 	const computedStyle = window.getComputedStyle(boxInput);
 
 	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
-		console.log(boxInput.value);
+	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
 		// store birthday
 		UserBirthDay = boxInput.value;
 		// cache in local storage
 		localStorage.setItem('UserBirthDay', UserBirthDay);
 		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Curious! Now, what month were you born? (enter to proceed)';
+		curDialogue.textContent = 'Curious! Now, what month were you born?';
 
 		boxInput.removeEventListener('input', dayCheck);
 		boxInput.removeEventListener('keydown', handleKeyDownDay);
 		boxInput.value = '';
 		boxInput.placeholder = 'mm';
+		boxInput.setAttribute("min", "1");
+		boxInput.setAttribute("max", "12");
 		boxInput.addEventListener('input', monthCheck);
 
 		// If the user has already input the birthday, show it as default
@@ -169,19 +170,21 @@ function handleKeyDownMonth(event) {
 	const computedStyle = window.getComputedStyle(boxInput);
 
 	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
-		console.log(boxInput.value);
+	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
+		// console.log(boxInput.value);
 		// store birth month
 		UserBirthMonth = boxInput.value;
 		// cache in local storage
 		localStorage.setItem('UserBirthMonth', UserBirthMonth);
 		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Oh! Do tell me the year you were born (enter to proceed)';
+		curDialogue.textContent = 'Oh! Do tell me the year you were born!';
 
 		boxInput.removeEventListener('input', monthCheck);
 		boxInput.removeEventListener('keydown', handleKeyDownMonth);
 		boxInput.value = '';
 		boxInput.placeholder = 'yyyy';
+		boxInput.setAttribute("min", "1900");
+		boxInput.setAttribute("max", "2023");
 		boxInput.addEventListener('input', yearCheck);
 
 		// If the user has already input the birthday, show it as default
@@ -221,8 +224,7 @@ function handleKeyDownYear(event) {
 	const computedStyle = window.getComputedStyle(boxInput);
 
 	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.color==='rgb(0, 0, 0)')) {
-		console.log(boxInput.value);
+	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
 		// store birth year
 		UserBirthYear = boxInput.value;
 		// cache in local storage
@@ -233,6 +235,7 @@ function handleKeyDownYear(event) {
 		boxInput.removeEventListener('keydown', handleKeyDownYear);
 		boxInput.value = '';
 		boxInput.placeholder = 'Anything';
+		boxInput.setAttribute("type", "text");
 		boxInput.style.letterSpacing = 'normal';
 		boxInput.removeAttribute('placeholder');
 		boxInput.addEventListener('input', checkMood);
@@ -261,55 +264,55 @@ function checkMood() {
  * @param {*} event 
  */
 function handleKeyDownMood(event) {
-	const boxInput = document.querySelector('#dataInput');
+    const boxInput = document.querySelector('#dataInput');
 
-	// if validity check passes
-	if (event.key==='Enter') {
-		// remove the input box
-		console.log(boxInput.value);
-		// store mood
-		UserMood = boxInput.value;
-		let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
-		let UserConstellation = getConstellation(userBirthMonthDay);
+    // if validity check passes
+    if (event.key==='Enter') {
+        // console.log(boxInput.value);
+        // store mood
+        UserMood = boxInput.value;
+        let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
+        let UserConstellation = getConstellation(userBirthMonthDay);
 
-		// Powell!!!
-		if(UserMood == "Powell"){
-			UserConstellation = "Powell";
-		}
+        // Powell!!!
+        if(UserMood == "Powell"){
+            UserConstellation = "Powell";
+        }
 
-		boxInput.value = '';
-		boxInput.hidden = true;
-		let curDialogue = document.querySelector('.dialogue-text');
-		let curText = `The holy ${UserConstellation} answered your call!`;
-		// Powell!!!
-		if (UserMood == "Powell"){
-			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
-		}
-		curDialogue.textContent = curText;
-		boxInput.removeEventListener('input', checkMood);
-		boxInput.removeEventListener('keydown', handleKeyDownMood);
-		boxInput.removeEventListener('input', inputCheck(/.*/));
+        // remove the input box
+        boxInput.value = '';
+        boxInput.hidden = true;
+        let curDialogue = document.querySelector('.dialogue-text');
+        let curText = `The holy ${UserConstellation} answered your call!`;
+        // Powell!!!
+        if (UserMood == "Powell"){
+            curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
+        }
+        curDialogue.textContent = curText;
+        boxInput.removeEventListener('input', checkMood);
+        boxInput.removeEventListener('keydown', handleKeyDownMood);
+        boxInput.removeEventListener('input', inputCheck(/.*/));
 
-		// animation
-		showConstellationImage(UserConstellation);
+        // animation
+        showConstellationImage(UserConstellation);
 
-		// change arrow back
-		const svg = document.querySelector('.arrow');
-		svg.style.display = "block";
-		svg.style.pointerEvents = 'auto';
-		svg.style.cursor = 'pointer';
+        // change arrow back
+        const svg = document.querySelector('.arrow');
+        svg.style.display = "block";
+        svg.style.pointerEvents = 'auto';
+        svg.style.cursor = 'pointer';
 
-		const origArr = `
-			<path d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
-		`;
-		svg.innerHTML = origArr;
-		svg.style.bottom = '0'; 
-		svg.style.width = '45'; 
-		svg.style.height = '25';
+        const origArr = `
+            <path d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
+        `;
+        svg.innerHTML = origArr;
+        svg.style.bottom = '0'; 
+        svg.style.width = '45'; 
+        svg.style.height = '25';
 
-		// click to view result
-		svg.addEventListener('click', showPred);
-	}
+        // click to view result
+        svg.addEventListener('click', showPred);
+    }
 } 
 
 /**
@@ -317,18 +320,16 @@ function handleKeyDownMood(event) {
  */
 async function showPred() {
 	const arrowElement = document.querySelector('.arrow');
-	let curDialogue = document.querySelector('.dialogue-text');
 
 	// based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
 	// generate response
 	let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
 	let UserConstellation = getConstellation(userBirthMonthDay);
-	let response = await GetJsonResponse(UserConstellation, UserBirthDay, UserBirthMonth, UserBirthYear, UserMood);
-	
+	let response = await generateFinalFortune(UserConstellation);
 	// Powell!!!
 	if (UserMood == "Powell"){
 		UserConstellation = "Powell";
-		response = "Professor Powell: Hello, kids! \n Did you checked your MIDTERM grade? \n Do you like it? \n RELAX! Just ask. I won't change it even though you don't like it.";
+		response = "Professor Powell: Hello, kids! Did you checked your MIDTERM grade? Do you like it? RELAX! Just ask. I won't change it even though you don't like it.";
 	}
 	// add the fortune card to local storage
 	// current response date
@@ -344,8 +345,7 @@ async function showPred() {
 	addFortuneCard(new_fortunes);
 	// update the Fortune card list
 	updateFortuneCardList();
-
-	//curDialogue.textContent = "114514";
+  
 	split_and_display(response);
 	
 	arrowElement.removeEventListener('click', showPred);
@@ -393,11 +393,15 @@ function typeWriter(stringArr, delay) {
 	return intervalId;
 }
 
-//Function that takes a string and splits it into chunks of 100 characters
-function splitString(str) {
-	let chunkSize = 100;
-	let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
-	return chunks;
+/**
+ * Splits a string into chunks of maximum size 100 characters.
+ * @param {string} str - The string to be split
+ * @returns {array} - The pieces of the split string
+ */
+async function splitString(str) {
+    let chunkSize = 100;
+    let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
+    return chunks;
 }
 
 function delay(ms) {
