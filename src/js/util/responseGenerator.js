@@ -57,7 +57,7 @@ function lowercaseStart(s) {
 function responseMoney(sign) {
 	// Changed from concatenation to string templating to clean up code a bit
 	const fortune = generateFortuneObject(sign);
-	return `The stars have spoken. ${fortune.fortune_money_text} ${sign
+	return `The stars have revealed your wealth. ${fortune.fortune_money_text} ${sign
 		} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
 
@@ -69,6 +69,28 @@ function responseMoney(sign) {
 function responseWork(sign) {
 	const fortune = generateFortuneObject(sign);
 	return `The stars are telling me your future. ${fortune.fortune_work_text} ${
+		sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+/**
+ * Randomly generates a fortune about school
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseSchool(sign) {
+	const fortune = generateFortuneObject(sign);
+	return `The stars show your success in school. ${fortune.fortune_school_text} ${
+		sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+/**
+ * Randomly generates a fortune about relation
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseRelation(sign) {
+	const fortune = generateFortuneObject(sign);
+	return `The stars are giving you love and happiness. ${fortune.fortune_relation_text} ${
 		sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
 }
 
@@ -98,7 +120,7 @@ readJSON().then(e =>{
 })
 
 // A list of functions that can be used to generate a fortune
-const GENERATORS = [responseMoney, responseWork, responseRandom];
+const GENERATORS = [responseMoney, responseWork, responseSchool, responseRelation, responseRandom];
 
 /**
  * Generates an object that has a specific fortune for a variety of categories for a response generator to use
