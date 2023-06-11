@@ -94,7 +94,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 			boxInput.value = birthMonth;
 		}
 	
-		writeToDialogue("Now tell me, what month were you born?");
+		let cancelTyping = writeToDialogue("Now tell me, what month were you born?");
 	
 		function submitMonth(e) {
 			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
@@ -103,6 +103,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 					userBirthMonth = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitMonth);
 					boxInput.removeEventListener("keydown", submitMonth);
+					cancelTyping[0]();
 					getBirthDay();
 				}
 			}
@@ -116,7 +117,8 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 
 	
 	function getBirthDay() {
-		writeToDialogue("Curious! Now, what day were you born?");
+
+		let cancelTyping = writeToDialogue("Curious! Now, what day were you born?");
 
 		boxInput.value = "";
 		boxInput.type = "number";
@@ -136,6 +138,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 					userBirthDay = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitDay);
 					boxInput.removeEventListener("keydown", submitDay);
+					cancelTyping[0]();
 					getBirthYear();
 				}
 			}
@@ -147,7 +150,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 	}
 
 	function getBirthYear() {
-		writeToDialogue("Oh! Do tell me the year you were born!");
+		let cancelTyping = writeToDialogue("Oh! Do tell me the year you were born!");
 
 		boxInput.value = "";
 		boxInput.type = "number";
@@ -167,6 +170,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 					userBirthYear = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitYear);
 					boxInput.removeEventListener("keydown", submitYear);
+					cancelTyping[0]();
 					getMood();
 				}
 			}
@@ -217,52 +221,66 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 	 * Get prediction and back to the main page
 	 */
 	async function showPred() {
-	
+		// Hide the text input
 		document.querySelector('.interactive > label').style.display = "none";
 		
-		// based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
-		// generate response
+		// Based on user info, generate a response
 		let userBirthMonthDay = getMonthString(userBirthMonth) + ' ' + userBirthDay;
 		let userConstellation = getConstellation(userBirthMonthDay);
+		let response = await generateFinalFortune(userConstellation);
 
 		if (userMood == "Powell"){
 			userConstellation = "Powell";
 		}
 
-		let response = await generateFinalFortune(userConstellation);
-
 		let curText = `The holy ${userConstellation} answered your call!`;
 		// Powell!!!
-		if (userMood == "Powell"){
-			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
-		}
-		console.log(userMood);
-		writeToDialogue(curText, userMood === "Powell" ? "Powell " : speakerName, ()=>{
-			writeToDialogue(response);
-		}, () => {
-			showConstellationImage(userConstellation);
-		});
-		
-		// Powell!!!
-		if (userMood == "Powell"){
+		if (userMood == "Powell") {
+			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call...";
 			response = "Hello, kids! Did you check your MIDTERM grade? Do you like it? RELAX! I'm just asking. I won't change it even if you don't like it.";
 		}
+		
 		// add the fortune card to local storage
 		// current response date
 		const currentDate = new Date();
-		const currentYear = currentDate.getFullYear();
-		const currentMonth = currentDate.getMonth() + 1;
-		const currentDay = currentDate.getDate();
-		const currentHour = currentDate.getHours();
-		const currentMinute = currentDate.getMinutes();
-		const currentSecond = currentDate.getSeconds();
-		const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}:${currentSecond}`;
-		let newFortunes = {"name": userConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": userMood, "time": dateString, };
+		const dateString = `${
+			currentDate.getFullYear()
+		}-${
+			currentDate.getMonth() + 1
+		}-${
+			currentDate.getDate()
+		}: ${
+			currentDate.getHours()
+		}:${
+			currentDate.getMinutes()
+		}:${
+			currentDate.getSeconds()
+		}`;
+
+		let newFortunes = {
+			"name": userConstellation,
+			"id": Date.now(),
+			"text": response,
+			"birthday": userBirthMonthDay,
+			"mood": userMood,
+			"time": dateString
+		};
+
 		addFortuneCard(newFortunes);
 		// update the Fortune card list
 		updateFortuneCardList();
-		
-		arrowElement.removeEventListener('click', showPred);
-		arrowElement.addEventListener('click', boxInit);
+
+		writeToDialogue(curText, null, ()=>{
+			let char = document.getElementById("char");
+			if (userMood === "Powell") {
+				char.src = "assets/constellation/big/white/Powell.png";
+			}
+			writeToDialogue(response, userMood === "Powell" ? "Powell " : speakerName, () =>{
+				char.src = "assets/char-celeste.png";
+				promptAstrology();
+			});
+		}, () => {
+			showConstellationImage(userConstellation);
+		});
 	}
 }

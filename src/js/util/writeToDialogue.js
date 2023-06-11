@@ -64,6 +64,8 @@ function writeToDialogue(text, speaker, userNext, doneTyping){
 		return intervalId;
 	}
 
+	let cancelFunc = [];
+
 	/**
 	 * Types out all of the strings in the "strings" array, adds an event listener
 	 * to print out the rest of the current dialogue line when clicked, advances 
@@ -79,8 +81,7 @@ function writeToDialogue(text, speaker, userNext, doneTyping){
 		// Populate the shadow text so that the bounding box is filled
 		shadowText.textContent = stringArr.join("");
 		// Type the string
-		let intervalId = typeWriter(TYPING_DELAY);
-		
+		let intervalId = typeWriter(TYPING_DELAY);		
 
 		function handleClick() {
 			clearInterval(intervalId);
@@ -98,6 +99,8 @@ function writeToDialogue(text, speaker, userNext, doneTyping){
 			}
 		}
 
+		cancelFunc.splice(0, 1, handleClick);
+
 		// If user clicks box, skip the typing animation
 		// or display the next line of text if done typing
 		textBox.addEventListener('click', handleClick);
@@ -105,4 +108,5 @@ function writeToDialogue(text, speaker, userNext, doneTyping){
 	
 	// Start the sequence to step through the dialogue
 	advanceDialogue();
+	return cancelFunc;
 }
