@@ -4,17 +4,8 @@ let UserBirthYear;
 let UserMood;
 
 
-function dialogueGo(speakerName, welcomeMsg) {
-	let speakerContainer = document.querySelector('.speaker');
-	let dialogueContainer = document.querySelector('.dialogue-text');
-	speakerContainer.textContent = speakerName;
-	dialogueContainer.textContent = welcomeMsg;
-
-	// get input if user click the DOWN arrow
-	const arrowElement = document.querySelector('.arrow');
-	// Add click event listener to the arrow element
-	arrowElement.addEventListener('click', boxInit);
-		
+function dialogueGo(welcomeMsg, speakerName) {
+	writeToDialogue(welcomeMsg, speakerName, boxInit);
 }
 
 /**
@@ -42,43 +33,33 @@ function inputCheck(pattern) {
 function boxInit() {
 	// proceed dialogue text
 	const arrowElement = document.querySelector('.arrow');
-	let curDialogue = document.querySelector('.dialogue-text');
-	curDialogue.textContent = 'Would you like to know what the stars say about your futures?';
+	arrowElement.style.display = "none";
+	writeToDialogue('Would you like to know what the stars say about your future?', null, null, () => {
+		let button = document.querySelector(".interactive > button");
+		button.textContent = "Yes!"
+		button.style.display = "";
 
-	// change arrow avg into yes text box
-	const rect = `
-		<rect width="100%" height="100%" rx="10" ry="10" fill="#1e3799"/>
-		<!-- this is for the extra style of the rectangular box
-			<rect width="100%" height="100%" rx="10" ry="10" fill="url(#pattern)"/>
-		-->
-		<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">Yes!</text>
-	`;
-	arrowElement.innerHTML = rect;
-	arrowElement.style.bottom = '10%'; // originally 0
-	arrowElement.style.width = '80'; // originally 45
-	arrowElement.style.height = '50'; // originally 25 
+		function handleClick(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			button.removeEventListener("click", handleClick);
+			button.style.display = "none";
+			showBox(button);
+		}
 
-	arrowElement.removeEventListener('click', boxInit);
-	arrowElement.addEventListener('click', showBox);
+		button.addEventListener("click", handleClick);
+	});
 }
 
 /**
  * Hide the arrow and show the input box
  */
 function showBox() {
-	// select the arrow and hide it
-	const arrowElement = document.querySelector('.arrow');
-	arrowElement.style.display = 'none';
-	arrowElement.style.pointerEvents = 'none';
-
 	// show the input box
 	const boxInput = document.querySelector('#dataInput');
 	boxInput.removeAttribute('hidden');
 
-	let curDialogue = document.querySelector('.dialogue-text');
-	curDialogue.textContent = 'Now tell me, what day were you born? (enter to proceed)';
-	boxInput.style.letterSpacing = '12px';
-	boxInput.placeholder = 'dd';
+	writeToDialogue("Now tell me, what day were you born?");
 
 	arrowElement.removeEventListener('click', showBox);
 	boxInput.addEventListener('input', dayCheck);
@@ -319,6 +300,20 @@ function handleKeyDownMood(event) {
  * Get prediction and back to the main page
  */
 async function showPred() {
+
+	function getMonthString(monthNumber) {
+		const months = [
+			'January', 'February', 'March', 'April', 'May', 'June',
+			'July', 'August', 'September', 'October', 'November', 'December'
+		];
+	
+		if (monthNumber >= 1 && monthNumber <= 12) {
+			return months[monthNumber - 1];
+		} else {
+			return 'None';
+		}
+	}
+
 	const arrowElement = document.querySelector('.arrow');
 
 	// based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
@@ -350,73 +345,4 @@ async function showPred() {
 	
 	arrowElement.removeEventListener('click', showPred);
 	arrowElement.addEventListener('click', boxInit);
-}
-
-async function split_and_display(string){
-	const arrowElement = document.querySelector('.arrow');
-	arrowElement.style.display = 'none';
-	let curDialogue = document.querySelector('.dialogue-text');
-	let strings = splitString(string);
-
-   //Loop thorugh each string, clear the dialogue box, and type the string
-	function advanceDialogue(){
-		if (strings.length <= 0) return;
-		let stringArr = strings.splice(0, 1).split("");
-		//Clear the box for each string
-		curDialogue.textContent = '';
-		//Type the string
-		let intervalId = typeWriter(stringArr, 100);
-		//If user click box, skip the typing animation
-		curDialogue.addEventListener('click', function() {
-			clearInterval(intervalId);
-			if (stringArr.length > 0) {
-		   		curDialogue.textContent += stringArr.join("");
-			} else {
-				curDialogue.removeEventListener("click", this);
-				advanceDialogue();
-			}
-		});
-	}
-	advanceDialogue();
-}
-
-//Function that takes a string and makes a typing animation, output = dialogue-text
-function typeWriter(stringArr, delay) {
-	let curDialogue = document.querySelector('.dialogue-text');
-	let intervalId = setInterval(()=>{
-		if (stringArr.length > 0) {
-			curDialogue.textContent += string.splice(0, 1);
-		} else {
-			clearInterval(intervalId);
-		}
-	}, delay);
-	return intervalId;
-}
-
-/**
- * Splits a string into chunks of maximum size 100 characters.
- * @param {string} str - The string to be split
- * @returns {array} - The pieces of the split string
- */
-async function splitString(str) {
-    let chunkSize = 100;
-    let chunks = str.match(new RegExp(String.raw`\S(?:.{0,${chunkSize - 2}}\S)?(?= |$)`, 'g'));
-    return chunks;
-}
-
-function delay(ms) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function getMonthString(monthNumber) {
-	const months = [
-	  'January', 'February', 'March', 'April', 'May', 'June',
-	  'July', 'August', 'September', 'October', 'November', 'December'
-	];
-  
-	if (monthNumber >= 1 && monthNumber <= 12) {
-	  return months[monthNumber - 1];
-	} else {
-	  return 'None';
-	}
 }

@@ -5,19 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="css/global-styles.css">
 	<link rel="stylesheet" type="text/css" href="css/text-box.css">
 	<link rel="stylesheet" type="text/css" href="css/check-in.css">
-	<script src="js/main-app.js"></script>
-  	<script src="js/util/checkIn.js"></script>
-	<script src="js/util/addFortuneCard.js"></script>
-    <script src="js/util/getUserInput.js"></script>
-	<script src="js/util/getConstellation.js"></script>
-	<script src="js/util/getConstellationColor.js"></script>
-	<script src="js/util/constellationAnimation.js"></script>
-	<script src="js/util/responseGenerator.js"></script>
-	
-	<!-- WebComponents -->
-	<script src="js/components/FortuneCard.js" type="module"></script>
-	<script src="js/components/FortuneModal.js" type="module"></script>
-	<script src="js/components/FortuneCardList.js" type="module"></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,11 +35,15 @@
 			</div>
 			<div class="dialogue-text">
 				<!-- This is where character dialogue goes -->
+				<span class="text"></span>
+				<span class="shadow-text"></span>
+				<div class="interactive">
+					<!-- This is where interactive buttons and inputs go -->
+					<input type="text" id="dataInput" hidden>
+					<button style="display: none"></button>
+				</div>
 			</div>
-			<div class="interactive">
-				<!-- This is where interactive buttons and inputs go -->
-                <input type="text" id="dataInput" hidden>
-			</div>
+			
 		</div>
 		<div class="dialogue-character-wrap">
 			<div class="dialogue-character">
@@ -61,12 +52,23 @@
 				</span>
 			</div>
 		</div>
-        <svg class="arrow" width="45" height="25" viewBox="0 0 45 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="arrow-path" d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
-        </svg>
-		<svg id="exitButton" width="45" height="25" viewBox="0 0 45 25" class="exit-btn" xmlns="http://www.w3.org/2000/svg" display="none">
-			<path class="exit-btn-line" d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white" transform="rotate(90 22.5 12.5)"/>
+		<svg class="arrow" width="45" height="25" viewBox="0 0 45 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path class="arrow-path" d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
 		</svg>
 	</section>
+	<script src="js/util/writeToDialogue.js"></script>
+	<script src="js/main-app.js"></script>
+  	<script src="js/util/checkIn.js"></script>
+	<script src="js/util/addFortuneCard.js"></script>
+	<script src="js/util/getUserInput.js"></script>
+	<script src="js/util/getConstellation.js"></script>
+	<script src="js/util/getConstellationColor.js"></script>
+	<script src="js/util/constellationAnimation.js"></script>
+	<script src="js/util/responseGenerator.js"></script>
+	
+	<!-- WebComponents -->
+	<script src="js/components/FortuneCard.js" type="module"></script>
+	<script src="js/components/FortuneModal.js" type="module"></script>
+	<script src="js/components/FortuneCardList.js" type="module"></script>
 </body>
 </html>
