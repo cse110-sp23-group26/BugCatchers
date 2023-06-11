@@ -1,305 +1,204 @@
-let UserBirthDay;
-let UserBirthMonth;
-let UserBirthYear;
-let UserMood;
+let userBirthDay;
+let userBirthMonth;
+let userBirthYear;
+let userMood;
 
+const DAYS_IN_MONTH = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-function dialogueGo(welcomeMsg, speakerName) {
-	writeToDialogue(welcomeMsg, speakerName, boxInit);
-}
+async function startDialogueSequence(welcomeMsg, speakerName) {
+	// Wait a second before typing to let the starting bubble animation play
+	await (new Promise((res,rej)=>{setTimeout(res,1000)}));
 
-/**
- * Check whether the input of the user is valid
- * @param {*} pattern 
- */
-function inputCheck(pattern) {
+	// Writes the welcome dialogue and then prompts the user for astrology
+	writeToDialogue(welcomeMsg, speakerName, promptAstrology);
+
 	const boxInput = document.querySelector('#dataInput');
-	const inputValue = boxInput.value;
-	const valid = pattern.test(inputValue);
-
-	// check validity
-	if (valid || (!inputValue)) {
-		boxInput.style.border = "2px solid #071b6c";
-        boxInput.style.boxShadow = "0px 8px 15px rgba(0, 0, 0, 0.1)";
-	} else {
-		boxInput.style.border = "2px solid red";
-        boxInput.style.boxShadow = "0px 0px 10px 3px red";
-	}
-}
-
-/**
- * Remove the arrow and add the input box
- */
-function boxInit() {
-	// proceed dialogue text
 	const arrowElement = document.querySelector('.arrow');
-	arrowElement.style.display = "none";
-	writeToDialogue('Would you like to know what the stars say about your future?', null, null, () => {
-		let button = document.querySelector(".interactive > button");
-		button.textContent = "Yes!"
-		button.style.display = "";
 
-		function handleClick(e) {
-			e.preventDefault();
-			e.stopPropagation();
-			button.removeEventListener("click", handleClick);
-			button.style.display = "none";
-			showBox(button);
+	/**
+	 * Check whether a number input's value is between its min and max
+	 * @param {InputEvent | InputElement} event an input event on an input element
+	 */
+	function validateNumberInput(event) {
+		let input;
+		if (event?.target) {
+			input = event.target;
+		} else {
+			input = event;
 		}
-
-		button.addEventListener("click", handleClick);
-	});
-}
-
-/**
- * Hide the arrow and show the input box
- */
-function showBox() {
-	// show the input box
-	const boxInput = document.querySelector('#dataInput');
-	boxInput.removeAttribute('hidden');
-
-	writeToDialogue("Now tell me, what day were you born?");
-
-	arrowElement.removeEventListener('click', showBox);
-	boxInput.addEventListener('input', dayCheck);
-
-	// If the user has already input the birthday, show it as default
-	if(localStorage.getItem('UserBirthDay')){
-		boxInput.value = localStorage.getItem('UserBirthDay');
-
-		// Manually trigger input event to check validity
-		const event = new Event('input');
-		boxInput.dispatchEvent(event);
+		let min = parseInt(input.min);
+		let max = parseInt(input.max);
+		let val = Number(input.value);
+		let valid = !isNaN(val) && val >= min && val <= max;
+	
+		// check validity
+		if (valid) {
+		//	boxInput.style.border = "2px solid #071b6c";
+			input.style.boxShadow = "0px 8px 15px rgba(0, 0, 0, 0.1)";
+		} else {
+		//	boxInput.style.border = "2px solid red";
+			input.style.boxShadow = "0px 0px 10px 3px red";
+		}
+		return valid;
 	}
-}
 
-/**
- * Check the input of day from user
- */
-function dayCheck() {
-	const boxInput = document.querySelector('#dataInput');
-
-	// check validity
-	const pattern = /^(0[1-9]|[1-2][0-9]|3[0-1])$/
-	boxInput.addEventListener('input', inputCheck(pattern));
-
-	// record data
-	boxInput.addEventListener('keydown', handleKeyDownDay);
-}
-
-/**
- * Helper function for dayCheck and to avoid the recursive call.
- * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
- */
-function handleKeyDownDay(event) {
-	const boxInput = document.querySelector('#dataInput');
-	const computedStyle = window.getComputedStyle(boxInput);
-
-	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
-		// store birthday
-		UserBirthDay = boxInput.value;
-		// cache in local storage
-		localStorage.setItem('UserBirthDay', UserBirthDay);
-		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Curious! Now, what month were you born?';
-
-		boxInput.removeEventListener('input', dayCheck);
-		boxInput.removeEventListener('keydown', handleKeyDownDay);
-		boxInput.value = '';
-		boxInput.placeholder = 'mm';
+	/**
+	 * Prevents an input from receiving any input but numbers
+	 * @param {InputEvent} e the event to target
+	 */
+	function forceNumbersOnly(e) {
+		if (e.key.length === 1 && e.key.match(/^\d$/) === null) {
+			e.preventDefault();
+		}
+	}
+	
+	/**
+	 * Remove the arrow and add the input box
+	 */
+	function promptAstrology() {
+		// proceed dialogue text
+		arrowElement.style.display = "none";
+		writeToDialogue('Would you like to know what the stars say about your future?', null, null, () => {
+			let button = document.querySelector(".interactive > button");
+			button.textContent = "Yes!"
+			button.style.display = "";
+		
+			function handleClick(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				button.removeEventListener("click", handleClick);
+				button.style.display = "none";
+				getBirthMonth(button);
+			}
+		
+			button.addEventListener("click", handleClick);
+		});
+	}
+	
+	/**
+	 * Hide the arrow and show the input box
+	 */
+	function getBirthMonth() {
+		// show the input box
+		document.querySelector('.interactive > label').style.display = "";
+		arrowElement.style.display = "";
+	
+		boxInput.value = "";
+		boxInput.type = "number";
 		boxInput.setAttribute("min", "1");
 		boxInput.setAttribute("max", "12");
-		boxInput.addEventListener('input', monthCheck);
-
-		// If the user has already input the birthday, show it as default
-		if(localStorage.getItem('UserBirthMonth')){
-			boxInput.value = localStorage.getItem('UserBirthMonth');
-
-			// Manually trigger input event to check validity
-			const event = new Event('input');
-			boxInput.dispatchEvent(event);
+	
+		// If the user has already inputted their birth month, show it as default
+		let birthMonth = localStorage.getItem('UserBirthMonth');
+		if (birthMonth) {
+			boxInput.value = birthMonth;
 		}
+	
+		writeToDialogue("Now tell me, what month were you born?");
+	
+		function submitMonth(e) {
+			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
+				if (validateNumberInput(boxInput)) {
+					localStorage.setItem('UserBirthMonth', boxInput.value);
+					userBirthMonth = parseInt(boxInput.value);
+					arrowElement.removeEventListener("click", submitMonth);
+					boxInput.removeEventListener("keydown", submitMonth);
+					getBirthDay();
+				}
+			}
+		}
+
+		boxInput.addEventListener("input", validateNumberInput);
+		boxInput.addEventListener("keydown", forceNumbersOnly);
+		boxInput.addEventListener("keydown", submitMonth);
+		arrowElement.addEventListener("click", submitMonth);
 	}
-}
 
-/**
- * Check the input of month from user
- */
-function monthCheck() {
-	const boxInput = document.querySelector('#dataInput');
+	
+	function getBirthDay() {
+		writeToDialogue("Curious! Now, what day were you born?");
 
-	// remove previous input listener style checker
-	boxInput.removeEventListener('input', inputCheck(/^(0[1-9]|[1-2][0-9]|3[0-1])$/));
+		boxInput.value = "";
+		boxInput.type = "number";
+		boxInput.setAttribute("min", "1");
+		boxInput.setAttribute("max", DAYS_IN_MONTH[userBirthMonth - 1]);
 
-	// check validity
-	boxInput.addEventListener('input', inputCheck(/^(0[1-9]|1[0-2])$/));
+		// If the user has already inputted their birth day, show it as default
+		let birthDay = localStorage.getItem('UserBirthDay');
+		if (birthDay) {
+			boxInput.value = birthDay;
+		}
 
-	// record data
-	boxInput.addEventListener('keydown', handleKeyDownMonth);
-}
+		function submitDay(e) {
+			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
+				if (validateNumberInput(boxInput)) {
+					localStorage.setItem('UserBirthDay', boxInput.value);
+					userBirthDay = parseInt(boxInput.value);
+					arrowElement.removeEventListener("click", submitDay);
+					boxInput.removeEventListener("keydown", submitDay);
+					getBirthYear();
+				}
+			}
+		}
 
-/**
- * Helper function for monthCheck and to avoid the recursive call.
- * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
- */
-function handleKeyDownMonth(event) {
-	const boxInput = document.querySelector('#dataInput');
-	const computedStyle = window.getComputedStyle(boxInput);
+		// The boxInput already has a validateNumberInput on it from getUserMonth
+		boxInput.addEventListener("keydown", submitDay);
+		arrowElement.addEventListener("click", submitDay);
+	}
 
-	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
-		// console.log(boxInput.value);
-		// store birth month
-		UserBirthMonth = boxInput.value;
-		// cache in local storage
-		localStorage.setItem('UserBirthMonth', UserBirthMonth);
-		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Oh! Do tell me the year you were born!';
+	function getBirthYear() {
+		writeToDialogue("Oh! Do tell me the year you were born!");
 
-		boxInput.removeEventListener('input', monthCheck);
-		boxInput.removeEventListener('keydown', handleKeyDownMonth);
-		boxInput.value = '';
-		boxInput.placeholder = 'yyyy';
+		boxInput.value = "";
+		boxInput.type = "number";
 		boxInput.setAttribute("min", "1900");
-		boxInput.setAttribute("max", "2023");
-		boxInput.addEventListener('input', yearCheck);
+		boxInput.setAttribute("max", (new Date()).getUTCFullYear() - 13);
 
-		// If the user has already input the birthday, show it as default
-		if(localStorage.getItem('UserBirthYear')) {
-			boxInput.value = localStorage.getItem('UserBirthYear');
-
-			// Manually trigger input event to check validity
-			const event = new Event('input');
-			boxInput.dispatchEvent(event);
+		// If the user has already inputted their birth year, show it as default
+		let birthYear = localStorage.getItem('UserBirthYear');
+		if (birthYear) {
+			boxInput.value = birthYear;
 		}
+
+		function submitYear(e) {
+			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
+				if (validateNumberInput(boxInput)) {
+					localStorage.setItem('UserBirthYear', boxInput.value);
+					userBirthYear = parseInt(boxInput.value);
+					arrowElement.removeEventListener("click", submitYear);
+					boxInput.removeEventListener("keydown", submitYear);
+					getMood();
+				}
+			}
+		}
+
+		// The boxInput already has a validateNumberInput on it from getUserMonth
+		boxInput.addEventListener("keydown", submitYear);
+		arrowElement.addEventListener("click", submitYear);
 	}
-}
 
-/**
- * Check the input of year from user
- */
-function yearCheck() {
-	const boxInput = document.querySelector('#dataInput');
+	function getMood() {
+		writeToDialogue("Finally, tell me what your current mood is.")
 
-	// remove previous input listener style checker
-	boxInput.removeEventListener('input', inputCheck(/^(0[1-9]|1[0-2])$/));
+		boxInput.type = "text";
+		boxInput.removeEventListener("keydown", forceNumbersOnly);
+		boxInput.removeEventListener("input", validateNumberInput);
 
-	// check validity
-	boxInput.addEventListener('input', inputCheck(/^(19[0-9]{2}|20[0-1][0-9]|202[0-3])$/));
+		boxInput.value = "";
 
-	// record data
-	boxInput.addEventListener('keydown', handleKeyDownYear);
-}
+		function submitMood(e) {
+			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
+				userMood = boxInput.value;
+				arrowElement.removeEventListener("click", submitMood);
+				boxInput.removeEventListener("keydown", submitMood);
+				showPred();
+			}
+		}
+		
 
-/**
- * Helper function for yearCheck and to avoid the recursive call.
- * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
- */
-function handleKeyDownYear(event) {
-	const boxInput = document.querySelector('#dataInput');
-	const computedStyle = window.getComputedStyle(boxInput);
-
-	// if validity check passes
-	if ((event.key==='Enter')&&(computedStyle.borderColor==='rgb(7, 27, 108)')&&(boxInput.value)) {
-		// store birth year
-		UserBirthYear = boxInput.value;
-		// cache in local storage
-		localStorage.setItem('UserBirthYear', UserBirthYear);
-		let curDialogue = document.querySelector('.dialogue-text');
-		curDialogue.textContent = 'Finally, tell me what your current mood is';
-		boxInput.removeEventListener('input', yearCheck);
-		boxInput.removeEventListener('keydown', handleKeyDownYear);
-		boxInput.value = '';
-		boxInput.placeholder = 'Anything';
-		boxInput.setAttribute("type", "text");
-		boxInput.style.letterSpacing = 'normal';
-		boxInput.removeAttribute('placeholder');
-		boxInput.addEventListener('input', checkMood);
+		boxInput.addEventListener("keydown", submitMood);
+		arrowElement.addEventListener("click", submitMood);
 	}
-}
-
-/**
- * Check the input of mood from user
- */
-function checkMood() {
-	const boxInput = document.querySelector('#dataInput');
-
-	// remove previous input listener style checker
-	boxInput.removeEventListener('input', inputCheck(/^(19[0-9]{2}|20[0-1][0-9]|202[0-3])$/));
-
-	// unrestrict
-	boxInput.addEventListener('input', inputCheck(/.*/));
-
-	// record data
-	boxInput.addEventListener('keydown', handleKeyDownMood);
-}
-
-/**
- * Helper function for checkMood and to avoid the recursive call.
- * Recursive call would lead to fatal error of variable update.
- * @param {*} event 
- */
-function handleKeyDownMood(event) {
-    const boxInput = document.querySelector('#dataInput');
-
-    // if validity check passes
-    if (event.key==='Enter') {
-        // console.log(boxInput.value);
-        // store mood
-        UserMood = boxInput.value;
-        let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
-        let UserConstellation = getConstellation(userBirthMonthDay);
-
-        // Powell!!!
-        if(UserMood == "Powell"){
-            UserConstellation = "Powell";
-        }
-
-        // remove the input box
-        boxInput.value = '';
-        boxInput.hidden = true;
-        let curDialogue = document.querySelector('.dialogue-text');
-        let curText = `The holy ${UserConstellation} answered your call!`;
-        // Powell!!!
-        if (UserMood == "Powell"){
-            curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
-        }
-        curDialogue.textContent = curText;
-        boxInput.removeEventListener('input', checkMood);
-        boxInput.removeEventListener('keydown', handleKeyDownMood);
-        boxInput.removeEventListener('input', inputCheck(/.*/));
-
-        // animation
-        showConstellationImage(UserConstellation);
-
-        // change arrow back
-        const svg = document.querySelector('.arrow');
-        svg.style.display = "block";
-        svg.style.pointerEvents = 'auto';
-        svg.style.cursor = 'pointer';
-
-        const origArr = `
-            <path d="M22.5 25C18.0184 25 7.59473 12.6404 1.55317 4.96431C-0.122281 2.83559 1.72264 -0.179893 4.39835 0.243337C10.2831 1.17415 18.2164 2.28736 22.5 2.28736C26.7836 2.28736 34.7169 1.17415 40.6017 0.243339C43.2774 -0.17989 45.1223 2.83559 43.4468 4.96431C37.4053 12.6404 26.9816 25 22.5 25Z" fill="white"/>
-        `;
-        svg.innerHTML = origArr;
-        svg.style.bottom = '0'; 
-        svg.style.width = '45'; 
-        svg.style.height = '25';
-
-        // click to view result
-        svg.addEventListener('click', showPred);
-    }
-} 
-
-/**
- * Get prediction and back to the main page
- */
-async function showPred() {
 
 	function getMonthString(monthNumber) {
 		const months = [
@@ -313,36 +212,57 @@ async function showPred() {
 			return 'None';
 		}
 	}
-
-	const arrowElement = document.querySelector('.arrow');
-
-	// based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
-	// generate response
-	let userBirthMonthDay = getMonthString(UserBirthMonth) + ' ' + UserBirthDay;
-	let UserConstellation = getConstellation(userBirthMonthDay);
-	let response = await generateFinalFortune(UserConstellation);
-	// Powell!!!
-	if (UserMood == "Powell"){
-		UserConstellation = "Powell";
-		response = "Professor Powell: Hello, kids! Did you checked your MIDTERM grade? Do you like it? RELAX! Just ask. I won't change it even though you don't like it.";
-	}
-	// add the fortune card to local storage
-	// current response date
-	const currentDate = new Date();
-	const currentYear = currentDate.getFullYear();
-	const currentMonth = currentDate.getMonth() + 1;
-	const currentDay = currentDate.getDate();
-	const currentHour = currentDate.getHours();
-	const currentMinute = currentDate.getMinutes();
-	const currentSecond = currentDate.getSeconds();
-	const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}:${currentSecond}`;
-	let new_fortunes = {"name": UserConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": UserMood, "time": dateString, };
-	addFortuneCard(new_fortunes);
-	// update the Fortune card list
-	updateFortuneCardList();
-  
-	split_and_display(response);
 	
-	arrowElement.removeEventListener('click', showPred);
-	arrowElement.addEventListener('click', boxInit);
+	/**
+	 * Get prediction and back to the main page
+	 */
+	async function showPred() {
+	
+		document.querySelector('.interactive > label').style.display = "none";
+		
+		// based on UserBirthDay, UserBirthMonth, UserBirthYear, UserMood
+		// generate response
+		let userBirthMonthDay = getMonthString(userBirthMonth) + ' ' + userBirthDay;
+		let userConstellation = getConstellation(userBirthMonthDay);
+
+		if (userMood == "Powell"){
+			userConstellation = "Powell";
+		}
+
+		let response = await generateFinalFortune(userConstellation);
+
+		let curText = `The holy ${userConstellation} answered your call!`;
+		// Powell!!!
+		if (userMood == "Powell"){
+			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call..."
+		}
+		console.log(userMood);
+		writeToDialogue(curText, userMood === "Powell" ? "Powell " : speakerName, ()=>{
+			writeToDialogue(response);
+		}, () => {
+			showConstellationImage(userConstellation);
+		});
+		
+		// Powell!!!
+		if (userMood == "Powell"){
+			response = "Hello, kids! Did you check your MIDTERM grade? Do you like it? RELAX! I'm just asking. I won't change it even if you don't like it.";
+		}
+		// add the fortune card to local storage
+		// current response date
+		const currentDate = new Date();
+		const currentYear = currentDate.getFullYear();
+		const currentMonth = currentDate.getMonth() + 1;
+		const currentDay = currentDate.getDate();
+		const currentHour = currentDate.getHours();
+		const currentMinute = currentDate.getMinutes();
+		const currentSecond = currentDate.getSeconds();
+		const dateString = `${currentYear}-${currentMonth}-${currentDay}: ${currentHour}:${currentMinute}:${currentSecond}`;
+		let newFortunes = {"name": userConstellation,"id": Date.now(), "text": response, "birthday": userBirthMonthDay, "mood": userMood, "time": dateString, };
+		addFortuneCard(newFortunes);
+		// update the Fortune card list
+		updateFortuneCardList();
+		
+		arrowElement.removeEventListener('click', showPred);
+		arrowElement.addEventListener('click', boxInit);
+	}
 }

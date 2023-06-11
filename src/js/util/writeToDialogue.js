@@ -1,7 +1,7 @@
 // The maximum characters for a given line of text to fit on a dialogue box
 const CHUNK_SIZE = 100;
 // The number of milliseconds to wait between typing two consecutive characters
-const TYPING_DELAY = 50;
+const TYPING_DELAY = 40;
 
 /**
  * Writes out a string of text to the dialogue box

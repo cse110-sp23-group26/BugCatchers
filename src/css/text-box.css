@@ -134,18 +134,37 @@
 	position: absolute;
 }
 
+label::after {
+	content: "";
+	width: 7em;
+	display: block;
+	border-bottom: 4px dotted gray;
+	position: absolute;
+	bottom: 0.25em;
+	left: calc(50% - 3.5em);
+}
+
 input#dataInput {
 	font-size: 2em;
 	border-radius: 9999px; 
 	text-align: center;
-	border: 2px solid #722f12;
 	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 	background-color: #fdfdfd;
 	color: #071b6c;
-	font-family: 'Courier New', Courier, monospace;
-	padding: 15px;
+	font-size: 1em;
+	padding: 0.2em;
+	position: relative;
+	border: none;
+	width: 8em;
 }
-
+.interactive input::-webkit-outer-spin-button, .interactive input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.interactive input[type=number] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
 input#dataInput:focus {
 	outline: none;
 }
@@ -179,7 +198,7 @@ input#dataInput:focus {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
+	position: relative;
 }
 
 .interactive button {
