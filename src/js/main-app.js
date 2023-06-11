@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
 	// Default variables to set (i.e Celeste's name, default welcoming message etc.)
-	const WELCOME_MSG = 'Hello child! What can I do for you?'
+	const WELCOME_MSG = 'Hello child! What can I do for you?';
 
 	// --------------------------START OF DIALOGUE SEQUENCE-----------------------
 	// TODO: store username somewhere
@@ -21,9 +21,8 @@ function init() {
 	 * on some prediction function, based on user input, from "GetUserInput.js"
 	 */
 	let curName = 'Celeste';
-	dialogueGo();
+	dialogueGo(WELCOME_MSG, curName);
 	// ---------------------------END OF DIALOGUE SEQUENCE------------------------
-
 
 	// --------------------------init check-in system-----------------------
 	// this fcuntion in js/util/CheckIn.js
@@ -112,77 +111,6 @@ function updateFortuneCardList(){
 }
 
 
-// /**
-//  * Adds a button to the text box and adds an event listener for click that calls the action parameter
-//  * @param buttonText is a string that represents the text that is on a button
-//  */
-// function addButtonToTextBox(buttonText) {
-//     const button = document.createElement('button');
-//     // Set button properties
-//     button.textContent = buttonText; // Set the text content of the button
-//     button.classList.add('yes-button'); // Add a CSS class for styling (optional)
-//     button.disabled = false; // Set the disabled property (true or false)
-
-//     // Apply button styles
-//     button.style.padding = '10px 20px'; // Set padding
-//     button.style.backgroundColor = 'blue'; // Set background color
-//     button.style.color = 'white'; // Set text color
-//     button.style.border = 'none'; // Remove border
-//     button.style.cursor = 'pointer'; // Set cursor style
-
-//     // Append the button to a parent element
-//     const parentElement = document.querySelector(".interactive");
-//     parentElement.innerHTML = '';
-//     parentElement.appendChild(button);
-
-//     button.addEventListener('click', async (event) => {
-//         button.remove();
-//         let birthday = await get_birthday();
-//         let sign = await getConstellation(birthday);
-		
-//         let generators = [templete1,templete2,templete3,templete4,templete5];
-
-//         let reponse = await generators[Math.floor(Math.random()*generators.length)](sign);
-
-//         let curDialogue = document.querySelector('.dialogue-text')
-
-//         // split responses and display
-//         const arrowElement = document.querySelector('.arrow');
-//         await split_and_display(reponse).then(arrowElement.style.display = 'block');
-
-//         // add to local storage with random id.
-//         let new_fortunes = {"name": "Celeste","id": Math.floor(Math.random() * (1000 - 0 + 1)) + 0, "text": reponse};
-//         addFortuneCard(new_fortunes);
-//         updateFortuneCardList();
-//     });
-
-// }
-
-// function get_birthday() {
-//     return "Jan 11";
-// }
-
-// async function split_and_display(string) {
-//     let maxLength = 100;
-//     const strings = [];
-//     let index = 0;
-//     let curDialogue = document.querySelector('.dialogue-text')
-//     while (index < string.length) {
-//       const substring = string.substring(index, index + maxLength);
-//       strings.push(substring);
-//       index += maxLength;
-//     }
-
-
-//     strings.forEach((text, index) => {
-//         setTimeout(() => {
-//             curDialogue.textContent = text;
-//           // Alternatively, you can display the text in the DOM or perform other actions
-//         }, index * 5000);
-//       });
-
-// }
-
 const ListTitleStyles = {
 	position: "relative",
 	fontFamily: 'Nunito, sans-serif',
@@ -206,6 +134,7 @@ const emptyFortuneCardListStyles = {
 	margin: "15px",
 	fontWeight: "bold",
 };
+
 // create the OverLay when we open the fortune card list
 function createOverLay(){
 	const OverLay = document.createElement('div');
