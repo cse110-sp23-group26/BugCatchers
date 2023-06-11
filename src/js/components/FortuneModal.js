@@ -88,8 +88,8 @@ class FortuneModal extends HTMLElement {
 		this.createImageContainer(fortuneCardContent, data);
 		this.createZodiacParagraph(fortuneCardContent, data);
 
-		container.addEventListener("click", () => {
-			this.remove();
+		container.addEventListener("click", (e) => {
+			if (e.target === container) { this.remove(); }
 		});
 	}
 
