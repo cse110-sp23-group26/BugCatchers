@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { showConstellationImage } = require("../src/js/util/constellationAnimation");
 
 describe('Animation for showConstellationImage', () => {
   let browser;
