@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint -c .eslintrc.json --ext .js,.jsx ./",
+    "prettier": "prettier --check \"src/**/*.{js,jsx}\"",
+    "prettier:fix": "prettier --write \"src/**/*.{js,jsx}\"",
     "gendocs": "jsdoc -r src/"
   },
   "author": "",
