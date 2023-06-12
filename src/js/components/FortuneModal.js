@@ -1,4 +1,6 @@
-class FortuneModal extends HTMLElement {
+import { getConstellationInfo } from "../util/getConstellationColor";
+
+export class FortuneModal extends HTMLElement {
 	constructor() {
 		super();
 		const shadow = this.attachShadow({ mode: "open" });

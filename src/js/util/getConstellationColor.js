@@ -9,7 +9,7 @@
  * @param {string} constellation - The input constellation / zodiac sign to get the color of
  * @returns {Array} - An array consisting of a string with an introduction to the zodiac sign, and a string with a hex color available for JS
  */
-function getConstellationInfo(constellation) {
+export function getConstellationInfo(constellation) {
 	const constellationData = {
 		"Pisces": [
 			"Pisces, a water sign, is the last constellation of the zodiac. It's symbolized by two fish swimming in opposite directions, representing the constant division of Pisces's attention between fantasy and reality.	",
