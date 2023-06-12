@@ -1,3 +1,5 @@
+import {startDialogueSequence} from "./util/getUserInput";
+
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
