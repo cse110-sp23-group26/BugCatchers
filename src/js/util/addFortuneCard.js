@@ -10,7 +10,7 @@ function addFortuneCard(fortune) {
 	let fortunes = JSON.parse(localStorage.getItem('FortunesCard')) || [];
 	let existingFortune = fortunes.find(f => f.id === fortune.id);
 	if (!existingFortune) {
-		fortunes.push(fortune);
+		fortunes.unshift(fortune);
 		localStorage.setItem('FortunesCard', JSON.stringify(fortunes));
 	}
 }
