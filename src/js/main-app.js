@@ -98,7 +98,7 @@ function init() {
 
 
 // update the fortune card list by simply click the menu button twice
-function updateFortuneCardList(){
+export function updateFortuneCardList(){
 	const menu = document.getElementById("menu");
 	menu.click();
 	menu.click();
