@@ -1,14 +1,19 @@
 {
 	"root": true,
-	"extends": ["eslint:recommended"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:prettier/recommended"
+	],
 	"parserOptions": {
-		"ecmaVersion": "latest"
+		"ecmaVersion": "latest",
+		"sourceType": "module"
 	},
 	"ignorePatterns":[
 		"*.test.js",
 		"docs/*"
 	],
 	"env": {
-		"browser": true
+		"browser": true,
+		"es6": true
 	}
 }
