@@ -10,7 +10,7 @@ describe('Basic user flow for Website', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
-    await page.goto('http://127.0.0.1:5500/src/index.html');
+    await page.goto('https://cse110-sp23-group26.github.io/BugCatchers/');
     // localStorage.removeItem('LastCheckInTime');
     // localStorage.removeItem('CheckInCount');
   });
