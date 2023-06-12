@@ -1,17 +1,17 @@
 import { getConstellationInfo } from "../util/getConstellationColor.js";
 
 export class FortuneModal extends HTMLElement {
-  constructor() {
-    super();
-    const shadow = this.attachShadow({ mode: "open" });
+	constructor() {
+		super();
+		const shadow = this.attachShadow({ mode: "open" });
 
-    const container = document.createElement("div");
-    container.setAttribute("class", "container");
-    const fortuneModalContent = document.createElement("div");
-    fortuneModalContent.setAttribute("id", "content");
+		const container = document.createElement("div");
+		container.setAttribute("class", "container");
+		const fortuneModalContent = document.createElement("div");
+		fortuneModalContent.setAttribute("id", "content");
 
-    const style = document.createElement("style");
-    style.textContent = `
+		const style = document.createElement("style");
+		style.textContent = `
 			html, body {
 					height: 100%;
 					margin: 0;
@@ -74,63 +74,63 @@ export class FortuneModal extends HTMLElement {
 			}
 			`;
 
-    container.appendChild(fortuneModalContent);
-    shadow.appendChild(style);
-    shadow.appendChild(container);
-  }
+		container.appendChild(fortuneModalContent);
+		shadow.appendChild(style);
+		shadow.appendChild(container);
+	}
 
-  set data(data) {
-    if (!data) return;
+	set data(data) {
+		if (!data) return;
 
-    const fortuneCardContent = this.shadowRoot.getElementById("content");
-    const container = this.shadowRoot.querySelector(".container");
+		const fortuneCardContent = this.shadowRoot.getElementById("content");
+		const container = this.shadowRoot.querySelector(".container");
 
-    this.createTitle(fortuneCardContent, data);
-    this.createTextParagraph(fortuneCardContent, data);
-    this.createImageContainer(fortuneCardContent, data);
-    this.createZodiacParagraph(fortuneCardContent, data);
+		this.createTitle(fortuneCardContent, data);
+		this.createTextParagraph(fortuneCardContent, data);
+		this.createImageContainer(fortuneCardContent, data);
+		this.createZodiacParagraph(fortuneCardContent, data);
 
-    container.addEventListener("click", (e) => {
-      if (e.target === container) {
-        this.remove();
-      }
-    });
-  }
+		container.addEventListener("click", (e) => {
+			if (e.target === container) {
+				this.remove();
+			}
+		});
+	}
 
-  createTitle(parentElement, data) {
-    const title = document.createElement("h1");
-    title.classList.add("fc-title");
-    title.textContent = data.name;
-    parentElement.appendChild(title);
-  }
+	createTitle(parentElement, data) {
+		const title = document.createElement("h1");
+		title.classList.add("fc-title");
+		title.textContent = data.name;
+		parentElement.appendChild(title);
+	}
 
-  createTextParagraph(parentElement, data) {
-    const textParagraph = document.createElement("p");
-    textParagraph.classList.add("fc-text");
-    textParagraph.textContent = data.text;
-    parentElement.appendChild(textParagraph);
-  }
+	createTextParagraph(parentElement, data) {
+		const textParagraph = document.createElement("p");
+		textParagraph.classList.add("fc-text");
+		textParagraph.textContent = data.text;
+		parentElement.appendChild(textParagraph);
+	}
 
-  createImageContainer(parentElement, data) {
-    const image = document.createElement("img");
-    image.src = `assets/constellation/big/white/${data.name}.png`;
-    image.classList.add("fc-image");
+	createImageContainer(parentElement, data) {
+		const image = document.createElement("img");
+		image.src = `assets/constellation/big/white/${data.name}.png`;
+		image.classList.add("fc-image");
 
-    const imageContainer = document.createElement("div");
-    imageContainer.classList.add("fc-image-container");
-    imageContainer.appendChild(image);
-    parentElement.appendChild(imageContainer);
-  }
+		const imageContainer = document.createElement("div");
+		imageContainer.classList.add("fc-image-container");
+		imageContainer.appendChild(image);
+		parentElement.appendChild(imageContainer);
+	}
 
-  createZodiacParagraph(parentElement, data) {
-    // eslint-disable-next-line no-undef
-    const zodiacInfo = getConstellationInfo(data.name);
-    const zodiacParagraph = document.createElement("p");
-    zodiacParagraph.classList.add("zodiac-text");
-    zodiacParagraph.textContent = zodiacInfo[0];
-    parentElement.appendChild(zodiacParagraph);
-    parentElement.style.backgroundColor = zodiacInfo[1];
-  }
+	createZodiacParagraph(parentElement, data) {
+		// eslint-disable-next-line no-undef
+		const zodiacInfo = getConstellationInfo(data.name);
+		const zodiacParagraph = document.createElement("p");
+		zodiacParagraph.classList.add("zodiac-text");
+		zodiacParagraph.textContent = zodiacInfo[0];
+		parentElement.appendChild(zodiacParagraph);
+		parentElement.style.backgroundColor = zodiacInfo[1];
+	}
 }
 
 customElements.define("fortune-modal", FortuneModal);
