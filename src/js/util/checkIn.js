@@ -5,7 +5,7 @@
 */
 
 // Function to handle check-ins
-function checkIn() {
+export function checkIn() {
 	let currentDate = new Date();
 
 	// Retrieve the last check-in date and count from localStorage
