@@ -6,7 +6,7 @@
  * @param {string} dateString - A string representing the input date
  * @returns {string} - The zodiac sign corresponding to the date
  */
-function getConstellation(dateString) {
+export function getConstellation(dateString) {
 	// remove the space, and store month and day to 'month' and 'day'
 	const trimmedString = dateString.replace(/\s+/g, " ");  // Now this replaces multiple spaces with a single space
 	const regex = /([a-zA-Z]+)\s*(\d+)/;  // This regular expression also considers a possible space after the month
