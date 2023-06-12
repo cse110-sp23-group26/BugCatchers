@@ -11,7 +11,7 @@ const DAYS_IN_MONTH = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 // eslint-disable-next-line no-unused-vars
 async function startDialogueSequence(welcomeMsg, speakerName) {
 	// Wait a second before typing to let the starting bubble animation play
-	await (new Promise((res,rej)=>{setTimeout(res,1000)}));
+	await (new Promise((res)=>{setTimeout(res,1000)}));
 
 	// Writes the welcome dialogue and then prompts the user for astrology
 	writeToDialogue(welcomeMsg, speakerName, promptAstrology);
