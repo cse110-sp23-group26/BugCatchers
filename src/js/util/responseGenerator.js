@@ -152,7 +152,7 @@ function generateFortuneObject(sign) {
  * @param {string} sign - The zodiac sign to generate a fortune for
  * @returns - A string containing the randomly generated fortune
  */
-async function generateFinalFortune(sign){
+export async function generateFinalFortune(sign){
 	let generator = GENERATORS[Math.floor(Math.random()*GENERATORS.length)];
 	let response = await generator(sign);
 	return response;
