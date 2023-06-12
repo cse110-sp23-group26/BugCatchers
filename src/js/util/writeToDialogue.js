@@ -46,9 +46,9 @@ export function writeToDialogue(text, speaker, userNext, doneTyping){
 		splitString(text, CHUNK_SIZE) : 
 		text;
 	let stringArr = strings.splice(0, 1)[0].split("");
-	let curDialogue = document.querySelector('.dialogue-text>.text');
-	let shadowText = document.querySelector('.dialogue-text>.shadow-text');
-	let textBox = document.querySelector('#text-box');
+	let curDialogue = document.querySelector(".dialogue-text>.text");
+	let shadowText = document.querySelector(".dialogue-text>.shadow-text");
+	let textBox = document.querySelector("#text-box");
 
 	/**
 	 * Types out a string array over time to the dialogue box 
@@ -80,7 +80,7 @@ export function writeToDialogue(text, speaker, userNext, doneTyping){
 			stringArr = strings.splice(0, 1)[0].split("");
 		}
 		// Clear the box for each new line
-		curDialogue.textContent = '';
+		curDialogue.textContent = "";
 		// Populate the shadow text so that the bounding box is filled
 		shadowText.textContent = stringArr.join("");
 		// Type the string
@@ -106,7 +106,7 @@ export function writeToDialogue(text, speaker, userNext, doneTyping){
 
 		// If user clicks box, skip the typing animation
 		// or display the next line of text if done typing
-		textBox.addEventListener('click', handleClick);
+		textBox.addEventListener("click", handleClick);
 	}
 	
 	// Start the sequence to step through the dialogue

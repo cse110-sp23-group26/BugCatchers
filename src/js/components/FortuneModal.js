@@ -62,7 +62,7 @@ export class FortuneModal extends HTMLElement {
 			#content {
 					position: relative;
 					font-size: 18px;
-					font-family: 'Nunito', sans-serif;
+					font-family: "Nunito", sans-serif;
 					background-color: #348AA7;
 					color: white;
 					padding: 25px;
@@ -121,6 +121,7 @@ export class FortuneModal extends HTMLElement {
 	}
 
 	createZodiacParagraph(parentElement, data) {
+		// eslint-disable-next-line no-undef
 		const zodiacInfo = getConstellationInfo(data.name);
 		const zodiacParagraph = document.createElement("p");
 		zodiacParagraph.classList.add("zodiac-text");

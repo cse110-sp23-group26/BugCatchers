@@ -19,8 +19,8 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 	// Writes the welcome dialogue and then prompts the user for astrology
 	writeToDialogue(welcomeMsg, speakerName, promptAstrology);
 
-	const boxInput = document.querySelector('#dataInput');
-	const arrowElement = document.querySelector('.arrow');
+	const boxInput = document.querySelector("#dataInput");
+	const arrowElement = document.querySelector(".arrow");
 
 	boxInput.addEventListener("input", isNonEmpty);
 
@@ -82,7 +82,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 	function promptAstrology() {
 		// proceed dialogue text
 		arrowElement.style.display = "none";
-		writeToDialogue('Would you like to know what the stars say about your future?', speakerName, null, () => {
+		writeToDialogue("Would you like to know what the stars say about your future?", speakerName, null, () => {
 			let button = document.querySelector(".interactive > button");
 			button.textContent = "Yes!"
 			button.style.display = "";
@@ -104,7 +104,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 	 */
 	function getBirthMonth() {
 		// show the input box
-		document.querySelector('.interactive > label').style.display = "";
+		document.querySelector(".interactive > label").style.display = "";
 		arrowElement.style.display = "";
 	
 		boxInput.value = "";
@@ -113,17 +113,16 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 		boxInput.setAttribute("max", "12");
 	
 		// If the user has already inputted their birth month, show it as default
-		let birthMonth = localStorage.getItem('UserBirthMonth');
+		let birthMonth = localStorage.getItem("UserBirthMonth");
 		if (birthMonth) {
 			boxInput.value = birthMonth;
 		}
-	
 		let cancelTyping = writeToDialogue("Now tell me, what month were you born?");
 	
 		function submitMonth(e) {
 			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
 				if (validateNumberInput(boxInput)) {
-					localStorage.setItem('UserBirthMonth', boxInput.value);
+					localStorage.setItem("UserBirthMonth", boxInput.value);
 					userBirthMonth = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitMonth);
 					boxInput.removeEventListener("keydown", submitMonth);
@@ -141,7 +140,6 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 
 	
 	function getBirthDay() {
-
 		let cancelTyping = writeToDialogue("Curious! Now, what day were you born?");
 
 		boxInput.value = "";
@@ -150,7 +148,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 		boxInput.setAttribute("max", DAYS_IN_MONTH[userBirthMonth - 1]);
 
 		// If the user has already inputted their birth day, show it as default
-		let birthDay = localStorage.getItem('UserBirthDay');
+		let birthDay = localStorage.getItem("UserBirthDay");
 		if (birthDay) {
 			boxInput.value = birthDay;
 		}
@@ -158,7 +156,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 		function submitDay(e) {
 			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
 				if (validateNumberInput(boxInput)) {
-					localStorage.setItem('UserBirthDay', boxInput.value);
+					localStorage.setItem("UserBirthDay", boxInput.value);
 					userBirthDay = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitDay);
 					boxInput.removeEventListener("keydown", submitDay);
@@ -182,7 +180,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 		boxInput.setAttribute("max", (new Date()).getUTCFullYear() - 13);
 
 		// If the user has already inputted their birth year, show it as default
-		let birthYear = localStorage.getItem('UserBirthYear');
+		let birthYear = localStorage.getItem("UserBirthYear");
 		if (birthYear) {
 			boxInput.value = birthYear;
 		}
@@ -190,7 +188,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 		function submitYear(e) {
 			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
 				if (validateNumberInput(boxInput)) {
-					localStorage.setItem('UserBirthYear', boxInput.value);
+					localStorage.setItem("UserBirthYear", boxInput.value);
 					// userBirthYear = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitYear);
 					boxInput.removeEventListener("keydown", submitYear);
@@ -230,14 +228,14 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 
 	function getMonthString(monthNumber) {
 		const months = [
-			'January', 'February', 'March', 'April', 'May', 'June',
-			'July', 'August', 'September', 'October', 'November', 'December'
+			"January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
 		];
 	
 		if (monthNumber >= 1 && monthNumber <= 12) {
 			return months[monthNumber - 1];
 		} else {
-			return 'None';
+			return "None";
 		}
 	}
 	
@@ -246,10 +244,10 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 	 */
 	async function showPred() {
 		// Hide the text input
-		document.querySelector('.interactive > label').style.display = "none";
+		document.querySelector(".interactive > label").style.display = "none";
 		
 		// Based on user info, generate a response
-		let userBirthMonthDay = getMonthString(userBirthMonth) + ' ' + userBirthDay;
+		let userBirthMonthDay = getMonthString(userBirthMonth) + " " + userBirthDay;
 		let userConstellation = getConstellation(userBirthMonthDay);
 		let response = await generateFinalFortune(userConstellation);
 

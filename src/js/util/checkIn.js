@@ -9,8 +9,8 @@ export function checkIn() {
 	let currentDate = new Date();
 
 	// Retrieve the last check-in date and count from localStorage
-	let lastCheckInDate = localStorage.getItem('LastCheckInTime');
-	let checkInCount = parseInt(localStorage.getItem('CheckInCount')) || 0;
+	let lastCheckInDate = localStorage.getItem("LastCheckInTime");
+	let checkInCount = parseInt(localStorage.getItem("CheckInCount")) || 0;
 
 	// If there's a previous check-in date and it's earlier than the current date, increment the count
 	if (lastCheckInDate) {
@@ -24,40 +24,40 @@ export function checkIn() {
 	}
 
 	// Update localStorage and return the new check-in date and count
-	localStorage.setItem('LastCheckInTime', currentDate);
-	localStorage.setItem('CheckInCount', checkInCount);
+	localStorage.setItem("LastCheckInTime", currentDate);
+	localStorage.setItem("CheckInCount", checkInCount);
 
 	return {
-		date: currentDate.toISOString().split('T')[0],
+		date: currentDate.toISOString().split("T")[0],
 		count: checkInCount
 	}
 }
 
 // Function to initialize check-in data on page load
 export function initializeCheckIn() {
-	let lastCheckInDate = localStorage.getItem('LastCheckInTime');
-	let checkInCount = localStorage.getItem('CheckInCount');
+	let lastCheckInDate = localStorage.getItem("LastCheckInTime");
+	let checkInCount = localStorage.getItem("CheckInCount");
 
 	if (lastCheckInDate) {
-		document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + new Date(lastCheckInDate).toISOString().split('T')[0];
+		document.getElementById("last-check-in-date").textContent = "Last Check-In: " + new Date(lastCheckInDate).toISOString().split("T")[0];
 	}
 
 	if (checkInCount) {
-		document.getElementById('check-in-count').textContent = 'Count: ' + checkInCount;
+		document.getElementById("check-in-count").textContent = "Count: " + checkInCount;
 	}
 }
 
 // Event listener for the check-in button
-document.getElementById('check-in-button').addEventListener('click', function() {
+document.getElementById("check-in-button").addEventListener("click", function() {
 	let result = checkIn();
 
 	// Update the display
-	document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + result.date;
-	document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
+	document.getElementById("last-check-in-date").textContent = "Last Check-In: " + result.date;
+	document.getElementById("check-in-count").textContent = "Count: " + result.count;
 });
 
 // Initialize check-in data on page load
-document.addEventListener('DOMContentLoaded', initializeCheckIn);
+document.addEventListener("DOMContentLoaded", initializeCheckIn);
 
 // Uncomment for use with Node.js
 // module.exports = checkIn;
