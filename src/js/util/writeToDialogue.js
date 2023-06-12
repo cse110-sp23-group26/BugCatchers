@@ -10,7 +10,7 @@ const TYPING_DELAY = 40;
  * @param {function} userNext function that is called when user clicks on finished dialogue
  * @param {function} doneTyping function that is called when typing out a single line is completed
  */
-function writeToDialogue(text, speaker, userNext, doneTyping){
+export function writeToDialogue(text, speaker, userNext, doneTyping){
 	if (speaker) {
 		// Set the speaker if the parameter is provided
 		document.querySelector("span.speaker").textContent = speaker;
