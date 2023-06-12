@@ -125,6 +125,7 @@
 	line-height: 1.5em;
 	color: var(--dialogue);
 	user-select: none;
+	font-weight: 600;
 }
 
 .dialogue-text>.shadow-text {
