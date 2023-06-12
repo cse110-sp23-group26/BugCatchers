@@ -1,3 +1,6 @@
+import { getConstellationInfo } from "../util/getConstellationColor.js";
+import { updateFortuneCardList } from "../main-app";
+
 /**
  * Class representing a fortune card element that appears in the left sidebar when clicking the green leaf icon.
  * @extends HTMLElement
