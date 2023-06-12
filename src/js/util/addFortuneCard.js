@@ -4,7 +4,8 @@
  * @param fortune - The fortune to be added to local storage
  */
 // Then add it to localStorage (only add when this fortune card does not exist in localstorage)
-// Then append it to HTMLAllCollection, under fortuneCardList 
+// Then append it to HTMLAllCollection, under fortuneCardList
+// eslint-disable-next-line no-unused-vars
 function addFortuneCard(fortune) {
 	// Add to local storage
 	let fortunes = JSON.parse(localStorage.getItem('FortunesCard')) || [];

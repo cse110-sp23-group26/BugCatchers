@@ -6,6 +6,7 @@
  * @param {string} dateString - A string representing the input date
  * @returns {string} - The zodiac sign corresponding to the date
  */
+// eslint-disable-next-line no-unused-vars
 function getConstellation(dateString) {
 	// remove the space, and store month and day to 'month' and 'day'
 	const trimmedString = dateString.replace(/\s+/g, " ");  // Now this replaces multiple spaces with a single space

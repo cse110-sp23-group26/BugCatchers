@@ -10,6 +10,7 @@ const TYPING_DELAY = 40;
  * @param {function} userNext function that is called when user clicks on finished dialogue
  * @param {function} doneTyping function that is called when typing out a single line is completed
  */
+// eslint-disable-next-line no-unused-vars
 function writeToDialogue(text, speaker, userNext, doneTyping){
 	if (speaker) {
 		// Set the speaker if the parameter is provided

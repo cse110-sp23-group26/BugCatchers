@@ -12,15 +12,18 @@ function init() {
 	 * on some prediction function, based on user input, from "GetUserInput.js"
 	 */
 	let curName = 'Celeste';
+	// eslint-disable-next-line no-undef
 	startDialogueSequence(WELCOME_MSG, curName);
 	// ---------------------------END OF DIALOGUE SEQUENCE------------------------
 
 	// --------------------------init check-in system-----------------------
 	// this fcuntion in js/util/CheckIn.js
+	// eslint-disable-next-line no-undef
 	initializeCheckIn();
 	// add event listener to check in button
 	// this fcuntion in js/util/CheckIn.js
 	document.getElementById('check-in-button').addEventListener('click', function () {
+		// eslint-disable-next-line no-undef
 		let result = checkIn();
 		// Update the display
 		document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + result.date;
@@ -95,6 +98,7 @@ function init() {
 
 
 // update the fortune card list by simply click the menu button twice
+// eslint-disable-next-line no-unused-vars
 function updateFortuneCardList(){
 	const menu = document.getElementById("menu");
 	menu.click();

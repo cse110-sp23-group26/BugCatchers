@@ -9,6 +9,7 @@
  * @param {string} constellation - The input constellation / zodiac sign to get the color of
  * @returns {Array} - An array consisting of a string with an introduction to the zodiac sign, and a string with a hex color available for JS
  */
+// eslint-disable-next-line no-unused-vars
 function getConstellationInfo(constellation) {
 	const constellationData = {
 		"Pisces": [

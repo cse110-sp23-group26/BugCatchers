@@ -8,6 +8,7 @@
  * When called, performs an animation where the zodiac sign fades into the center of the screen for a few seconds (darkening the background), then fades out.
  * @param {string} constellation - A string containing the name of the zodiac sign
  */
+// eslint-disable-next-line no-unused-vars
 function showConstellationImage(constellation) {
 	// add the image
 	const image = document.createElement("img");
