@@ -58,7 +58,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 	function promptAstrology() {
 		// proceed dialogue text
 		arrowElement.style.display = "none";
-		writeToDialogue('Would you like to know what the stars say about your future?', null, null, () => {
+		writeToDialogue('Would you like to know what the stars say about your future?', speakerName, null, () => {
 			let button = document.querySelector(".interactive > button");
 			button.textContent = "Yes!"
 			button.style.display = "";
@@ -229,18 +229,21 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 		let userConstellation = getConstellation(userBirthMonthDay);
 		let response = await generateFinalFortune(userConstellation);
 
-        let speaker = "Celeste"
-
 		if (userMood == "Powell"){
 			userConstellation = "Powell";
-			speaker = "Powell"
 		}
 
 		let curText = `The holy ${userConstellation} answered your call!`;
 		// Powell!!!
 		if (userMood == "Powell") {
 			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call...";
-			response = "Hello, kids!-Did you check your MIDTERM grade?-Do you like it? RELAX! I'm just asking.-I won't change it even if you don't like it.";
+			response = [
+				"Hello, kids!",
+				"Did you check your MIDTERM grade?",
+				"Do you like it?",
+				"RELAX! I'm just asking.",
+				"I won't change it even if you don't like it."
+			];
 		}
 		
 		// add the fortune card to local storage
@@ -278,7 +281,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 			if (userMood === "Powell") {
 				char.src = "assets/constellation/big/white/Powell.png";
 			}
-			writeToDialogue(response, speaker, () =>{
+			writeToDialogue(response, userMood === "Powell" ? "Powell " : speakerName, () =>{
 				char.src = "assets/char-celeste.png";
 				promptAstrology();
 			});

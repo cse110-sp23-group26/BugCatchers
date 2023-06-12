@@ -6,9 +6,9 @@ const TYPING_DELAY = 40;
 /**
  * Writes out a string of text to the dialogue box
  * @param {string} speaker the name of the person talking
- * @param {string} text what the person is saying
+ * @param {string | array<string>} text an array of lines or a string of dialogue
  * @param {function} userNext function that is called when user clicks on finished dialogue
- * @param {function} doneTyping function that is called when typing out dialogue is completed
+ * @param {function} doneTyping function that is called when typing out a single line is completed
  */
 function writeToDialogue(text, speaker, userNext, doneTyping){
 	if (speaker) {
@@ -40,21 +40,11 @@ function writeToDialogue(text, speaker, userNext, doneTyping){
 		return chunks;
 	}
 	
-	// An array containing all of the lines of dialogue that can be typed out
-	let string = [];
-	console.log(speaker);
-	console.log(speaker == "Powell");
-	if (speaker == "Powell"){
-		//console.log(1);
-		//console.log(text);
-		//console.log(typeof text)
-		strings = ["Hello, kids!","Did you check your MIDTERM grade?","Do you like it? RELAX! I'm just asking.","I won't change it even if you don't like it."];
-	} else {
-		console.log(2);
-		strings = splitString(text, CHUNK_SIZE);
-	}
-
-
+	// If text is a string, split it, up into chunks, 
+	// but if it's pre-chunked and an array, just use the array
+	let strings = typeof text === "string" ? 
+		splitString(text, CHUNK_SIZE) : 
+		text;
 	let stringArr = strings.splice(0, 1)[0].split("");
 	let curDialogue = document.querySelector('.dialogue-text>.text');
 	let shadowText = document.querySelector('.dialogue-text>.shadow-text');
