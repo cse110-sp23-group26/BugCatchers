@@ -29,7 +29,7 @@ export function checkIn() {
 
 	return {
 		date: currentDate.toISOString().split("T")[0],
-		count: checkInCount,
+		count: checkInCount
 	};
 }
 

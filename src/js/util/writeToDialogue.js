@@ -47,6 +47,7 @@ export function writeToDialogue(text, speaker, userNext, doneTyping) {
 	let curDialogue = document.querySelector(".dialogue-text>.text");
 	let shadowText = document.querySelector(".dialogue-text>.shadow-text");
 	let textBox = document.querySelector("#text-box");
+	let character = document.querySelector("#char");
 
 	/**
 	 * Types out a string array over time to the dialogue box
@@ -77,6 +78,14 @@ export function writeToDialogue(text, speaker, userNext, doneTyping) {
 		if (stringArr.length === 0 && strings.length > 0) {
 			stringArr = strings.splice(0, 1)[0].split("");
 		}
+
+		// Make the character bounce
+		character.classList.remove("bounce");
+		// Cool hack that causes a delay that causes the page to reflow
+		// https://stackoverflow.com/a/63561659
+		character.offsetWidth;
+		character.classList.add("bounce");
+
 		// Clear the box for each new line
 		curDialogue.textContent = "";
 		// Populate the shadow text so that the bounding box is filled
