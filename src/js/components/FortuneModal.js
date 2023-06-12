@@ -60,7 +60,7 @@ class FortuneModal extends HTMLElement {
 			#content {
 					position: relative;
 					font-size: 18px;
-					font-family: 'Nunito', sans-serif;
+					font-family: "Nunito", sans-serif;
 					background-color: #348AA7;
 					color: white;
 					padding: 25px;

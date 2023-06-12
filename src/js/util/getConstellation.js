@@ -8,7 +8,7 @@
  */
 // eslint-disable-next-line no-unused-vars
 function getConstellation(dateString) {
-	// remove the space, and store month and day to 'month' and 'day'
+	// remove the space, and store month and day to "month" and "day"
 	const trimmedString = dateString.replace(/\s+/g, " ");  // Now this replaces multiple spaces with a single space
 	const regex = /([a-zA-Z]+)\s*(\d+)/;  // This regular expression also considers a possible space after the month
 	const matches = trimmedString.match(regex);

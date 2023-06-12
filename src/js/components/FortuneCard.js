@@ -16,7 +16,7 @@ class FortuneCard extends HTMLElement {
 		div {
 			position: relative;
 			font-size: 12px;
-			font-family: 'Nunito', sans-serif;
+			font-family: "Nunito", sans-serif;
 			background-color: #348AA7;
 			color: white;
 			padding: 25px;
@@ -106,23 +106,23 @@ class FortuneCard extends HTMLElement {
 		Object.assign(deleteButton.style, closeButtonStyles);
 
 		// append content to fortune card
-		fortuneCardContent.innerHTML = '';
+		fortuneCardContent.innerHTML = "";
 		fortuneCardContent.appendChild(image);
 		fortuneCardContent.appendChild(moodParagraph);
 		fortuneCardContent.appendChild(timeParagraph);
 		fortuneCardContent.appendChild(deleteButton);
 		fortuneCardContent.style.backgroundColor = zodiacInfo[1];
 
-		deleteButton.addEventListener('click', (event) => {
+		deleteButton.addEventListener("click", (event) => {
 			// get the ancestor element fortune-card where the click happened
 			// and record the id
 			const fortuneCard = event.target.getRootNode().host;
 			const id = data.id;
 
 			// delete the corresponding data from localStorage
-			let fortunes = JSON.parse(localStorage.getItem('FortunesCard'));
+			let fortunes = JSON.parse(localStorage.getItem("FortunesCard"));
 			fortunes = fortunes.filter(fortune => fortune.id !== id);
-			localStorage.setItem('FortunesCard', JSON.stringify(fortunes));
+			localStorage.setItem("FortunesCard", JSON.stringify(fortunes));
 
 			// delete the fortune card from html
 			fortuneCard.remove();
@@ -133,7 +133,7 @@ class FortuneCard extends HTMLElement {
 
 		fortuneCardContent.addEventListener("click", () => {
 			const fortuneModal = document.createElement("fortune-modal");
-			const modalText = (data['modal-text']) ? data['modal-text'] : data.text;
+			const modalText = (data["modal-text"]) ? data["modal-text"] : data.text;
 			fortuneModal.data = {
 				"name": data.name,
 				"id": data.id,
@@ -152,10 +152,10 @@ class FortuneCard extends HTMLElement {
 customElements.define("fortune-card", FortuneCard);
 
 const closeButtonStyles = {
-	background: `url('assets/trash_bin-modified.png') no-repeat`,
-	backgroundSize: 'contain', 
-	border: 'none', 
-	width: '45px', 
-	height: '45px', 
-	cursor: 'pointer'
+	background: `url("assets/trash_bin-modified.png") no-repeat`,
+	backgroundSize: "contain", 
+	border: "none", 
+	width: "45px", 
+	height: "45px", 
+	cursor: "pointer"
 };

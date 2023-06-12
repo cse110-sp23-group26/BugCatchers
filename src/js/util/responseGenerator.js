@@ -9,16 +9,16 @@
  * @returns {object} - An object containing the JSON from each of the JSON files
  */
 async function readJSON() {
-	let astro = await fetch('conf/Astrology.json');
+	let astro = await fetch("conf/Astrology.json");
 	astro = await astro.json();
 
-	let suggestion = await fetch('conf/Suggestions.json');
+	let suggestion = await fetch("conf/Suggestions.json");
 	suggestion = await suggestion.json();
 
-	let fortune = await fetch('conf/Fortunes.json');
+	let fortune = await fetch("conf/Fortunes.json");
 	fortune = await fortune.json();
 	
-	let transitional = await fetch('conf/Transitional.json');
+	let transitional = await fetch("conf/Transitional.json");
 	transitional = await transitional.json();
 
 	return {

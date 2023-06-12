@@ -8,10 +8,10 @@
 // eslint-disable-next-line no-unused-vars
 function addFortuneCard(fortune) {
 	// Add to local storage
-	let fortunes = JSON.parse(localStorage.getItem('FortunesCard')) || [];
+	let fortunes = JSON.parse(localStorage.getItem("FortunesCard")) || [];
 	let existingFortune = fortunes.find(f => f.id === fortune.id);
 	if (!existingFortune) {
 		fortunes.unshift(fortune);
-		localStorage.setItem('FortunesCard', JSON.stringify(fortunes));
+		localStorage.setItem("FortunesCard", JSON.stringify(fortunes));
 	}
 }

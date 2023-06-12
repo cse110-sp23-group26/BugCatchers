@@ -38,7 +38,7 @@ div.bg #char {
 	}
 }
 
-div.greenMenu #menu {
+div.green-menu #menu {
 	width: 5%;
 	height: auto;
 	position: absolute;
@@ -46,7 +46,7 @@ div.greenMenu #menu {
 	left: 2%;
 }
 
-div.greenMenu #CardList {
+div.green-menu #card-list {
 	width: 20%;
 	height: auto;
 	position: absolute;

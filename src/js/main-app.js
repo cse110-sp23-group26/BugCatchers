@@ -1,8 +1,8 @@
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 function init() {
 	// Default variables to set (i.e Celeste's name, default welcoming message etc.)
-	const WELCOME_MSG = 'Hello child! What can I do for you?';
+	const WELCOME_MSG = "Hello child! What can I do for you?";
 
 	// --------------------------START OF DIALOGUE SEQUENCE-----------------------
 	// TODO: store username somewhere
@@ -11,7 +11,7 @@ function init() {
 	 * on the user input. Currently the work flow is fine but need to call
 	 * on some prediction function, based on user input, from "GetUserInput.js"
 	 */
-	let curName = 'Celeste';
+	let curName = "Celeste";
 	// eslint-disable-next-line no-undef
 	startDialogueSequence(WELCOME_MSG, curName);
 	// ---------------------------END OF DIALOGUE SEQUENCE------------------------
@@ -22,12 +22,12 @@ function init() {
 	initializeCheckIn();
 	// add event listener to check in button
 	// this fcuntion in js/util/CheckIn.js
-	document.getElementById('check-in-button').addEventListener('click', function () {
+	document.getElementById("check-in-button").addEventListener("click", function () {
 		// eslint-disable-next-line no-undef
 		let result = checkIn();
 		// Update the display
-		document.getElementById('last-check-in-date').textContent = 'Last Check-In: ' + result.date;
-		document.getElementById('check-in-count').textContent = 'Count: ' + result.count;
+		document.getElementById("last-check-in-date").textContent = "Last Check-In: " + result.date;
+		document.getElementById("check-in-count").textContent = "Count: " + result.count;
 	});
 	// --------------------------end of init check-in system-----------------------
 
@@ -35,61 +35,64 @@ function init() {
 	// --------------------------FORTUNE CARD LIST MENU-----------------------
 	// FortuneCardList listeners
 	const menu = document.getElementById("menu");
-	const CardList = document.getElementById("CardList");
-	const OverLay = createOverLay();
-	OverLay.addEventListener('click', () => {
+	const cardList = document.getElementById("card-list");
+	const overlay = createOverlay();
+	overlay.addEventListener("click", () => {
 		menu.click();
 	});
 
 	// Add a click event listener to toggle the visibility of the content
-	menu.addEventListener('click', () => {
+	menu.addEventListener("click", () => {
 		// check if the List is opening right now
-		if (CardList.content.style.display === 'none') {
+		if (cardList.content.style.display === "none") {
 			// create List title
-			const ListTitle = document.createElement('h2');
+			const ListTitle = document.createElement("h2");
 			ListTitle.classList.add("fc-list-title");
-			ListTitle.textContent = 'Saved Fortune!';
+			ListTitle.textContent = "Saved Fortune!";
 			// Apply the styles
 			Object.assign(ListTitle.style, ListTitleStyles);
-			CardList.content.appendChild(ListTitle);
+			cardList.content.appendChild(ListTitle);
 			
 			// Read from localstorage
-			let fortunes = JSON.parse(localStorage.getItem('FortunesCard')) || [];
+			let fortunes = JSON.parse(localStorage.getItem("FortunesCard")) || [];
 			// issue #41, if no data in fortunes, add a fortune card said no recording
 			if (fortunes.length == 0){
-				const emptyFortuneCardList = document.createElement('p');
+				const emptyFortuneCardList = document.createElement("p");
 				emptyFortuneCardList.classList.add("fc-list-empty");
-				emptyFortuneCardList.textContent = 'no content';
+				emptyFortuneCardList.textContent = "no content";
 				// Apply the styles
 				Object.assign(emptyFortuneCardList.style, emptyFortuneCardListStyles);
-				CardList.content.appendChild(emptyFortuneCardList);
+				cardList.content.appendChild(emptyFortuneCardList);
 			}
+
 			for (let fortune of fortunes) {
 				const fortuneCard = document.createElement("fortune-card");
 				fortuneCard.data = fortune;
 				// Add to HTML
-				CardList.content.appendChild(fortuneCard);
+				cardList.content.appendChild(fortuneCard);
 			}
 
 			// add close button on right buttom
-			const closeButton = document.createElement('button');
+			const closeButton = document.createElement("button");
 			closeButton.classList.add("fc-list-close-btn");
-			// closeButton.textContent = 'Close';
+
 			Object.assign(closeButton.style, closeButtonStyles);
-			closeButton.addEventListener('click', e => {
+
+			closeButton.addEventListener("click", e => {
 				const menu = document.getElementById("menu");
 				menu.click();
 				e.stopPropagation();
 			});
-			CardList.content.appendChild(closeButton);
-			CardList.content.style.display = 'block';
-			CardList.style.zIndex = '11'; 
-			// add the OverLay
-			OverLay.style.display = 'block';
+
+			cardList.content.appendChild(closeButton);
+			cardList.content.style.display = "block";
+			cardList.style.zIndex = "11"; 
+			// add the overlay
+			overlay.style.display = "block";
 		} else {
-			CardList.content.innerHTML = '';
-			OverLay.style.display = 'none';
-			CardList.content.style.display = 'none';
+			cardList.content.innerHTML = "";
+			overlay.style.display = "none";
+			cardList.content.style.display = "none";
 		}
 	});
 	// --------------------------END OF FORTUNE CARD LIST MENU-----------------------
@@ -108,42 +111,42 @@ function updateFortuneCardList(){
 
 const ListTitleStyles = {
 	position: "relative",
-	fontFamily: 'Nunito, sans-serif',
+	fontFamily: "Nunito, sans-serif",
 	margin: "15px",
 	fontWeight: "bold",
 };
 const closeButtonStyles = {
 	position: "relative",
 	left: "70%", 
-	background: `url('assets/close_button.png') no-repeat`,
-	backgroundSize: 'contain', 
-	border: 'none', 
-	width: '100px', 
-	height: '35px', 
-	cursor: 'pointer'
+	background: `url("assets/close_button.png") no-repeat`,
+	backgroundSize: "contain", 
+	border: "none", 
+	width: "100px", 
+	height: "35px", 
+	cursor: "pointer"
 };
 const emptyFortuneCardListStyles = {
 	color: "grey",
 	position: "relative",
-	fontFamily: 'Nunito, sans-serif',
+	fontFamily: "Nunito, sans-serif",
 	margin: "15px",
 	fontWeight: "bold",
 };
 
-// create the OverLay when we open the fortune card list
-function createOverLay(){
-	const OverLay = document.createElement('div');
-	OverLay.id = 'OverLay';
-	document.body.appendChild(OverLay);
+// create the overlay when we open the fortune card list
+function createOverlay(){
+	const overlay = document.createElement("div");
+	overlay.id = "overlay";
+	document.body.appendChild(overlay);
 
 	// set over lay style
-	OverLay.style.position = 'fixed';
-	OverLay.style.top = '0';
-	OverLay.style.left = '0';
-	OverLay.style.width = '100%';
-	OverLay.style.height = '100%';
-	OverLay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-	OverLay.style.display = 'none';
-	OverLay.style.zIndex = '10';
-	return OverLay;
+	overlay.style.position = "fixed";
+	overlay.style.top = "0";
+	overlay.style.left = "0";
+	overlay.style.width = "100%";
+	overlay.style.height = "100%";
+	overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+	overlay.style.display = "none";
+	overlay.style.zIndex = "10";
+	return overlay;
 }
