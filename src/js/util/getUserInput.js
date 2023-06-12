@@ -229,15 +229,18 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 		let userConstellation = getConstellation(userBirthMonthDay);
 		let response = await generateFinalFortune(userConstellation);
 
+        let speaker = "Celeste"
+
 		if (userMood == "Powell"){
 			userConstellation = "Powell";
+			speaker = "Powell"
 		}
 
 		let curText = `The holy ${userConstellation} answered your call!`;
 		// Powell!!!
 		if (userMood == "Powell") {
 			curText = "The holy—— uh, wait... well, oops, Professor Powell answered your call...";
-			response = "Hello, kids! Did you check your MIDTERM grade? Do you like it? RELAX! I'm just asking. I won't change it even if you don't like it.";
+			response = "Hello, kids!-Did you check your MIDTERM grade?-Do you like it? RELAX! I'm just asking.-I won't change it even if you don't like it.";
 		}
 		
 		// add the fortune card to local storage
@@ -275,7 +278,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 			if (userMood === "Powell") {
 				char.src = "assets/constellation/big/white/Powell.png";
 			}
-			writeToDialogue(response, userMood === "Powell" ? "Powell " : speakerName, () =>{
+			writeToDialogue(response, speaker, () =>{
 				char.src = "assets/char-celeste.png";
 				promptAstrology();
 			});
