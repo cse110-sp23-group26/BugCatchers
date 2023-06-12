@@ -119,6 +119,7 @@ class FortuneModal extends HTMLElement {
 	}
 
 	createZodiacParagraph(parentElement, data) {
+		// eslint-disable-next-line no-undef
 		const zodiacInfo = getConstellationInfo(data.name);
 		const zodiacParagraph = document.createElement("p");
 		zodiacParagraph.classList.add("zodiac-text");
