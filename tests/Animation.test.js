@@ -1,33 +1,52 @@
 const puppeteer = require('puppeteer');
+const { showConstellationImage } = require('../src/js/util/constellationAnimation.js');
 
-describe('Animation for showConstellationImage', () => {
-  let browser;
-  let page;
-  jest.setTimeout(10000); // 设置全局超时时间为 10 秒
-  beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: 'new' });
-    page = await browser.newPage();
-    await page.goto('https://cse110-sp23-group26.github.io/BugCatchers/');
-  });
+test("Constellation image should appear and disappear correctly", async () => {
+	// Setup puppeteer
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto('https://cse110-sp23-group26.github.io/BugCatchers/'); // Replace with your local server address
 
-  afterAll(async () => {
-    await browser.close();
-  });
+	// Define a handler function to be evaluated within the page context
+	const handleTest = (constellation) => new Promise((resolve) => {
+		showConstellationImage(constellation);
+		
+		// Check the initial state
+		let image = document.querySelector('img');
+		let overlay = document.querySelector('div');
+		expect(image).toBeTruthy();
+		expect(overlay).toBeTruthy();
+		expect(image.style.opacity).toBe('0');
+		expect(overlay.style.opacity).toBe('0');
 
-  it('should perform the animation correctly', async () => {
-    await page.evaluate(() => {
-      showConstellationImage('leo');
-    });
+		setTimeout(() => {
+			// Check the state after the first timeout
+			image = document.querySelector('img');
+			overlay = document.querySelector('div');
+			expect(image.style.opacity).toBe('1');
+			expect(overlay.style.opacity).toBe('0.5');
+		}, 0);
 
-    // Wait for the animation to complete
-    await page.waitForTimeout(5000); // Adjust the duration here (in milliseconds)
+		setTimeout(() => {
+			// Check the state after the second timeout
+			image = document.querySelector('img');
+			overlay = document.querySelector('div');
+			expect(image.style.opacity).toBe('0');
+			expect(overlay.style.opacity).toBe('0');
+		}, 3000);
 
-    // Check if the animation is completed correctly
-    const imageOpacity = await page.$eval('img', (element) => parseFloat(element.style.opacity));
-    const overlayOpacity = await page.$eval('div', (element) => parseFloat(element.style.opacity));
+		setTimeout(() => {
+			// Check the state after the third timeout
+			image = document.querySelector('img');
+			overlay = document.querySelector('div');
+			expect(image).toBeNull();
+			expect(overlay).toBeNull();
+			resolve();
+		}, 5000);
+	});
 
-    // This is NaN because at the constellationAnimation.js, we finally removed the animation image
-    expect(imageOpacity).toBe(NaN);
-    expect(overlayOpacity).toBe(NaN);
-  });
+	// Run the test
+	await page.evaluate(handleTest, 'Aquarius');
+
+	await browser.close();
 });
