@@ -1,4 +1,4 @@
-import { getConstellationInfo } from "../util/getConstellationColor";
+import { getConstellationInfo } from "../util/getConstellationColor.js";
 
 export class FortuneModal extends HTMLElement {
   constructor() {

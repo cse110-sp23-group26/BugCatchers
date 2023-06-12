@@ -1,5 +1,5 @@
-import { startDialogueSequence } from "./util/getUserInput";
-import { initializeCheckIn, checkIn } from "./util/checkIn";
+import { startDialogueSequence } from "./util/getUserInput.js";
+import { initializeCheckIn, checkIn } from "./util/checkIn.js";
 
 window.addEventListener("DOMContentLoaded", init);
 

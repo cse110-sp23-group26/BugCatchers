@@ -1,9 +1,9 @@
-import { writeToDialogue } from "./writeToDialogue";
-import { getConstellation } from "./getConstellation";
-import { generateFinalFortune } from "./responseGenerator";
-import { addFortuneCard } from "./addFortuneCard";
-import { updateFortuneCardList } from "../main-app";
-import { showConstellationImage } from "./constellationAnimation";
+import { writeToDialogue } from "./writeToDialogue.js";
+import { getConstellation } from "./getConstellation.js";
+import { generateFinalFortune } from "./responseGenerator.js";
+import { addFortuneCard } from "./addFortuneCard.js";
+import { updateFortuneCardList } from "../main-app.js";
+import { showConstellationImage } from "./constellationAnimation.js";
 
 let userBirthDay;
 let userBirthMonth;
