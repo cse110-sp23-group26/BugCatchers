@@ -15,6 +15,8 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 	const boxInput = document.querySelector('#dataInput');
 	const arrowElement = document.querySelector('.arrow');
 
+	boxInput.addEventListener("input", isNonEmpty);
+
 	/**
 	 * Check whether a number input's value is between its min and max
 	 * @param {InputEvent | InputElement} event an input event on an input element
@@ -33,14 +35,29 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 	
 		// check validity
 		if (valid) {
-		//	boxInput.style.border = "2px solid #071b6c";
 			input.style.boxShadow = "0px 8px 15px rgba(0, 0, 0, 0.1)";
 		} else {
-		//	boxInput.style.border = "2px solid red";
 			input.style.boxShadow = "0px 0px 10px 3px red";
 		}
 		return valid;
 	}
+
+	function isNonEmpty(event) {
+		let input;
+		if (event?.target) {
+			input = event.target;
+		} else {
+			input = event;
+		}
+		let valid = input.value.length > 0;
+		if (valid) {
+			input.style.boxShadow = "0px 8px 15px rgba(0, 0, 0, 0.1)";
+		} else {
+			input.style.boxShadow = "0px 0px 10px 3px red";
+		}
+		return valid;
+	}
+
 
 	/**
 	 * Prevents an input from receiving any input but numbers
@@ -191,6 +208,7 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 		boxInput.value = "";
 
 		function submitMood(e) {
+			if (!isNonEmpty(boxInput)) return;
 			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
 				userMood = boxInput.value;
 				arrowElement.removeEventListener("click", submitMood);
@@ -199,7 +217,6 @@ async function startDialogueSequence(welcomeMsg, speakerName) {
 			}
 		}
 		
-
 		boxInput.addEventListener("keydown", submitMood);
 		arrowElement.addEventListener("click", submitMood);
 	}
