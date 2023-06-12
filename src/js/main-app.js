@@ -1,12 +1,3 @@
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// Rui Li's edit 28/05/23:
-// Added a json 'fortunes' which contains 2 test fortune card to local storage 
-// Instead add fortune cards to html body, added it to a <div class = "fortuneCardList">
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
