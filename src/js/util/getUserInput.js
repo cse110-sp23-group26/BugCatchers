@@ -1,13 +1,20 @@
+import {writeToDialogue} from "./writeToDialogue";
+import {getConstellation} from "./getConstellation";
+import {generateFinalFortune} from "./responseGenerator";
+import {addFortuneCard} from "./addFortuneCard";
+import {updateFortuneCardList} from "../main-app";
+import {showConstellationImage} from "./constellationAnimation";
+
 let userBirthDay;
 let userBirthMonth;
-let userBirthYear;
+// let userBirthYear;
 let userMood;
 
 const DAYS_IN_MONTH = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 export async function startDialogueSequence(welcomeMsg, speakerName) {
 	// Wait a second before typing to let the starting bubble animation play
-	await (new Promise((res,rej)=>{setTimeout(res,1000)}));
+	await (new Promise((res)=>{setTimeout(res,1000)}));
 
 	// Writes the welcome dialogue and then prompts the user for astrology
 	writeToDialogue(welcomeMsg, speakerName, promptAstrology);
@@ -184,7 +191,7 @@ export async function startDialogueSequence(welcomeMsg, speakerName) {
 			if (e?.key === "Enter" || e.target.id === arrowElement.id) {
 				if (validateNumberInput(boxInput)) {
 					localStorage.setItem('UserBirthYear', boxInput.value);
-					userBirthYear = parseInt(boxInput.value);
+					// userBirthYear = parseInt(boxInput.value);
 					arrowElement.removeEventListener("click", submitYear);
 					boxInput.removeEventListener("keydown", submitYear);
 					cancelTyping[0]();
