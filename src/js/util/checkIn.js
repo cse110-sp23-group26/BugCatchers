@@ -34,7 +34,7 @@ function checkIn() {
 }
 
 // Function to initialize check-in data on page load
-function initializeCheckIn() {
+export function initializeCheckIn() {
 	let lastCheckInDate = localStorage.getItem('LastCheckInTime');
 	let checkInCount = localStorage.getItem('CheckInCount');
 
