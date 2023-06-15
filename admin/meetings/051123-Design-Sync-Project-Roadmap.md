@@ -1,6 +1,6 @@
 # Project roadmap Design Sync 5/11/2023
 
-##Attendance
+## Attendance
 - Nick
 - Rui
 - Quanling
@@ -11,7 +11,7 @@
 - Jiaming
 - Ryan
 
-##Agenda
+## Agenda
 - Go over hour estimates of each team member.
 - Decide on the road map to final projects.
 - Decide on tasks need to be done on this Sunday and moving Forward.
@@ -34,8 +34,6 @@ Roadmap to final projects
   - Main frame and structure to the website done on figma.
   - Userflow diagram
   - Figure out local file management (user profiles, json file)
-
-
 
 
 ## Tasks
