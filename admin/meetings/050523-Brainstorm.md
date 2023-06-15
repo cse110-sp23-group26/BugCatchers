@@ -9,7 +9,7 @@
 - Sindhu
 - Yuning
 
-##Agenda
+## Agenda
 - Brainstrom, decide on what project is about what it is and how to implement it.
 - Project Pitch, formalize and write a pich of the program. 
 
