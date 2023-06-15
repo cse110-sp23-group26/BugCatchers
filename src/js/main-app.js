@@ -20,11 +20,11 @@ function init() {
 	// ---------------------------END OF DIALOGUE SEQUENCE------------------------
 
 	// --------------------------init check-in system-----------------------
-	// this fcuntion in js/util/CheckIn.js
+	// this function in js/util/CheckIn.js
 	// eslint-disable-next-line no-undef
 	initializeCheckIn();
 	// add event listener to check in button
-	// this fcuntion in js/util/CheckIn.js
+	// this function in js/util/CheckIn.js
 	document
 		.getElementById("check-in-button")
 		.addEventListener("click", function () {
