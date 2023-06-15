@@ -2,6 +2,8 @@
 
 The single source of truth for the BugCatchers (Group 26)
 
+[Figma Design](https://www.figma.com/file/WOioqNs8ss0M2m7pKVkoD7/Website-Design)
+
 **The link of team introduction: [Team Page](https://github.com/cse110-sp23-group26/BugCatchers/blob/main/admin/team.md)**
 
 # Final Project Introduction
