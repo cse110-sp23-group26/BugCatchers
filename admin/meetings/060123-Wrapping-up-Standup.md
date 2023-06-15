@@ -7,7 +7,7 @@
 - Quanling
 - Yuning
 
-Updates:
+## Updates:
 - Shishir - 
 	- finished fortune modal
 - Rui - 
@@ -30,7 +30,8 @@ Updates:
 - Sindhu
 	- No updates
 	- Is taking tasks from the github
-Issues that need to be solved:
+	
+## Issues that need to be solved:
 - General code cleanup
 - add tooltips or placeholder text to show how to proceed with dialogue in a text box
 - make the styles consistent with the figma without overfitting it
