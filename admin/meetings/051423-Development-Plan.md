@@ -1,6 +1,6 @@
 # Meeting Minutes on 4/20/2023
 
-##Attendance
+## Attendance
 - Quanling
 - Eric
 - Nick
@@ -11,12 +11,12 @@
 - Yuning
 - Sindhu
 
-##Agenda
+## Agenda
 - Tasks checkin since last metting.
 - Project roadmap
 
 
-## Detail
+## Details
 - Task check in:
   - CI/CD pipeline setting up tonight.
   - Userflow diagram update.
