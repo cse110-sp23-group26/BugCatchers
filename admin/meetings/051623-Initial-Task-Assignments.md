@@ -1,6 +1,6 @@
 # Meeting Minutes on 4/20/2023
 
-##Attendance
+## Attendance
 - Shishir
 - Yuning
 - Nick
@@ -9,7 +9,7 @@
 - Sindhu
 - Jiaming
 
-##Agenda
+## Agenda
 - Go over project structure
 - Assign individual weekly tasks (7th)
 
@@ -31,7 +31,6 @@
   - Quanling
 - Astrology responses
   - Yuning
-- 
 
 
 
