@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: util/responseGenerator.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: util/responseGenerator.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Has a function called generateFinalFortune which returns a text string
+ * that has a final version of a fortune that will be given to the user
+ */
+
+//  ---------------------- BEGIN UTILITY FUNCTIONS ----------------------------
+/**
+ * Reads each of the JSON files containing fortunes.
+ * @returns {object} - An object containing the JSON from each of the JSON files
+ */
+async function readJSON() {
+	let astro = await fetch("conf/Astrology.json");
+	astro = await astro.json();
+
+	let suggestion = await fetch("conf/Suggestions.json");
+	suggestion = await suggestion.json();
+
+	let fortune = await fetch("conf/Fortunes.json");
+	fortune = await fortune.json();
+
+	let transitional = await fetch("conf/Transitional.json");
+	transitional = await transitional.json();
+
+	return {
+		astro: astro,
+		suggestion: suggestion,
+		fortune: fortune,
+		transitional: transitional,
+	};
+}
+
+/**
+ * Picks a random item from an array
+ * @param {array} list - the array to choose from
+ * @returns a random item from the list
+ */
+function randomFromList(list) {
+	return list[Math.floor(Math.random() * list.length)];
+}
+
+/**
+ * Makes a string lowercase at the start
+ * @param {string} s - the string to make lowercased
+ * @returns {string} - the string s with a lowercase character at the start
+ */
+function lowercaseStart(s) {
+	return s.charAt(0).toLowerCase() + s.slice(1);
+}
+
+// ------------------------- BEGIN RESPONSE FUNCTIONS -------------------------
+
+/**
+ * Randomly generates a fortune about money
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseMoney(sign) {
+	// Changed from concatenation to string templating to clean up code a bit
+	const fortune = generateFortuneObject(sign);
+	return `The stars have revealed your wealth. ${fortune.fortune_money_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+/**
+ * Randomly generates a fortune about work
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseWork(sign) {
+	const fortune = generateFortuneObject(sign);
+	return `The stars are telling me your future. ${fortune.fortune_work_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+/**
+ * Randomly generates a fortune about school
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseSchool(sign) {
+	const fortune = generateFortuneObject(sign);
+	return `The stars show your success in school. ${fortune.fortune_school_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+/**
+ * Randomly generates a fortune about relation
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseRelation(sign) {
+	const fortune = generateFortuneObject(sign);
+	return `The stars are giving you love and happiness. ${fortune.fortune_relation_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+/**
+ * Randomly generates a fortune with a random topic
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns {string} - The randomly generated fortune
+ */
+function responseRandom(sign) {
+	const fortune = generateFortuneObject(sign);
+	let random_text = [
+		fortune.fortune_money_text,
+		fortune.fortune_school_text,
+		fortune.fortune_relation_text,
+		fortune.fortune_work_text,
+		fortune.fortune_generic_text,
+	];
+	random_text = random_text[Math.floor(Math.random() * random_text.length)];
+
+	return `The heavens have foretold your future. ${random_text} ${sign} are ${fortune.astro_feature_text}. ${fortune.suggestion_text}`;
+}
+
+let FORTUNE_DATA = null;
+readJSON().then((e) => {
+	FORTUNE_DATA = e;
+});
+
+// A list of functions that can be used to generate a fortune
+const GENERATORS = [
+	responseMoney,
+	responseWork,
+	responseSchool,
+	responseRelation,
+	responseRandom,
+];
+
+/**
+ * Generates an object that has a specific fortune for a variety of categories for a response generator to use
+ * @param {string} sign - A string containing the zodiac sign to generate a fortune for
+ * @returns {object} - An object containing various fortune strings that can be used to generate a fortune
+ */
+function generateFortuneObject(sign) {
+	const signData = FORTUNE_DATA.astro[sign];
+	const fortune = FORTUNE_DATA.fortune;
+	const suggestion = FORTUNE_DATA.suggestion;
+	const transitional = FORTUNE_DATA.transitional;
+
+	return {
+		astro_info_text: randomFromList(signData["info"]),
+		astro_feature_text: lowercaseStart(randomFromList(signData["features"])),
+		fortune_money_text: randomFromList(fortune["Money"]),
+		fortune_school_text: randomFromList(fortune["School"]),
+		fortune_relation_text: randomFromList(fortune["Relation"]),
+		fortune_work_text: randomFromList(fortune["Work"]),
+		fortune_generic_text: randomFromList(fortune["Generic"]),
+		suggestion_text: randomFromList(suggestion["suggestions"]),
+		transitional: randomFromList(transitional["transitional"]),
+	};
+}
+
+/**
+ * Returns a randomly generated fortune based on the user's constellation
+ *
+ * @param {string} sign - The zodiac sign to generate a fortune for
+ * @returns - A string containing the randomly generated fortune
+ */
+export async function generateFinalFortune(sign) {
+	let generator = GENERATORS[Math.floor(Math.random() * GENERATORS.length)];
+	let response = await generator(sign);
+	return response;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FortuneCard.html">FortuneCard</a></li><li><a href="FortuneCardList.html">FortuneCardList</a></li></ul><h3>Global</h3><ul><li><a href="global.html#generateFinalFortune">generateFinalFortune</a></li><li><a href="global.html#generateFortuneObject">generateFortuneObject</a></li><li><a href="global.html#getConstellation">getConstellation</a></li><li><a href="global.html#getConstellationInfo">getConstellationInfo</a></li><li><a href="global.html#lowercaseStart">lowercaseStart</a></li><li><a href="global.html#randomFromList">randomFromList</a></li><li><a href="global.html#readJSON">readJSON</a></li><li><a href="global.html#responseMoney">responseMoney</a></li><li><a href="global.html#responseRandom">responseRandom</a></li><li><a href="global.html#responseRelation">responseRelation</a></li><li><a href="global.html#responseSchool">responseSchool</a></li><li><a href="global.html#responseWork">responseWork</a></li><li><a href="global.html#showConstellationImage">showConstellationImage</a></li><li><a href="global.html#writeToDialogue">writeToDialogue</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun May 19 2024 20:09:23 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
